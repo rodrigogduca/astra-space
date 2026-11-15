@@ -1,0 +1,1107 @@
+{
+ "url": "http://localhost:4173/#/integracoes",
+ "at": "2026-11-15T03:46:36.113Z",
+ "allow": [
+  "gradient"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.73,
+    0.84,
+    0.72
+   ],
+   "motion": {
+    "elements": 47,
+    "css": 46,
+    "transitions": 1,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 2517,
+     "screens": 2.8,
+     "words": 374,
+     "img": 1,
+     "video": 0,
+     "canvas": 0,
+     "svg": 75,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "sts-135-final-flyaround-of-iss-1.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Central de integrações",
+     "words": 3,
+     "chars": 22,
+     "lines": 1,
+     "size": 48,
+     "vw": 3.3,
+     "font": "Schibsted Grotesk",
+     "weight": 800,
+     "tracking": -0.035,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.37,
+     "top": 237,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Central de integrações",
+     "words": 3,
+     "lines": 1,
+     "size": 48,
+     "font": "Schibsted Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Central de integrações",
+      "words": 3,
+      "chars": 22,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.035,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.37,
+      "top": 237,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "1",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.06,
+      "top": 273,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "6",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.06,
+      "top": 273,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "2",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.05,
+      "top": 273,
+      "tag": "dd",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 4,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 3,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Schibsted Grotesk",
+       "share": 0.87,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.13,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      17,
+      19,
+      24,
+      26,
+      48
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Schibsted Grotesk",
+      "size": 17,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": -0.011,
+      "contrast": 8.3
+     },
+     "measureChars": 47,
+     "max": {
+      "size": 48,
+      "vw": 3.3,
+      "font": "Schibsted Grotesk",
+      "text": "Central de integrações"
+     },
+     "monoShare": 0.13,
+     "monoProseShare": 0,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.02,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a1033",
+     "bodyBgHsl": {
+      "h": 231,
+      "s": 0.67,
+      "l": 0.12
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#131b45",
+       "top": 818,
+       "hsl": {
+        "h": 230,
+        "s": 0.57,
+        "l": 0.17
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#aeb7da",
+       "share": 0.78
+      },
+      {
+       "color": "#eef1fa",
+       "share": 0.18
+      },
+      {
+       "color": "#1b1f3b",
+       "share": 0.02
+      },
+      {
+       "color": "#ffc83d",
+       "share": 0.01
+      },
+      {
+       "color": "#5ccb8f",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#1c2659",
+      "hsl": {
+       "h": 230,
+       "s": 0.52,
+       "l": 0.23
+      },
+      "fg": "#eef1fa"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 38,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 33,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Integrações",
+      "12 2.340",
+      "Baixar JSON"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 1,
+     "scrims": 0,
+     "gradientSamples": [
+      "div.photo-band__body.integ-band__body → linear-gradient(rgba(6, 10, 34, 0), rgba(6, 10, 34, 0.6) 45%, rgba(6, 10, 34, 0.86))"
+     ],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 6,
+     "boxRadius": 22,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 22,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.99
+     },
+     {
+      "type": "svg",
+      "ratio": 0.98
+     },
+     {
+      "type": "svg",
+      "ratio": 0.97
+     },
+     {
+      "type": "img",
+      "ratio": 0.27
+     }
+    ],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 69,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "schibsted grotesk"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.92,
+    0.93,
+    0.81,
+    0.76
+   ],
+   "motion": {
+    "elements": 46,
+    "css": 46,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 3216,
+     "screens": 3.1,
+     "words": 374,
+     "img": 1,
+     "video": 0,
+     "canvas": 0,
+     "svg": 75,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "sts-135-final-flyaround-of-iss-1.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Central de integrações",
+     "words": 3,
+     "chars": 22,
+     "lines": 1,
+     "size": 37.6,
+     "vw": 4.9,
+     "font": "Schibsted Grotesk",
+     "weight": 800,
+     "tracking": -0.035,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.66,
+     "top": 146,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Central de integrações",
+     "words": 3,
+     "lines": 1,
+     "size": 37.6,
+     "font": "Schibsted Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Central de integrações",
+      "words": 3,
+      "chars": 22,
+      "lines": 1,
+      "size": 37.6,
+      "vw": 4.9,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.035,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.66,
+      "top": 146,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "1",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 37.6,
+      "vw": 4.9,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.11,
+      "top": 272,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "6",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 37.6,
+      "vw": 4.9,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.1,
+      "top": 272,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "2",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 37.6,
+      "vw": 4.9,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.09,
+      "top": 272,
+      "tag": "dd",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 4,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 3,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Schibsted Grotesk",
+       "share": 0.87,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.13,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      16,
+      18,
+      21,
+      23,
+      38
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Schibsted Grotesk",
+      "size": 16.3,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": -0.011,
+      "contrast": 8.3
+     },
+     "measureChars": 73,
+     "max": {
+      "size": 37.6,
+      "vw": 4.9,
+      "font": "Schibsted Grotesk",
+      "text": "Central de integrações"
+     },
+     "monoShare": 0.13,
+     "monoProseShare": 0,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.02,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a1033",
+     "bodyBgHsl": {
+      "h": 231,
+      "s": 0.67,
+      "l": 0.12
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#131b45",
+       "top": 408,
+       "hsl": {
+        "h": 230,
+        "s": 0.57,
+        "l": 0.17
+       }
+      },
+      {
+       "color": "#0a1033",
+       "top": 998,
+       "hsl": {
+        "h": 231,
+        "s": 0.67,
+        "l": 0.12
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#aeb7da",
+       "share": 0.78
+      },
+      {
+       "color": "#eef1fa",
+       "share": 0.18
+      },
+      {
+       "color": "#1b1f3b",
+       "share": 0.02
+      },
+      {
+       "color": "#ffc83d",
+       "share": 0.01
+      },
+      {
+       "color": "#5ccb8f",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#1c2659",
+      "hsl": {
+       "h": 230,
+       "s": 0.52,
+       "l": 0.23
+      },
+      "fg": "#eef1fa"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 38,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 32,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "12 2.340",
+      "Baixar JSON",
+      "Conexões"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 1,
+     "scrims": 0,
+     "gradientSamples": [
+      "div.photo-band__body.integ-band__body → linear-gradient(rgba(6, 10, 34, 0), rgba(6, 10, 34, 0.6) 45%, rgba(6, 10, 34, 0.86))"
+     ],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 6,
+     "boxRadius": 22,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 22,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.99
+     },
+     {
+      "type": "svg",
+      "ratio": 0.98
+     },
+     {
+      "type": "svg",
+      "ratio": 0.97
+     },
+     {
+      "type": "img",
+      "ratio": 0.28
+     }
+    ],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 60,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "schibsted grotesk"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    0.91,
+    0.92,
+    0.92,
+    0.92,
+    0.76,
+    0.77
+   ],
+   "motion": {
+    "elements": 46,
+    "css": 46,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 4351,
+     "screens": 5.2,
+     "words": 374,
+     "img": 1,
+     "video": 0,
+     "canvas": 0,
+     "svg": 75,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "sts-135-final-flyaround-of-iss-1.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Central de integrações",
+     "words": 3,
+     "chars": 22,
+     "lines": 1,
+     "size": 28.6,
+     "vw": 7.3,
+     "font": "Schibsted Grotesk",
+     "weight": 800,
+     "tracking": -0.035,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.82,
+     "top": 128,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Central de integrações",
+     "words": 3,
+     "lines": 1,
+     "size": 28.6,
+     "font": "Schibsted Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Central de integrações",
+      "words": 3,
+      "chars": 22,
+      "lines": 1,
+      "size": 28.6,
+      "vw": 7.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.035,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 128,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "1",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28.6,
+      "vw": 7.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.22,
+      "top": 268,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "6",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28.6,
+      "vw": 7.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.2,
+      "top": 268,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "2",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28.6,
+      "vw": 7.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.18,
+      "top": 268,
+      "tag": "dd",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 4,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 3,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Schibsted Grotesk",
+       "share": 0.87,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.13,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      16,
+      17,
+      20,
+      21,
+      29
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Schibsted Grotesk",
+      "size": 16,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": -0.011,
+      "contrast": 8.3
+     },
+     "measureChars": 40,
+     "max": {
+      "size": 28.6,
+      "vw": 7.3,
+      "font": "Schibsted Grotesk",
+      "text": "Central de integrações"
+     },
+     "monoShare": 0.13,
+     "monoProseShare": 0,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.02,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a1033",
+     "bodyBgHsl": {
+      "h": 231,
+      "s": 0.67,
+      "l": 0.12
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#131b45",
+       "top": 80,
+       "hsl": {
+        "h": 230,
+        "s": 0.57,
+        "l": 0.17
+       }
+      },
+      {
+       "color": "#0a1033",
+       "top": 1229,
+       "hsl": {
+        "h": 231,
+        "s": 0.67,
+        "l": 0.12
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#aeb7da",
+       "share": 0.78
+      },
+      {
+       "color": "#eef1fa",
+       "share": 0.18
+      },
+      {
+       "color": "#1b1f3b",
+       "share": 0.02
+      },
+      {
+       "color": "#ffc83d",
+       "share": 0.01
+      },
+      {
+       "color": "#5ccb8f",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#1c2659",
+      "hsl": {
+       "h": 230,
+       "s": 0.52,
+       "l": 0.23
+      },
+      "fg": "#eef1fa"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 38,
+     "inHero": 2,
+     "radius": "pill",
+     "height": 32,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "12 2.340",
+      "Conexões"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 1,
+     "scrims": 0,
+     "gradientSamples": [
+      "div.photo-band__body.integ-band__body → linear-gradient(rgba(6, 10, 34, 0), rgba(6, 10, 34, 0.6) 45%, rgba(6, 10, 34, 0.86))"
+     ],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 6,
+     "boxRadius": 22,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 22,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.98
+     },
+     {
+      "type": "svg",
+      "ratio": 0.97
+     },
+     {
+      "type": "svg",
+      "ratio": 0.96
+     },
+     {
+      "type": "img",
+      "ratio": 0.31
+     }
+    ],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 60,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "schibsted grotesk"
+    ]
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "few-pictures",
+   "width": 1440,
+   "message": "Only 1 picture(s) on the page (1 photographs, footage or raster images, 0 interface fragments). Drawings in SVG do not count.",
+   "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve."
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\integracoes\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\integracoes\\desktop-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\integracoes\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\integracoes\\tablet-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\integracoes\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\integracoes\\mobile-page-01.jpg"
+   ]
+  }
+ ]
+}

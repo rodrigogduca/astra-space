@@ -1,0 +1,176 @@
+/* Minha Jornada (R2-B, RV-13/RV-14): faixa com foto, o dia em três partes
+   (check-in matinal, sistema solar das missões livres, check-in noturno) e o painel de bordo. */
+
+/* ---------- faixa do topo ---------- */
+.jornada__band { min-height: clamp(240px, 26vw, 300px); }
+.jornada__band > img { object-position: center 62%; }
+.jornada__band-body { display: flex; flex-direction: column; gap: 14px; }
+.jornada__band h1 { font-size: clamp(2.1rem, 1.3rem + 3vw, 3.5rem); color: var(--band-ink); }
+.jornada__status { display: flex; align-items: center; gap: 10px 16px; flex-wrap: wrap; font-weight: 600; }
+.jornada__count { color: var(--accent); font-weight: 800; }
+.jornada__band-bar { flex: 0 1 220px; min-width: 120px; }
+.jornada__band-bar .bar { background: color-mix(in srgb, var(--band-ink) 24%, transparent); }
+.jornada__day { opacity: .85; }
+
+/* ---------- o dia ---------- */
+.day { display: flex; flex-direction: column; gap: 16px; }
+
+/* abertura e fechamento */
+.edge {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px;
+  background: var(--surface); border-radius: var(--radius); padding: 8px 20px 8px 10px;
+}
+.edge__planet { display: block; margin: -4px 0; }
+.edge__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.edge__text h2 { font-size: var(--step-body); letter-spacing: -0.015em; }
+.edge__done { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: var(--step-small); color: var(--ink-2); }
+.edge__done svg { color: var(--accent-text); }
+.edge.is-done h2 { color: var(--ink-2); }
+
+/* órbita + lateral */
+.day__orbit {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); gap: clamp(20px, 3vw, 48px);
+  align-items: center; padding: clamp(8px, 2vw, 24px) 0;
+}
+.day__side { display: flex; flex-direction: column; gap: 16px; }
+
+/* fala do Astrido: balão curto ao lado da estrela */
+.say {
+  position: relative; background: var(--surface-2); border-radius: 20px 20px 20px 6px; padding: 14px 18px;
+  font-weight: 600; display: flex; flex-direction: column; gap: 12px;
+}
+.say p { max-width: 60ch; }
+.say__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* missão selecionada */
+.focus { background: var(--surface); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+.focus__head { display: flex; align-items: center; gap: 12px; }
+.focus__icon { width: 38px; height: 38px; border-radius: 12px; }
+.focus__head h2 { font-size: var(--step-lead); flex: 1; min-width: 0; }
+.focus__xp { font-weight: 800; font-size: var(--step-small); color: var(--accent-text); white-space: nowrap; }
+.focus__progress { display: flex; flex-direction: column; gap: 6px; }
+.focus .btn { align-self: flex-start; }
+.focus__done { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; color: var(--ink-2); min-height: 46px; }
+.focus__done svg { color: var(--accent-text); }
+
+/* ---------- sistema solar ---------- */
+.solar {
+  --inner: 23; --outer: 39; /* raios das órbitas, em % do lado */
+  --p: 19cqi; /* caixa de cada planeta (o disco ocupa ~62% dela) */
+  position: relative; width: min(100%, 640px); aspect-ratio: 1; margin-inline: auto; container-type: inline-size;
+}
+.solar__rings { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.solar__rings circle { fill: none; stroke: var(--surface-3); stroke-width: 0.6; stroke-dasharray: 0.01 1.6; stroke-linecap: round; }
+.solar__sun { position: absolute; left: 50%; top: 50%; width: 24cqi; transform: translate(-50%, -50%); }
+.solar__sun .astrido { display: block; width: 100%; height: auto; }
+
+.solar__track {
+  position: absolute; left: 50%; top: 50%; border-radius: 50%; pointer-events: none;
+  animation: solar-spin var(--dur) linear infinite;
+}
+.solar__track--inner { --dur: 240s; width: calc(var(--inner) * 2%); aspect-ratio: 1; margin: calc(var(--inner) * -1%) 0 0 calc(var(--inner) * -1%); }
+.solar__track--outer { --dur: 360s; width: calc(var(--outer) * 2%); aspect-ratio: 1; margin: calc(var(--outer) * -1%) 0 0 calc(var(--outer) * -1%); }
+.solar__slot { position: absolute; inset: 0; transform: rotate(var(--a)); }
+
+.solar__planet {
+  position: absolute; left: 50%; top: 0; width: var(--p); height: var(--p); padding: 0; border: 0; background: transparent;
+  border-radius: 50%; cursor: pointer; pointer-events: auto; transform: translate(-50%, -50%) rotate(calc(-1 * var(--a)));
+}
+.solar__planet:focus-visible { outline-offset: -2px; }
+.solar__spin { position: relative; display: block; width: 100%; height: 100%; animation: solar-spin var(--dur) linear infinite reverse; }
+.solar__spin > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.solar__spin .planet { transition: transform .2s ease; }
+.solar__planet:hover .planet { transform: scale(1.07); }
+.solar__planet:active .planet { transform: scale(0.96); }
+
+.solar__marks circle { fill: none; }
+.solar__arc-track { stroke: var(--track); stroke-width: 5; }
+.solar__arc { stroke-width: 5; stroke-linecap: round; }
+.stroke--corpo { stroke: var(--corpo); }
+.stroke--mente { stroke: var(--mente); }
+.stroke--espirito { stroke: var(--espirito); }
+.solar__halo { stroke: var(--accent); stroke-width: 2.5; stroke-dasharray: 2 7; stroke-linecap: round; }
+
+.solar__badge {
+  position: absolute; left: 73%; top: 76%; width: 26px; height: 26px; border-radius: 50%;
+  transform: translate(-50%, -50%); outline: 3px solid var(--bg);
+}
+.solar__planet.is-done .solar__badge { background: var(--accent); color: var(--accent-ink); }
+
+/* hover ou foco em qualquer planeta congela a órbita inteira (planeta e contra-rotação juntos) */
+.solar:is(:hover, :focus-within) :is(.solar__track, .solar__spin) { animation-play-state: paused; }
+@keyframes solar-spin { to { transform: rotate(360deg); } }
+
+/* planetas: estados (valem também em Gratidão) */
+.planet__halo { stroke: var(--accent); stroke-width: 2.5; stroke-dasharray: 2 7; stroke-linecap: round; }
+.planet__ring { color: var(--ink-2); }
+.planet--next .planet__body { opacity: .72; }
+
+/* lista acessível, recolhida */
+.day__list { background: var(--surface); border-radius: var(--radius); padding: 4px 20px; }
+.day__list summary { cursor: pointer; font-weight: 600; color: var(--ink-2); padding: 12px 0; width: fit-content; }
+.day__list summary:hover { color: var(--ink); }
+.day__list ul { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.day__list li { background: var(--surface-2); border-radius: var(--radius-sm); padding: 4px 8px 4px 14px; display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 52px; }
+.day__list-name { font-weight: 600; min-width: 0; }
+.day__list li.is-done .day__list-name { color: var(--ink-2); }
+.day__list-check { color: var(--accent-text); margin-right: 10px; }
+.tone--corpo { color: var(--corpo); }
+.tone--mente { color: var(--mente); }
+.tone--espirito { color: var(--espirito); }
+
+/* ---------- painel de bordo ---------- */
+.board { gap: 20px; }
+.board__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 44px); }
+.board__section { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.board__section h3 { font-size: var(--step-body); }
+
+.goals { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.goals__item { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; }
+.goals__item .ring { margin-bottom: 6px; }
+.goals__icon { display: grid; place-items: center; }
+
+.streak__week { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.streak__day { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.streak__dot { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--surface-2); color: var(--accent-ink); }
+.streak__day.is-lit .streak__dot { background: var(--accent); }
+.streak__day.is-today:not(.is-lit) .streak__dot { outline: 2px dashed var(--accent); outline-offset: -2px; }
+.streak__label { font-size: var(--step-small); font-weight: 600; color: var(--ink-2); }
+.streak__day.is-today .streak__label { color: var(--ink); font-weight: 800; }
+
+.league__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.league__head .btn--quiet { min-height: 32px; }
+.league { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.league__row { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 6px 10px; border-radius: var(--radius-sm); }
+.league__row.is-me { background: var(--surface-2); }
+.league__pos { font-weight: 800; color: var(--ink-2); text-align: center; }
+.league__name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.league__xp { font-size: var(--step-small); }
+.board__section > p { max-width: 60ch; }
+
+/* ---------- telas menores ---------- */
+@media (max-width: 1020px) {
+  .board__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .board__grid > :last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 860px) {
+  .day__orbit { grid-template-columns: 1fr; padding: 0; }
+  /* no celular o balão vem antes da órbita e a missão selecionada logo depois */
+  .day__side { display: contents; }
+  .say { order: -1; }
+  .solar { --p: 22cqi; --inner: 22; --outer: 39; }
+}
+@media (max-width: 600px) {
+  .jornada__band { min-height: 0; padding-top: 72px; }
+  .jornada__band-bar { flex-basis: 100%; order: 3; }
+  .edge { padding: 6px 14px 6px 6px; gap: 10px; }
+  .edge__planet { width: 60px; height: 60px; }
+  .solar__badge { width: 22px; height: 22px; outline-width: 2px; }
+  .solar__badge svg { width: 12px; height: 12px; }
+  .board__grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solar__track, .solar__spin { animation: none; }
+  .solar__spin .planet { transition: none; }
+}

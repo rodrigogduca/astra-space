@@ -1,0 +1,34 @@
+/* Três gratidões (Frente R-B): escolhas num painel, o planeta Lume ao lado. */
+.gratidao__title { display: flex; align-items: flex-start; gap: 14px; }
+.gratidao__title .icon-tile { margin-top: 4px; }
+
+.gratidao__grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr); gap: clamp(24px, 3vw, 40px); align-items: center; }
+
+.gratidao__panel { gap: 22px; }
+.gratidao__say { display: flex; align-items: center; gap: 14px; }
+.gratidao__say h2 { margin-bottom: 4px; }
+
+.gratidao__options, .gratidao__chosen { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.gratidao__options .chip { min-height: 44px; padding: 10px 16px; font-size: var(--step-body); }
+.gratidao__options .chip:disabled { opacity: .45; cursor: not-allowed; }
+.gratidao__chosen .chip { cursor: default; font-size: var(--step-body); min-height: 44px; padding: 10px 16px; }
+
+.gratidao__footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  margin-top: 6px; padding-top: 18px;
+}
+.gratidao__count { display: flex; align-items: center; gap: 10px; }
+.gratidao__dots { display: inline-flex; gap: 6px; }
+.gratidao__dots span { width: 12px; height: 12px; border-radius: 50%; background: var(--surface-3); transition: background-color .2s; }
+.gratidao__dots span.is-on { background: var(--accent); }
+
+.gratidao__planet { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.gratidao__planet .planet { width: min(280px, 100%); height: auto; }
+.gratidao__planet figcaption { display: flex; flex-direction: column; gap: 2px; }
+.gratidao__planet b { font-size: var(--step-lead); color: var(--espirito); letter-spacing: -0.025em; }
+
+@media (max-width: 860px) {
+  .gratidao__grid { grid-template-columns: 1fr; }
+  .gratidao__planet { order: -1; flex-direction: row; justify-content: center; text-align: left; }
+  .gratidao__planet .planet { width: 120px; }
+}

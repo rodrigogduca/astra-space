@@ -1,0 +1,1100 @@
+{
+ "url": "http://localhost:4173/#/linha-do-tempo",
+ "at": "2026-11-15T03:48:29.061Z",
+ "allow": [
+  "gradient"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.68,
+    0.54
+   ],
+   "motion": {
+    "elements": 47,
+    "css": 46,
+    "transitions": 1,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 1373,
+     "screens": 1.5,
+     "words": 152,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 28,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Linha do tempo",
+     "words": 3,
+     "chars": 14,
+     "lines": 1,
+     "size": 48,
+     "vw": 3.3,
+     "font": "Schibsted Grotesk",
+     "weight": 800,
+     "tracking": -0.035,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.42,
+     "top": 101,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Linha do tempo",
+     "words": 3,
+     "lines": 1,
+     "size": 48,
+     "font": "Schibsted Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Linha do tempo",
+      "words": 3,
+      "chars": 14,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.035,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.42,
+      "top": 101,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "0",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.17,
+      "top": 463,
+      "tag": "b",
+      "kind": "statement"
+     },
+     {
+      "text": "0",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.17,
+      "top": 463,
+      "tag": "b",
+      "kind": "statement"
+     },
+     {
+      "text": "0",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.17,
+      "top": 463,
+      "tag": "b",
+      "kind": "statement"
+     },
+     {
+      "text": "0",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.17,
+      "top": 463,
+      "tag": "b",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 5,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 4,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Schibsted Grotesk",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      13,
+      17,
+      19,
+      24,
+      26,
+      28,
+      48
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Schibsted Grotesk",
+      "size": 17,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": -0.011,
+      "contrast": 8.3
+     },
+     "measureChars": 121,
+     "max": {
+      "size": 48,
+      "vw": 3.3,
+      "font": "Schibsted Grotesk",
+      "text": "Linha do tempo"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.1,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a1033",
+     "bodyBgHsl": {
+      "h": 231,
+      "s": 0.67,
+      "l": 0.12
+     },
+     "dark": true,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#aeb7da",
+       "share": 0.84
+      },
+      {
+       "color": "#eef1fa",
+       "share": 0.12
+      },
+      {
+       "color": "#1b1f3b",
+       "share": 0.02
+      },
+      {
+       "color": "#ffc83d",
+       "share": 0.01
+      },
+      {
+       "color": "#5aa9f0",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#1c2659",
+      "hsl": {
+       "h": 230,
+       "s": 0.52,
+       "l": 0.23
+      },
+      "fg": "#eef1fa"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 5,
+     "radius": "pill",
+     "height": 38,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "12 2.340",
+      "Ficar offline",
+      "Registros (0)",
+      "Fila (0)",
+      "Fazer check-in"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 5,
+     "boxRadius": 22,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.99
+     },
+     {
+      "type": "svg",
+      "ratio": 0.99
+     },
+     {
+      "type": "svg",
+      "ratio": 0.98
+     }
+    ],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 69,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "schibsted grotesk"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.82,
+    0.69
+   ],
+   "motion": {
+    "elements": 46,
+    "css": 46,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 1586,
+     "screens": 1.5,
+     "words": 152,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 28,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Linha do tempo",
+     "words": 3,
+     "chars": 14,
+     "lines": 1,
+     "size": 37.6,
+     "vw": 4.9,
+     "font": "Schibsted Grotesk",
+     "weight": 800,
+     "tracking": -0.035,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.74,
+     "top": 80,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Linha do tempo",
+     "words": 3,
+     "lines": 1,
+     "size": 37.6,
+     "font": "Schibsted Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Linha do tempo",
+      "words": 3,
+      "chars": 14,
+      "lines": 1,
+      "size": 37.6,
+      "vw": 4.9,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.035,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.74,
+      "top": 80,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "0",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.19,
+      "top": 414,
+      "tag": "b",
+      "kind": "statement"
+     },
+     {
+      "text": "0",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.19,
+      "top": 414,
+      "tag": "b",
+      "kind": "statement"
+     },
+     {
+      "text": "0",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.19,
+      "top": 414,
+      "tag": "b",
+      "kind": "statement"
+     },
+     {
+      "text": "0",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.19,
+      "top": 414,
+      "tag": "b",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 5,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 4,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Schibsted Grotesk",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      13,
+      16,
+      18,
+      21,
+      23,
+      28,
+      38
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Schibsted Grotesk",
+      "size": 16.3,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": -0.011,
+      "contrast": 8.3
+     },
+     "measureChars": 90,
+     "max": {
+      "size": 37.6,
+      "vw": 4.9,
+      "font": "Schibsted Grotesk",
+      "text": "Linha do tempo"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.1,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a1033",
+     "bodyBgHsl": {
+      "h": 231,
+      "s": 0.67,
+      "l": 0.12
+     },
+     "dark": true,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#aeb7da",
+       "share": 0.84
+      },
+      {
+       "color": "#eef1fa",
+       "share": 0.12
+      },
+      {
+       "color": "#1b1f3b",
+       "share": 0.02
+      },
+      {
+       "color": "#ffc83d",
+       "share": 0.01
+      },
+      {
+       "color": "#5aa9f0",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#1c2659",
+      "hsl": {
+       "h": 230,
+       "s": 0.52,
+       "l": 0.23
+      },
+      "fg": "#eef1fa"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 7,
+     "inHero": 6,
+     "radius": "pill",
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "12 2.340",
+      "Ficar offline",
+      "Registros (0)",
+      "Fila (0)",
+      "Fazer check-in"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 5,
+     "boxRadius": 22,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.99
+     },
+     {
+      "type": "svg",
+      "ratio": 0.99
+     },
+     {
+      "type": "svg",
+      "ratio": 0.98
+     }
+    ],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 60,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "schibsted grotesk"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.89,
+    0.85,
+    0.71
+   ],
+   "motion": {
+    "elements": 46,
+    "css": 46,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 1967,
+     "screens": 2.3,
+     "words": 152,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 28,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Linha do tempo",
+     "words": 3,
+     "chars": 14,
+     "lines": 1,
+     "size": 28.6,
+     "vw": 7.3,
+     "font": "Schibsted Grotesk",
+     "weight": 800,
+     "tracking": -0.035,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.92,
+     "top": 80,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Linha do tempo",
+     "words": 3,
+     "lines": 1,
+     "size": 28.6,
+     "font": "Schibsted Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Linha do tempo",
+      "words": 3,
+      "chars": 14,
+      "lines": 1,
+      "size": 28.6,
+      "vw": 7.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.035,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 80,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "0",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 523,
+      "tag": "b",
+      "kind": "statement"
+     },
+     {
+      "text": "0",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.33,
+      "top": 523,
+      "tag": "b",
+      "kind": "statement"
+     },
+     {
+      "text": "0",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 607,
+      "tag": "b",
+      "kind": "statement"
+     },
+     {
+      "text": "0",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.03,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.33,
+      "top": 607,
+      "tag": "b",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 5,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 4,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Schibsted Grotesk",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      13,
+      16,
+      17,
+      20,
+      21,
+      28,
+      29
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Schibsted Grotesk",
+      "size": 16,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": -0.011,
+      "contrast": 8.3
+     },
+     "measureChars": 45,
+     "max": {
+      "size": 28.6,
+      "vw": 7.3,
+      "font": "Schibsted Grotesk",
+      "text": "Linha do tempo"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.1,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a1033",
+     "bodyBgHsl": {
+      "h": 231,
+      "s": 0.67,
+      "l": 0.12
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#131b45",
+       "top": 196,
+       "hsl": {
+        "h": 230,
+        "s": 0.57,
+        "l": 0.17
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#aeb7da",
+       "share": 0.84
+      },
+      {
+       "color": "#eef1fa",
+       "share": 0.12
+      },
+      {
+       "color": "#1b1f3b",
+       "share": 0.02
+      },
+      {
+       "color": "#ffc83d",
+       "share": 0.01
+      },
+      {
+       "color": "#5aa9f0",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#1c2659",
+      "hsl": {
+       "h": 230,
+       "s": 0.52,
+       "l": 0.23
+      },
+      "fg": "#eef1fa"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 4,
+     "radius": "pill",
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "12 2.340",
+      "Ficar offline",
+      "Registros (0)",
+      "Fila (0)"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 5,
+     "boxRadius": 22,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.99
+     },
+     {
+      "type": "svg",
+      "ratio": 0.98
+     },
+     {
+      "type": "svg",
+      "ratio": 0.97
+     }
+    ],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 60,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "schibsted grotesk"
+    ]
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "few-pictures",
+   "width": 1440,
+   "message": "Only 0 picture(s) on the page (0 photographs, footage or raster images, 0 interface fragments). Drawings in SVG do not count.",
+   "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve."
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "measure",
+   "width": 1440,
+   "message": "Longest paragraph runs about 121 characters per line.",
+   "fix": "Cap paragraphs at 45–75 characters (max-width: 60ch).",
+   "alsoAt": [
+    768
+   ]
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\linha-do-tempo\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\linha-do-tempo\\desktop-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\linha-do-tempo\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\linha-do-tempo\\tablet-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\linha-do-tempo\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\linha-do-tempo\\mobile-page-01.jpg"
+   ]
+  }
+ ]
+}

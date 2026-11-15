@@ -1,0 +1,10 @@
+import { createServer } from "vite";
+import { writeFileSync } from "node:fs";
+const vite = await createServer({ server: { middlewareMode: true }, appType: "custom", logLevel: "silent" });
+const { renderToStaticMarkup } = await import("react-dom/server");
+const React = await import("react");
+const { Astrido } = await vite.ssrLoadModule("/src/components/Astrido.tsx");
+const moods = ["happy", "excited", "calm", "thinking", "sleepy"];
+const html = moods.map((m) => renderToStaticMarkup(React.createElement(Astrido, { mood: m, size: 220 }))).join("");
+writeFileSync(".taste-skill/astrido.html", `<body style="background:#0a1033;display:flex;gap:10px;padding:20px;margin:0">${html}</body>`);
+await vite.close();

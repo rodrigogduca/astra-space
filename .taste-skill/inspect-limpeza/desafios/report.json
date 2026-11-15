@@ -1,0 +1,949 @@
+{
+ "url": "http://localhost:4173/#/desafios",
+ "at": "2026-11-15T03:46:16.630Z",
+ "allow": [
+  "gradient"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.62,
+    0.54,
+    0.51
+   ],
+   "motion": {
+    "elements": 48,
+    "css": 47,
+    "transitions": 1,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 1845,
+     "screens": 2.1,
+     "words": 262,
+     "img": 1,
+     "video": 0,
+     "canvas": 0,
+     "svg": 50,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "aurora-australis-from-iss.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Engenheiro de voo",
+     "words": 3,
+     "chars": 17,
+     "lines": 1,
+     "size": 48,
+     "vw": 3.3,
+     "font": "Schibsted Grotesk",
+     "weight": 800,
+     "tracking": -0.04,
+     "leading": 1,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.67,
+     "top": 310,
+     "tag": "h2",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Desafios",
+     "words": 1,
+     "lines": 1,
+     "size": 48,
+     "font": "Schibsted Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Desafios",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.035,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.32,
+      "top": 101,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Engenheiro de voo",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.67,
+      "top": 310,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 2,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Schibsted Grotesk",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      12,
+      13,
+      17,
+      19,
+      24,
+      26,
+      48
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Schibsted Grotesk",
+      "size": 17,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": -0.011,
+      "contrast": 8.3
+     },
+     "measureChars": 121,
+     "max": {
+      "size": 48,
+      "vw": 3.3,
+      "font": "Schibsted Grotesk",
+      "text": "Desafios"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.03,
+     "centerShare": 0.22,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a1033",
+     "bodyBgHsl": {
+      "h": 231,
+      "s": 0.67,
+      "l": 0.12
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#131b45",
+       "top": 963,
+       "hsl": {
+        "h": 230,
+        "s": 0.57,
+        "l": 0.17
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#aeb7da",
+       "share": 0.73
+      },
+      {
+       "color": "#eef1fa",
+       "share": 0.25
+      },
+      {
+       "color": "#1b1f3b",
+       "share": 0.01
+      },
+      {
+       "color": "#5aa9f0",
+       "share": 0.01
+      },
+      {
+       "color": "#ffc83d",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#1c2659",
+      "hsl": {
+       "h": 230,
+       "s": 0.52,
+       "l": 0.23
+      },
+      "fg": "#eef1fa"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 2,
+     "radius": "pill",
+     "height": 45,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Desafios",
+      "12 2.340"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 1,
+     "scrims": 0,
+     "gradientSamples": [
+      "div.photo-band__body.dsf-level__body → linear-gradient(rgba(6, 10, 34, 0), rgba(6, 10, 34, 0.6) 45%, rgba(6, 10, 34, 0.86))"
+     ],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 4,
+     "boxRadius": 22,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 22,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.99
+     },
+     {
+      "type": "svg",
+      "ratio": 0.98
+     },
+     {
+      "type": "svg",
+      "ratio": 0.97
+     },
+     {
+      "type": "img",
+      "ratio": 0.26
+     }
+    ],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 69,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "schibsted grotesk"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.75,
+    0.93,
+    0.76
+   ],
+   "motion": {
+    "elements": 47,
+    "css": 47,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 2337,
+     "screens": 2.3,
+     "words": 262,
+     "img": 1,
+     "video": 0,
+     "canvas": 0,
+     "svg": 50,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "aurora-australis-from-iss.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Engenheiro de voo",
+     "words": 3,
+     "chars": 17,
+     "lines": 1,
+     "size": 37.6,
+     "vw": 4.9,
+     "font": "Schibsted Grotesk",
+     "weight": 800,
+     "tracking": -0.04,
+     "leading": 1,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "right",
+     "widthRatio": 0.72,
+     "top": 294,
+     "tag": "h2",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Desafios",
+     "words": 1,
+     "lines": 1,
+     "size": 37.6,
+     "font": "Schibsted Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Desafios",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 37.6,
+      "vw": 4.9,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.035,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.56,
+      "top": 80,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Engenheiro de voo",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 37.6,
+      "vw": 4.9,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.72,
+      "top": 294,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 2,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Schibsted Grotesk",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      12,
+      13,
+      16,
+      18,
+      21,
+      23,
+      38
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Schibsted Grotesk",
+      "size": 16.3,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": -0.011,
+      "contrast": 8.3
+     },
+     "measureChars": 90,
+     "max": {
+      "size": 37.6,
+      "vw": 4.9,
+      "font": "Schibsted Grotesk",
+      "text": "Desafios"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.02,
+     "centerShare": 0.22,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a1033",
+     "bodyBgHsl": {
+      "h": 231,
+      "s": 0.67,
+      "l": 0.12
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#131b45",
+       "top": 489,
+       "hsl": {
+        "h": 230,
+        "s": 0.57,
+        "l": 0.17
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#aeb7da",
+       "share": 0.73
+      },
+      {
+       "color": "#eef1fa",
+       "share": 0.25
+      },
+      {
+       "color": "#1b1f3b",
+       "share": 0.01
+      },
+      {
+       "color": "#5aa9f0",
+       "share": 0.01
+      },
+      {
+       "color": "#ffc83d",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#131b45",
+      "hsl": {
+       "h": 230,
+       "s": 0.57,
+       "l": 0.17
+      },
+      "fg": "#eef1fa"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 2,
+     "radius": "pill",
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "12 2.340",
+      "Desafios"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 1,
+     "scrims": 0,
+     "gradientSamples": [
+      "div.photo-band__body.dsf-level__body → linear-gradient(rgba(6, 10, 34, 0), rgba(6, 10, 34, 0.6) 45%, rgba(6, 10, 34, 0.86))"
+     ],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 4,
+     "boxRadius": 22,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 22,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.99
+     },
+     {
+      "type": "svg",
+      "ratio": 0.98
+     },
+     {
+      "type": "svg",
+      "ratio": 0.97
+     },
+     {
+      "type": "img",
+      "ratio": 0.26
+     }
+    ],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 60,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "schibsted grotesk"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.81,
+    0.92,
+    0.92,
+    0.77
+   ],
+   "motion": {
+    "elements": 47,
+    "css": 47,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 3044,
+     "screens": 3.6,
+     "words": 262,
+     "img": 1,
+     "video": 0,
+     "canvas": 0,
+     "svg": 50,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "aurora-australis-from-iss.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Engenheiro de voo",
+     "words": 3,
+     "chars": 17,
+     "lines": 1,
+     "size": 28.6,
+     "vw": 7.3,
+     "font": "Schibsted Grotesk",
+     "weight": 800,
+     "tracking": -0.04,
+     "leading": 1,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.82,
+     "top": 344,
+     "tag": "h2",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Desafios",
+     "words": 1,
+     "lines": 1,
+     "size": 28.6,
+     "font": "Schibsted Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Desafios",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 28.6,
+      "vw": 7.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.035,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 80,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Engenheiro de voo",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 28.6,
+      "vw": 7.3,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 344,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 2,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Schibsted Grotesk",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      12,
+      13,
+      16,
+      17,
+      20,
+      21,
+      29
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Schibsted Grotesk",
+      "size": 16,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": -0.011,
+      "contrast": 8.3
+     },
+     "measureChars": 45,
+     "max": {
+      "size": 28.6,
+      "vw": 7.3,
+      "font": "Schibsted Grotesk",
+      "text": "Desafios"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.02,
+     "centerShare": 0.22,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a1033",
+     "bodyBgHsl": {
+      "h": 231,
+      "s": 0.67,
+      "l": 0.12
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#131b45",
+       "top": 196,
+       "hsl": {
+        "h": 230,
+        "s": 0.57,
+        "l": 0.17
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#aeb7da",
+       "share": 0.73
+      },
+      {
+       "color": "#eef1fa",
+       "share": 0.25
+      },
+      {
+       "color": "#1b1f3b",
+       "share": 0.01
+      },
+      {
+       "color": "#5aa9f0",
+       "share": 0.01
+      },
+      {
+       "color": "#ffc83d",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#131b45",
+      "hsl": {
+       "h": 230,
+       "s": 0.57,
+       "l": 0.17
+      },
+      "fg": "#eef1fa"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 1,
+     "inHero": 1,
+     "radius": "pill",
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "12 2.340"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 1,
+     "scrims": 0,
+     "gradientSamples": [
+      "div.photo-band__body.dsf-level__body → linear-gradient(rgba(6, 10, 34, 0), rgba(6, 10, 34, 0.6) 45%, rgba(6, 10, 34, 0.86))"
+     ],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 5,
+     "boxRadius": 22,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 22,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.99
+     },
+     {
+      "type": "svg",
+      "ratio": 0.98
+     },
+     {
+      "type": "svg",
+      "ratio": 0.97
+     },
+     {
+      "type": "img",
+      "ratio": 0.36
+     }
+    ],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 60,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "schibsted grotesk"
+    ]
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "few-pictures",
+   "width": 1440,
+   "message": "Only 1 picture(s) on the page (1 photographs, footage or raster images, 0 interface fragments). Drawings in SVG do not count.",
+   "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve."
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "measure",
+   "width": 1440,
+   "message": "Longest paragraph runs about 121 characters per line.",
+   "fix": "Cap paragraphs at 45–75 characters (max-width: 60ch).",
+   "alsoAt": [
+    768
+   ]
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\desafios\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\desafios\\desktop-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\desafios\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\desafios\\tablet-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\desafios\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\rodri\\Downloads\\PROJETOS\\Programacao\\hackathon\\nasa2026\\.taste-skill\\inspect-limpeza\\desafios\\mobile-page-01.jpg"
+   ]
+  }
+ ]
+}
