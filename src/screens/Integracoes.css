@@ -19,7 +19,7 @@
 
 /* ---------- fluxo: uma frase com ícones, ligada por setas ---------- */
 .integ-flow { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; }
-.integ-flow__step { display: inline-flex; align-items: center; gap: 10px; font-size: var(--step-lead); letter-spacing: -0.02em; }
+.integ-flow__step { display: inline-flex; align-items: center; gap: 10px; font-size: var(--step-body); letter-spacing: -0.015em; }
 .integ-flow__step b { font-weight: 800; }
 .integ-flow__arrow { color: var(--ink-2); flex-shrink: 0; }
 .integ-flow__node {
@@ -43,10 +43,10 @@
 .integ-group { display: flex; flex-direction: column; gap: 20px; }
 .integ-group + .integ-group { margin-top: 22px; }
 .integ-group__head { display: flex; flex-direction: column; gap: 4px; }
-.integ-group__head h3 { font-size: var(--step-lead); letter-spacing: -0.025em; }
-.integ-group__head .integ-count { font-size: var(--step-lead); font-weight: 600; }
+.integ-group__head h3 { font-size: var(--step-body); letter-spacing: -0.015em; }
+.integ-group__head .integ-count { font-size: inherit; font-weight: 600; }
 .integ-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 26px; }
-.integ-con { display: grid; grid-template-columns: 40px minmax(0, 1fr) minmax(220px, 300px); gap: 8px 18px; align-items: start; }
+.integ-con { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 8px 24px; align-items: start; }
 .integ-con__icon {
   display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--surface-2); color: var(--ink);
 }
@@ -68,11 +68,11 @@
 
 .integ-con__side { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; padding-top: 2px; }
 /* métricas em uma linha: "Última leitura há 5 min · Registros 120" */
-.integ-con__stats { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 18px; margin: 0; }
+.integ-con__stats { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 18px; margin: 0; white-space: nowrap; }
 .integ-con__stats div { display: flex; align-items: baseline; gap: 6px; }
 .integ-con__stats dt { color: var(--ink-2); font-weight: 600; }
 .integ-con__stats dd { margin: 0; font-weight: 800; }
-.integ-con__actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.integ-con__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; justify-content: flex-end; }
 .integ-con__actions .btn { white-space: nowrap; }
 .integ-con__ok { display: flex; align-items: center; justify-content: flex-end; gap: 6px; min-height: 1.4em; margin-top: -4px; color: var(--corpo); font-weight: 600; }
 .integ-spin { animation: integ-spin .6s linear infinite; }

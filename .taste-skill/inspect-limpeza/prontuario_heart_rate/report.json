@@ -1,6 +1,6 @@
 {
  "url": "http://localhost:4173/#/prontuario/heart_rate",
- "at": "2026-11-15T03:50:05.851Z",
+ "at": "2026-11-15T03:55:32.507Z",
  "allow": [
   "gradient"
  ],
@@ -9,11 +9,10 @@
    "width": 1440,
    "height": 900,
    "load": "load",
-   "screens": 4,
+   "screens": 3,
    "filled": [
-    0.68,
-    0.78,
-    0.78,
+    0.73,
+    0.77,
     0.71
    ],
    "motion": {
@@ -30,9 +29,9 @@
      "h": 900
     },
     "page": {
-     "height": 2966,
-     "screens": 3.3,
-     "words": 492,
+     "height": 2508,
+     "screens": 2.8,
+     "words": 406,
      "img": 0,
      "video": 0,
      "canvas": 0,
@@ -68,39 +67,18 @@
      "align": "right",
      "position": "right",
      "widthRatio": 0.05,
-     "top": 132,
+     "top": 127,
      "tag": "b",
      "kind": "heading"
     },
     "h1": {
      "text": "Frequência cardíaca em repouso",
      "words": 4,
-     "lines": 2,
+     "lines": 1,
      "size": 41.6,
      "font": "Schibsted Grotesk"
     },
     "headings": [
-     {
-      "text": "Frequência cardíaca em repouso",
-      "words": 4,
-      "chars": 30,
-      "lines": 2,
-      "size": 41.6,
-      "vw": 2.9,
-      "font": "Schibsted Grotesk",
-      "weight": 800,
-      "tracking": -0.035,
-      "leading": 1.02,
-      "upper": false,
-      "italic": false,
-      "mono": false,
-      "align": "left",
-      "position": "left",
-      "widthRatio": 0.36,
-      "top": 127,
-      "tag": "h1",
-      "kind": "heading"
-     },
      {
       "text": "71",
       "words": 1,
@@ -118,14 +96,35 @@
       "align": "right",
       "position": "right",
       "widthRatio": 0.05,
-      "top": 132,
+      "top": 127,
       "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "Frequência cardíaca em repouso",
+      "words": 4,
+      "chars": 30,
+      "lines": 1,
+      "size": 41.6,
+      "vw": 2.9,
+      "font": "Schibsted Grotesk",
+      "weight": 800,
+      "tracking": -0.035,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.54,
+      "top": 158,
+      "tag": "h1",
       "kind": "heading"
      }
     ],
     "headingSummary": {
      "count": 2,
-     "maxLines": 2,
+     "maxLines": 1,
      "over2Lines": 0,
      "statements": 0,
      "centered": 0,
@@ -191,7 +190,7 @@
      "sectionBgs": [
       {
        "color": "#131b45",
-       "top": 1089,
+       "top": 1079,
        "hsl": {
         "h": 230,
         "s": 0.57,
@@ -202,15 +201,15 @@
      "textColors": [
       {
        "color": "#aeb7da",
-       "share": 0.71
+       "share": 0.65
       },
       {
        "color": "#eef1fa",
-       "share": 0.22
+       "share": 0.27
       },
       {
        "color": "#ffc83d",
-       "share": 0.04
+       "share": 0.05
       },
       {
        "color": "#5aa9f0",
@@ -271,7 +270,7 @@
        "count": 3,
        "iconTopped": false,
        "rounded": true,
-       "top": 332
+       "top": 321
       }
      ]
     },
@@ -314,8 +313,8 @@
    "filled": [
     0.8,
     0.94,
-    0.94,
-    0.72
+    0.66,
+    0.71
    ],
    "motion": {
     "elements": 46,
@@ -331,9 +330,9 @@
      "h": 1024
     },
     "page": {
-     "height": 3524,
-     "screens": 3.4,
-     "words": 492,
+     "height": 3085,
+     "screens": 3,
+     "words": 406,
      "img": 0,
      "video": 0,
      "canvas": 0,
@@ -503,15 +502,15 @@
      "textColors": [
       {
        "color": "#aeb7da",
-       "share": 0.71
+       "share": 0.65
       },
       {
        "color": "#eef1fa",
-       "share": 0.22
+       "share": 0.27
       },
       {
        "color": "#ffc83d",
-       "share": 0.04
+       "share": 0.05
       },
       {
        "color": "#5aa9f0",
@@ -604,13 +603,12 @@
    "width": 390,
    "height": 844,
    "load": "load",
-   "screens": 6,
+   "screens": 5,
    "filled": [
     0.86,
-    0.85,
+    0.91,
     0.92,
-    0.92,
-    0.84,
+    0.91,
     0.82
    ],
    "motion": {
@@ -627,9 +625,9 @@
      "h": 844
     },
     "page": {
-     "height": 4428,
-     "screens": 5.2,
-     "words": 492,
+     "height": 4048,
+     "screens": 4.8,
+     "words": 406,
      "img": 0,
      "video": 0,
      "canvas": 0,
@@ -800,15 +798,15 @@
      "textColors": [
       {
        "color": "#aeb7da",
-       "share": 0.71
+       "share": 0.65
       },
       {
        "color": "#eef1fa",
-       "share": 0.23
+       "share": 0.27
       },
       {
        "color": "#ffc83d",
-       "share": 0.05
+       "share": 0.06
       },
       {
        "color": "#5aa9f0",
@@ -863,14 +861,7 @@
      "roundedMedia": 0,
      "mediaRadius": 0,
      "textShadow": 0,
-     "cardRows": [
-      {
-       "count": 19,
-       "iconTopped": false,
-       "rounded": false,
-       "top": 1495
-      }
-     ]
+     "cardRows": []
     },
     "heroMedia": [
      {

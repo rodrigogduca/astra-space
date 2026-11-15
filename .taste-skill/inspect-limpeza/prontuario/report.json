@@ -1,6 +1,6 @@
 {
  "url": "http://localhost:4173/#/prontuario",
- "at": "2026-11-15T03:47:01.556Z",
+ "at": "2026-11-15T03:55:06.036Z",
  "allow": [
   "gradient"
  ],
@@ -9,12 +9,11 @@
    "width": 1440,
    "height": 900,
    "load": "load",
-   "screens": 4,
+   "screens": 3,
    "filled": [
     0.73,
-    0.75,
-    0.61,
-    0.69
+    0.78,
+    0.64
    ],
    "motion": {
     "elements": 47,
@@ -30,9 +29,9 @@
      "h": 900
     },
     "page": {
-     "height": 2798,
-     "screens": 3.1,
-     "words": 425,
+     "height": 2596,
+     "screens": 2.9,
+     "words": 356,
      "img": 1,
      "video": 0,
      "canvas": 0,
@@ -199,7 +198,7 @@
      "microLabelShare": 0,
      "microSamples": [],
      "upperShare": 0,
-     "centerShare": 0,
+     "centerShare": 0.01,
      "smallText": 0
     },
     "eyebrows": [],
@@ -226,19 +225,19 @@
      "textColors": [
       {
        "color": "#aeb7da",
-       "share": 0.69
+       "share": 0.64
       },
       {
        "color": "#eef1fa",
-       "share": 0.18
+       "share": 0.21
       },
       {
        "color": "#ffc83d",
-       "share": 0.05
+       "share": 0.06
       },
       {
        "color": "#5aa9f0",
-       "share": 0.04
+       "share": 0.05
       },
       {
        "color": "#f290b4",
@@ -329,12 +328,11 @@
    "width": 768,
    "height": 1024,
    "load": "load",
-   "screens": 5,
+   "screens": 4,
    "filled": [
     0.86,
-    0.93,
-    0.93,
-    0.87,
+    0.86,
+    0.86,
     0.76
    ],
    "motion": {
@@ -351,9 +349,9 @@
      "h": 1024
     },
     "page": {
-     "height": 4383,
-     "screens": 4.3,
-     "words": 415,
+     "height": 4024,
+     "screens": 3.9,
+     "words": 322,
      "img": 1,
      "video": 0,
      "canvas": 0,
@@ -548,19 +546,19 @@
      "textColors": [
       {
        "color": "#aeb7da",
-       "share": 0.68
+       "share": 0.6
       },
       {
        "color": "#eef1fa",
-       "share": 0.18
+       "share": 0.23
       },
       {
        "color": "#ffc83d",
-       "share": 0.05
+       "share": 0.07
       },
       {
        "color": "#5aa9f0",
-       "share": 0.04
+       "share": 0.05
       },
       {
        "color": "#f290b4",
@@ -651,12 +649,11 @@
    "width": 390,
    "height": 844,
    "load": "load",
-   "screens": 7,
+   "screens": 6,
    "filled": [
     0.86,
     0.92,
-    0.86,
-    0.86,
+    0.92,
     0.86,
     0.92,
     0.77
@@ -675,9 +672,9 @@
      "h": 844
     },
     "page": {
-     "height": 5598,
-     "screens": 6.6,
-     "words": 415,
+     "height": 4770,
+     "screens": 5.7,
+     "words": 322,
      "img": 1,
      "video": 0,
      "canvas": 0,
@@ -828,7 +825,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.07,
-      "top": 1221,
+      "top": 1170,
       "tag": "b",
       "kind": "statement"
      },
@@ -849,7 +846,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.19,
-      "top": 1447,
+      "top": 1344,
       "tag": "b",
       "kind": "statement"
      },
@@ -870,7 +867,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.07,
-      "top": 1654,
+      "top": 1500,
       "tag": "b",
       "kind": "statement"
      },
@@ -891,7 +888,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.06,
-      "top": 1861,
+      "top": 1655,
       "tag": "b",
       "kind": "statement"
      },
@@ -912,7 +909,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.13,
-      "top": 2068,
+      "top": 1810,
       "tag": "b",
       "kind": "statement"
      },
@@ -933,7 +930,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.09,
-      "top": 2402,
+      "top": 2093,
       "tag": "b",
       "kind": "statement"
      },
@@ -954,7 +951,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.13,
-      "top": 2712,
+      "top": 2376,
       "tag": "b",
       "kind": "statement"
      },
@@ -975,7 +972,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.09,
-      "top": 2895,
+      "top": 2531,
       "tag": "b",
       "kind": "statement"
      },
@@ -996,7 +993,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.09,
-      "top": 3229,
+      "top": 2814,
       "tag": "b",
       "kind": "statement"
      },
@@ -1017,7 +1014,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.08,
-      "top": 3436,
+      "top": 2969,
       "tag": "b",
       "kind": "statement"
      },
@@ -1038,7 +1035,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.08,
-      "top": 3643,
+      "top": 3125,
       "tag": "b",
       "kind": "statement"
      },
@@ -1059,7 +1056,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.04,
-      "top": 3926,
+      "top": 3407,
       "tag": "b",
       "kind": "statement"
      },
@@ -1080,7 +1077,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.04,
-      "top": 4133,
+      "top": 3563,
       "tag": "b",
       "kind": "statement"
      },
@@ -1101,7 +1098,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.04,
-      "top": 4340,
+      "top": 3718,
       "tag": "b",
       "kind": "statement"
      },
@@ -1122,7 +1119,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.04,
-      "top": 4674,
+      "top": 4001,
       "tag": "b",
       "kind": "statement"
      },
@@ -1143,7 +1140,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.06,
-      "top": 4881,
+      "top": 4156,
       "tag": "b",
       "kind": "statement"
      },
@@ -1164,7 +1161,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.04,
-      "top": 5087,
+      "top": 4311,
       "tag": "b",
       "kind": "statement"
      }
@@ -1250,19 +1247,19 @@
      "textColors": [
       {
        "color": "#aeb7da",
-       "share": 0.68
+       "share": 0.6
       },
       {
        "color": "#eef1fa",
-       "share": 0.18
+       "share": 0.23
       },
       {
        "color": "#ffc83d",
-       "share": 0.05
+       "share": 0.07
       },
       {
        "color": "#5aa9f0",
-       "share": 0.04
+       "share": 0.05
       },
       {
        "color": "#f290b4",

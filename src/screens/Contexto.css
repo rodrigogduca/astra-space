@@ -47,9 +47,13 @@
 
 @media (max-width: 720px) {
   .ctx-band { min-height: 300px; }
-  .ctx-item { grid-template-columns: 1fr; gap: 12px; }
+  /* no celular o título vem primeiro; instituição e data descem para a linha de apoio (nada acima do título) */
+  .ctx-item { display: flex; flex-direction: column; gap: 10px; }
+  .ctx-item__body { display: contents; }
+  .ctx-item__title { order: -2; }
+  .ctx-item__meta { order: -1; }
   .ctx-item__meta { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
-  .ctx-inst { font-size: 1.25rem; }
+  .ctx-inst { font-size: 1rem; letter-spacing: -0.02em; }
   /* filtros quebram em linhas: nada rola de lado */
   .ctx-filters { gap: 6px; }
 }

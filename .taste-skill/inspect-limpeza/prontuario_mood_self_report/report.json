@@ -1,6 +1,6 @@
 {
  "url": "http://localhost:4173/#/prontuario/mood_self_report",
- "at": "2026-11-15T03:49:48.729Z",
+ "at": "2026-11-15T03:56:02.493Z",
  "allow": [
   "gradient"
  ],
@@ -12,7 +12,7 @@
    "screens": 2,
    "filled": [
     0.77,
-    0.71
+    0.67
    ],
    "motion": {
     "elements": 47,
@@ -28,9 +28,9 @@
      "h": 900
     },
     "page": {
-     "height": 1676,
-     "screens": 1.9,
-     "words": 324,
+     "height": 1609,
+     "screens": 1.8,
+     "words": 298,
      "img": 0,
      "video": 0,
      "canvas": 0,
@@ -114,8 +114,8 @@
       "italic": false,
       "mono": false,
       "align": "left",
-      "position": "left",
-      "widthRatio": 0.33,
+      "position": "center",
+      "widthRatio": 0.54,
       "top": 158,
       "tag": "h1",
       "kind": "heading"
@@ -190,11 +190,11 @@
      "textColors": [
       {
        "color": "#aeb7da",
-       "share": 0.69
+       "share": 0.67
       },
       {
        "color": "#eef1fa",
-       "share": 0.27
+       "share": 0.29
       },
       {
        "color": "#ffc83d",
@@ -271,11 +271,11 @@
      },
      {
       "type": "svg",
-      "ratio": 0.99
+      "ratio": 0.98
      },
      {
       "type": "svg",
-      "ratio": 0.98
+      "ratio": 0.97
      },
      {
       "type": "svg",
@@ -319,9 +319,9 @@
      "h": 1024
     },
     "page": {
-     "height": 2450,
-     "screens": 2.4,
-     "words": 324,
+     "height": 2384,
+     "screens": 2.3,
+     "words": 298,
      "img": 0,
      "video": 0,
      "canvas": 0,
@@ -491,11 +491,11 @@
      "textColors": [
       {
        "color": "#aeb7da",
-       "share": 0.69
+       "share": 0.67
       },
       {
        "color": "#eef1fa",
-       "share": 0.27
+       "share": 0.28
       },
       {
        "color": "#ffc83d",
@@ -596,7 +596,7 @@
    "screens": 4,
    "filled": [
     0.86,
-    0.92,
+    0.86,
     0.92,
     0.8
    ],
@@ -614,9 +614,9 @@
      "h": 844
     },
     "page": {
-     "height": 2938,
-     "screens": 3.5,
-     "words": 324,
+     "height": 2837,
+     "screens": 3.4,
+     "words": 298,
      "img": 0,
      "video": 0,
      "canvas": 0,
@@ -787,11 +787,11 @@
      "textColors": [
       {
        "color": "#aeb7da",
-       "share": 0.68
+       "share": 0.66
       },
       {
        "color": "#eef1fa",
-       "share": 0.27
+       "share": 0.29
       },
       {
        "color": "#ffc83d",

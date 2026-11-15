@@ -1,6 +1,6 @@
 {
  "url": "http://localhost:4173/#/integracoes",
- "at": "2026-11-15T03:46:36.113Z",
+ "at": "2026-11-15T03:57:42.280Z",
  "allow": [
   "gradient"
  ],
@@ -13,7 +13,7 @@
    "filled": [
     0.73,
     0.84,
-    0.72
+    0.7
    ],
    "motion": {
     "elements": 47,
@@ -29,8 +29,8 @@
      "h": 900
     },
     "page": {
-     "height": 2517,
-     "screens": 2.8,
+     "height": 2358,
+     "screens": 2.6,
      "words": 374,
      "img": 1,
      "video": 0,
@@ -240,7 +240,7 @@
      "sectionBgs": [
       {
        "color": "#131b45",
-       "top": 818,
+       "top": 816,
        "hsl": {
         "h": 230,
         "s": 0.57,
@@ -357,8 +357,8 @@
    "screens": 4,
    "filled": [
     0.92,
-    0.93,
-    0.81,
+    0.96,
+    0.82,
     0.76
    ],
    "motion": {
@@ -375,7 +375,7 @@
      "h": 1024
     },
     "page": {
-     "height": 3216,
+     "height": 3204,
      "screens": 3.1,
      "words": 374,
      "img": 1,
@@ -713,8 +713,8 @@
    "filled": [
     0.91,
     0.92,
-    0.92,
-    0.92,
+    0.91,
+    0.89,
     0.76,
     0.77
    ],
@@ -732,9 +732,9 @@
      "h": 844
     },
     "page": {
-     "height": 4351,
-     "screens": 5.2,
-     "words": 374,
+     "height": 4314,
+     "screens": 5.1,
+     "words": 366,
      "img": 1,
      "video": 0,
      "canvas": 0,
@@ -963,7 +963,7 @@
      "textColors": [
       {
        "color": "#aeb7da",
-       "share": 0.78
+       "share": 0.79
       },
       {
        "color": "#eef1fa",
