@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-// Tema (RV-1): escuro por padrão, a pedido da equipe. Fonte de verdade = <meta name="color-scheme">,
-// e o CSS lê essa meta (modern-web-guidance: dark-mode-toggle). Guardamos só a exceção ("light").
+// Theme (RV-1): dark by default, at the team's request. Source of truth = <meta name="color-scheme">,
+// and the CSS reads that meta (modern-web-guidance: dark-mode-toggle). Only the exception ("light") is stored.
 export type Theme = "dark" | "light";
 const KEY = "astra-theme";
 
@@ -14,13 +14,13 @@ export function readTheme(): Theme {
 function apply(t: Theme) {
   const m = meta();
   if (m) m.content = t;
-  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", t === "dark" ? "#0A1033" : "#F4F6FB");
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", t === "dark" ? "#070742" : "#FFFBED");
 }
 
 export function useTheme(): [Theme, () => void] {
   const [theme, setTheme] = useState<Theme>(readTheme);
 
-  // Outra aba mudou o tema: acompanha.
+  // Another tab changed the theme: follow it.
   useEffect(() => {
     const on = (e: StorageEvent) => {
       if (e.key !== KEY) return;
@@ -39,7 +39,7 @@ export function useTheme(): [Theme, () => void] {
       if (next === "dark") localStorage.removeItem(KEY);
       else localStorage.setItem(KEY, next);
     } catch {
-      /* sem armazenamento: o tema vale só nesta sessão */
+      /* no storage: the theme applies to this session only */
     }
     setTheme(next);
   };

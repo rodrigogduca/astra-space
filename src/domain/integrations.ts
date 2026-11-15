@@ -1,11 +1,11 @@
 import type { IndicatorCode, Observation } from "./types";
 import { indicator } from "./indicators";
 
-// Central de integrações (REQ-11). Status honesto: nenhum conector está ligado a um
-// sistema real da NASA/CSA. SIMULADO = a demo gera dados como se viessem dele.
+// Integration hub (REQ-11). Honest status: no connector is linked to a real NASA/CSA
+// system. SIMULATED = the demo generates data as if it came from that source.
 
-export type ConnectorStatus = "ativo" | "simulado" | "roadmap" | "requer_autorizacao";
-export type ConnectorKind = "vestivel" | "instrumento" | "ambiente" | "treino" | "estudo" | "autorrelato";
+export type ConnectorStatus = "self_report" | "simulated" | "roadmap" | "needs_authorization";
+export type ConnectorKind = "wearable" | "instrument" | "environment" | "training" | "study" | "self_report";
 
 export interface Connector {
   id: string;
@@ -15,132 +15,132 @@ export interface Connector {
   status: ConnectorStatus;
   measures: string;
   feeds: IndicatorCode[];
-  referenceId?: string; // fonte da base (references.ts)
+  referenceId?: string; // source in the evidence library (references.ts)
   sourceNote: string;
 }
 
 export const STATUS_LABEL: Record<ConnectorStatus, string> = {
-  ativo: "AUTORRELATO",
-  simulado: "SIMULADO",
+  self_report: "SELF-REPORT",
+  simulated: "SIMULATED",
   roadmap: "ROADMAP",
-  requer_autorizacao: "REQUER AUTORIZAÇÃO",
+  needs_authorization: "NEEDS AUTHORIZATION",
 };
 
 export const KIND_LABEL: Record<ConnectorKind, string> = {
-  vestivel: "Vestível",
-  instrumento: "Instrumento",
-  ambiente: "Ambiente da nave",
-  treino: "Equipamento de treino",
-  estudo: "Estudo científico",
-  autorrelato: "Autorrelato",
+  wearable: "Wearable",
+  instrument: "Instrument",
+  environment: "Spacecraft environment",
+  training: "Exercise equipment",
+  study: "Scientific study",
+  self_report: "Self-report",
 };
 
 export const CONNECTORS: Connector[] = [
   {
     id: "astra-checkin",
-    name: "Check-in Astra",
+    name: "Astra check-in",
     institution: "Astra",
-    kind: "autorrelato",
-    status: "ativo",
-    measures: "Sono, energia, humor, estresse, propósito e hábitos registrados pelas missões.",
+    kind: "self_report",
+    status: "self_report",
+    measures: "Sleep, energy, mood, stress, purpose and habits logged through missions.",
     feeds: ["sleep_duration", "energy_self_report", "mood_self_report", "stress_self_report", "purpose_self_report", "hydration", "earth_contact", "contemplation"],
-    sourceNote: "Dado digitado pelo próprio tripulante no app.",
+    sourceNote: "Data typed by the crew member in the app.",
   },
   {
     id: "bio-monitor",
-    name: "Bio-Monitor (camiseta Astroskin)",
+    name: "Bio-Monitor (Astroskin shirt)",
     institution: "CSA",
-    kind: "vestivel",
-    status: "simulado",
-    measures: "Frequência cardíaca, variabilidade, respiração, SpO₂, pressão e temperatura da pele.",
+    kind: "wearable",
+    status: "simulated",
+    measures: "Heart rate, variability, breathing, SpO₂, blood pressure and skin temperature.",
     feeds: ["heart_rate", "hrv", "resp_rate", "spo2", "bp_systolic", "bp_diastolic", "body_temp"],
-    sourceNote: "Sistema vestível da Agência Espacial Canadense usado na ISS. Link oficial ainda a confirmar pela equipe.",
+    sourceNote: "Wearable system from the Canadian Space Agency used on the ISS. Official link still to be confirmed by the team.",
   },
   {
     id: "cgm",
-    name: "Monitor contínuo de glicose",
-    institution: "Genérico",
-    kind: "vestivel",
-    status: "simulado",
-    measures: "Glicose intersticial a cada poucos minutos.",
+    name: "Continuous glucose monitor",
+    institution: "Generic",
+    kind: "wearable",
+    status: "simulated",
+    measures: "Interstitial glucose every few minutes.",
     feeds: ["glucose"],
-    sourceNote: "Classe de dispositivo comercial. Uso em voo depende de aprovação da missão.",
+    sourceNote: "Commercial device class. In-flight use depends on mission approval.",
   },
   {
-    id: "dosimetro",
-    name: "Dosímetro pessoal ativo",
-    institution: "Genérico",
-    kind: "instrumento",
-    status: "simulado",
-    measures: "Dose de radiação absorvida pelo tripulante.",
+    id: "dosimeter",
+    name: "Active personal dosimeter",
+    institution: "Generic",
+    kind: "instrument",
+    status: "simulated",
+    measures: "Radiation dose absorbed by the crew member.",
     feeds: ["radiation_dose"],
     referenceId: "nasa-hazards",
-    sourceNote: "Classe de instrumento. Valores da demo são fictícios.",
+    sourceNote: "Instrument class. Demo values are fictional.",
   },
   {
     id: "cans",
     name: "CANS · Crew Active Neutron Spectrometer",
     institution: "CSA",
-    kind: "instrumento",
+    kind: "instrument",
     status: "roadmap",
-    measures: "Exposição a nêutrons (instrumento em desenvolvimento).",
+    measures: "Neutron exposure (instrument in development).",
     feeds: ["radiation_dose"],
     referenceId: "csa-radiation",
-    sourceNote: "Em desenvolvimento segundo a CSA. Sem dados disponíveis para o Astra.",
+    sourceNote: "In development according to the CSA. No data available to Astra.",
   },
   {
     id: "eclss",
-    name: "ECLSS · suporte de vida da estação",
+    name: "ECLSS · station life support",
     institution: "NASA",
-    kind: "ambiente",
-    status: "simulado",
-    measures: "CO₂ e condições do ar da cabine.",
+    kind: "environment",
+    status: "simulated",
+    measures: "CO₂ and cabin air conditions.",
     feeds: ["cabin_co2"],
     referenceId: "nasa-hazards",
-    sourceNote: "Sistema de controle ambiental e suporte de vida. Integração exige autorização da missão.",
+    sourceNote: "Environmental control and life support system. Integration requires mission authorization.",
   },
   {
     id: "ared",
-    name: "ARED e esteira",
+    name: "ARED and treadmill",
     institution: "NASA",
-    kind: "treino",
-    status: "simulado",
-    measures: "Minutos de treino resistido e aeróbico.",
+    kind: "training",
+    status: "simulated",
+    measures: "Minutes of resistive and aerobic training.",
     feeds: ["exercise"],
-    sourceNote: "Equipamentos de exercício da ISS. Registro de minutos simulado.",
+    sourceNote: "ISS exercise equipment. Minutes are simulated.",
   },
   {
     id: "archer",
     name: "ARCHeR · Artemis Research for Crew Health and Readiness",
     institution: "NASA",
-    kind: "estudo",
+    kind: "study",
     status: "roadmap",
-    measures: "Bem-estar, atividade e padrões de sono (actigrafia) na Artemis II.",
+    measures: "Well-being, activity and sleep patterns (actigraphy) on Artemis II.",
     feeds: ["sleep_duration", "exercise"],
     referenceId: "nasa-ongoing",
-    sourceNote: "Estudo em andamento. Resultados não são públicos nem importados.",
+    sourceNote: "Ongoing study. Results are not public and are not imported.",
   },
   {
-    id: "cenario-demo",
-    name: "Cenário demo · autorrelatos simulados",
+    id: "demo-scenario",
+    name: "Demo scenario · simulated self-reports",
     institution: "Astra",
-    kind: "autorrelato",
-    status: "simulado",
-    measures: "Histórico fictício de check-ins e hábitos (cenário de 72 h da especificação base).",
+    kind: "self_report",
+    status: "simulated",
+    measures: "Fictional history of check-ins and habits (the 72 h scenario from the base specification).",
     feeds: ["sleep_duration", "energy_self_report", "mood_self_report", "stress_self_report", "purpose_self_report", "hydration", "earth_contact", "contemplation"],
-    sourceNote: "Gerado pela demo para contar a história dos últimos dias. Não foi digitado por ninguém.",
+    sourceNote: "Generated by the demo to tell the story of the last days. Nobody typed it.",
   },
 ];
 
 export const connector = (id: string) => CONNECTORS.find((c) => c.id === id);
 
-// Conector que gera os dados simulados de cada indicador (o primeiro SIMULADO ou ATIVO que o alimenta).
+// Connector that generates each indicator's simulated data (the first SIMULATED or SELF-REPORT one that feeds it).
 export function connectorFor(code: IndicatorCode): Connector | undefined {
-  return CONNECTORS.find((c) => (c.status === "simulado" || c.status === "ativo") && c.feeds.includes(code) && c.id !== "astra-checkin") ??
+  return CONNECTORS.find((c) => (c.status === "simulated" || c.status === "self_report") && c.feeds.includes(code) && c.id !== "astra-checkin") ??
     CONNECTORS.find((c) => c.feeds.includes(code));
 }
 
-// Limites ESTRUTURAIS (plausibilidade do sensor), não clínicos: servem para barrar leitura quebrada.
+// STRUCTURAL bounds (sensor plausibility), not clinical: they only block broken readings.
 export const STRUCTURAL_BOUNDS: Record<IndicatorCode, [number, number]> = {
   heart_rate: [20, 250],
   hrv: [1, 300],
@@ -172,7 +172,7 @@ export interface RawReading {
   synthetic: boolean;
 }
 
-// Camada de ingestão (REQ-11.6): valida unidade, horário e faixa estrutural.
+// Ingestion layer (REQ-11.6): validates unit, timestamp and structural range.
 export function ingest(raw: RawReading, id: string, profileId: string, now = Date.now()): Observation {
   const def = indicator(raw.indicatorCode);
   const t = Date.parse(raw.observedAt);

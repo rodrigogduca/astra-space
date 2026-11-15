@@ -1,5 +1,6 @@
 node_modules
 dist
 *.local
-.taste-skill/inspect/
-assets/
+# design-skill working files (screenshots, drafts)
+.taste-skill/
+*.tsbuildinfo

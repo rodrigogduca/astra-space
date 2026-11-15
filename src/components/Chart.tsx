@@ -1,17 +1,20 @@
 import { useState } from "react";
+import { currentLang } from "../i18n/lang";
+import { INDICATOR_PT } from "../domain/pt";
 import type { Observation } from "../domain/types";
 import { formatValue, indicator, type ReferenceRange } from "../domain/indicators";
 import { fmtDateTime } from "./ui";
 
-// Gráfico de linha em SVG puro (sem dependência, funciona offline).
-// A faixa de referência aparece como área neutra, não como zona de perigo.
+// Line chart in plain SVG (no dependency, works offline).
+// The reference range is drawn as a neutral area, not as a danger zone.
 export function LineChart({ points, range, height = 220 }: { points: Observation[]; range?: ReferenceRange; height?: number }) {
   const [hover, setHover] = useState<number | null>(null);
   const vals = points.filter((p) => p.value !== null);
   const W = 640;
   const H = height;
   const pad = { l: 44, r: 12, t: 14, b: 28 };
-  if (vals.length === 0) return <div className="chart-empty">Sem registros neste período.</div>;
+  const en = currentLang() === "en";
+  if (vals.length === 0) return <div className="chart-empty">{en ? "No records in this period." : "Sem registros neste período."}</div>;
 
   const ys = vals.map((p) => p.value as number);
   let min = Math.min(...ys);
@@ -35,7 +38,7 @@ export function LineChart({ points, range, height = 220 }: { points: Observation
 
   return (
     <div className="chart">
-      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Gráfico de ${indicator(code).name}`} onMouseLeave={() => setHover(null)}>
+      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={en ? `Chart of ${indicator(code).name}` : `Gráfico de ${INDICATOR_PT[code].name}`} onMouseLeave={() => setHover(null)}>
         {range && <rect x={pad.l} width={W - pad.l - pad.r} y={bandTop} height={Math.max(0, bandBottom - bandTop)} className="chart__band" />}
         {ticks.map((t) => (
           <g key={t}>
@@ -80,10 +83,10 @@ export function LineChart({ points, range, height = 220 }: { points: Observation
             <b>
               {formatValue(hp.value, code)} {hp.unit}
             </b>{" "}
-            · {fmtDateTime(hp.observedAt)} · {hp.isSynthetic ? "simulado" : "manual"}
+            · {fmtDateTime(hp.observedAt)} · {hp.isSynthetic ? (en ? "simulated" : "simulado") : "manual"}
           </>
         ) : (
-          <span className="muted">Passe o mouse no gráfico para ver cada registro.</span>
+          <span className="muted">{en ? "Hover or tap the chart to see each record." : "Passe o mouse ou toque no gráfico para ver cada registro."}</span>
         )}
       </div>
     </div>

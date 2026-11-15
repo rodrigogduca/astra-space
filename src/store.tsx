@@ -6,10 +6,11 @@ import { DEMO_BASE, DAILY_GOAL_MISSIONS, badges, doneCount, mission, type Missio
 import { indicator } from "./domain/indicators";
 import { ingest } from "./domain/integrations";
 
-// Estado local-first: tudo é salvo no IndexedDB do navegador antes de qualquer "envio".
-// A sincronização com a Terra é SIMULADA (seção 26 da especificação).
+// Local-first state: everything is saved to the browser's IndexedDB before any "send".
+// Sync with Earth is SIMULATED (specification section 26).
 
-const STORAGE_KEY = "astra-state-v1";
+// v2: the domain keys were renamed to English, so data saved under v1 is not reused.
+const STORAGE_KEY = "astra-state-v2";
 
 export interface AppState {
   anchor: number;
@@ -19,11 +20,11 @@ export interface AppState {
   outbox: SyncEvent[];
   online: boolean;
   failNext: boolean;
-  lastSync: Record<string, string>; // conector → ISO da última leitura ao vivo
-  obsEvent: Record<string, string>; // observação manual → evento da fila que a envia
-  xpEarned: number; // XP ganho no app (somado à base da demo)
+  lastSync: Record<string, string>; // connector → ISO time of the last live reading
+  obsEvent: Record<string, string>; // manual observation → queue event that sends it
+  xpEarned: number; // XP earned in the app (added to the demo baseline)
   streak: number;
-  lastStreakDay: string | null; // último dia em que a meta de missões foi batida
+  lastStreakDay: string | null; // last day the mission goal was reached
   earnedBadges: string[];
   seq: number;
 }
@@ -49,7 +50,7 @@ export function freshState(): AppState {
     lastSync: {},
     obsEvent: {},
     xpEarned: 0,
-    // A ofensiva fictícia da demo "vem de ontem"; ela só continua se a meta for batida a cada dia.
+    // The demo's fictional streak "comes from yesterday"; it only continues if the goal is reached each day.
     streak: DEMO_BASE.streak,
     lastStreakDay: yesterdayKey(Date.now()),
     earnedBadges: [],
@@ -78,9 +79,9 @@ export type Action =
   | { type: "rollover" }
   | { type: "reset" };
 
-function newEvent(state: AppState, type: SyncEventType, label: string): SyncEvent {
+function newEvent(state: AppState, type: SyncEventType, label: string, missionId?: MissionId): SyncEvent {
   const id = `evt-${Date.now().toString(36)}-${state.seq}`;
-  return { eventId: id, idempotencyKey: `${PROFILE_ID}:${id}`, type, label, createdAt: new Date().toISOString(), state: "pending", attempts: 0 };
+  return { eventId: id, idempotencyKey: `${PROFILE_ID}:${id}`, type, label, createdAt: new Date().toISOString(), state: "pending", attempts: 0, missionId };
 }
 
 function finishMission(state: AppState, id: MissionId): AppState {
@@ -99,11 +100,11 @@ function finishMission(state: AppState, id: MissionId): AppState {
     streak,
     lastStreakDay: streakUp ? today.date : state.lastStreakDay,
     earnedBadges: [...new Set([...state.earnedBadges, ...won])],
-    outbox: [...state.outbox, newEvent(state, "mission_done", `Missão concluída: ${m.title} (+${m.xp} XP)`)],
+    outbox: [...state.outbox, newEvent(state, "mission_done", `Mission completed: ${m.title} (+${m.xp} XP)`, id)],
   };
 }
 
-// Virada do dia: zera as missões e quebra a ofensiva se ontem a meta não foi batida.
+// Day rollover: resets the missions and breaks the streak if yesterday's goal was not reached.
 function rollover(state: AppState, now: number): AppState {
   if (state.today.date === dayKey(now)) return state;
   const kept = state.lastStreakDay === yesterdayKey(now);
@@ -113,7 +114,7 @@ function rollover(state: AppState, now: number): AppState {
 function syncConnectors(state: AppState, ids: string[]): AppState {
   const now = Date.now();
   const at = new Date(now).toISOString();
-  // Toda leitura de conector passa pela camada de ingestão (REQ-11.6).
+  // Every connector reading goes through the ingestion layer (REQ-11.6).
   const live = ids
     .flatMap((id, i) => simulateConnectorReading(id, now, state.seq * 10 + i))
     .map((o) =>
@@ -136,7 +137,7 @@ export function reducer(state: AppState, action: Action): AppState {
       return action.state;
     case "checkIn": {
       const now = Date.now();
-      const event = newEvent(state, "check_in", action.input.label);
+      const event = newEvent(state, "check_in", action.input.label, action.input.missionId);
       const obs = Object.entries(action.input.values).map(([code, value], i) =>
         ingest(
           {
@@ -197,7 +198,7 @@ export function reducer(state: AppState, action: Action): AppState {
       return {
         ...state,
         seq: state.seq + 1,
-        outbox: [...state.outbox, newEvent(state, "support_request", "Pedido de apoio ao cirurgião de voo")],
+        outbox: [...state.outbox, newEvent(state, "support_request", "Support request to the flight surgeon")],
       };
     case "rollover":
       return rollover(state, Date.now());
@@ -206,7 +207,7 @@ export function reducer(state: AppState, action: Action): AppState {
   }
 }
 
-// Totais do dia (água, treino...) viram uma observação manual derivada para o prontuário.
+// Daily totals (water, workout...) become a derived manual observation for the health record.
 const TODAY_TOTALS: Partial<Record<MissionId, { code: IndicatorCode; factor: number }>> = {
   hydration: { code: "hydration", factor: 1 / 1000 },
   exercise: { code: "exercise", factor: 1 },
@@ -233,7 +234,7 @@ export function allObservations(state: AppState, synthetic: Observation[]): Obse
       isSynthetic: false,
     });
   }
-  // Estado de sync do registro manual = estado do evento da fila que o envia.
+  // Sync state of a manual record = state of the queue event that sends it.
   const eventState = new Map(state.outbox.map((e) => [e.eventId, e.state]));
   const manual = state.manual.map((o) => {
     const ev = state.obsEvent[o.observationId];
@@ -251,9 +252,9 @@ interface Store {
   xp: number;
   streak: number;
   streakSafeToday: boolean;
-  supportEvent: SyncEvent | undefined; // pedido de apoio de hoje, se houver
+  supportEvent: SyncEvent | undefined; // today's support request, if any
   storageOk: boolean;
-  ready: boolean; // estado salvo já foi carregado do IndexedDB
+  ready: boolean; // saved state has already been loaded from IndexedDB
 }
 
 const Ctx = createContext<Store | null>(null);
@@ -268,7 +269,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     get<AppState>(STORAGE_KEY)
       .then((saved) => {
         if (saved) {
-          // Renova a âncora do cenário simulado para a demo não ficar com dados "velhos".
+          // Refreshes the simulated scenario anchor so the demo does not show "stale" data.
           const fresh = freshState();
           const anchor = Date.now() - saved.anchor > 3600_000 ? fresh.anchor : saved.anchor;
           dispatch({ type: "hydrate", state: rollover({ ...fresh, ...saved, anchor }, Date.now()) });
@@ -281,7 +282,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       });
   }, []);
 
-  // Aba aberta na virada da meia-noite também troca de dia.
+  // A tab left open past midnight also switches to the new day.
   useEffect(() => {
     const t = setInterval(() => dispatch({ type: "rollover" }), 60_000);
     return () => clearInterval(t);
@@ -292,7 +293,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     set(STORAGE_KEY, state).catch(() => setStorageOk(false));
   }, [state]);
 
-  // Simulação do enlace com a Terra: PENDING → READY → SYNCED (ou FAILED).
+  // Simulated link with Earth: PENDING → READY → SYNCED (or FAILED).
   useEffect(() => {
     if (!state.online || !state.outbox.some((e) => e.state === "pending" || e.state === "ready")) return;
     const t = setTimeout(() => dispatch({ type: "advanceSync" }), 900);
@@ -337,7 +338,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
 export function useStore() {
   const s = useContext(Ctx);
-  if (!s) throw new Error("useStore fora do StoreProvider");
+  if (!s) throw new Error("useStore used outside StoreProvider");
   return s;
 }
 

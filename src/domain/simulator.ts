@@ -2,8 +2,8 @@ import type { IndicatorCode, Observation } from "./types";
 import { indicator } from "./indicators";
 import { connector, connectorFor } from "./integrations";
 
-// Gerador de DADOS SIMULADOS. Nada aqui vem de astronauta, NASA ou CSA.
-// É determinístico (semente fixa) para a demo sempre contar a mesma história.
+// SIMULATED DATA generator. Nothing here comes from an astronaut, NASA or CSA.
+// It is deterministic (fixed seed) so the demo always tells the same story.
 
 const HOUR = 3600_000;
 export const PROFILE_ID = "DEMO-01";
@@ -29,16 +29,16 @@ function obs(code: IndicatorCode, at: number, value: number, n: number): Observa
     unit: def.unit,
     observedAt: new Date(at).toISOString(),
     origin: "synthetic",
-    sourceRef: connectorFor(code)?.id ?? "cenario-demo",
+    sourceRef: connectorFor(code)?.id ?? "demo-scenario",
     qualityState: "valid",
     syncState: "synced",
     isSynthetic: true,
   };
 }
 
-// Cenário de 72 h da especificação (tabela 6): T0, T+36 h e T+72 h,
-// precedido de três dias de histórico para a ofensiva fazer sentido.
-// T0 fica em −70 h (e não −72 h) para os 3 pontos caberem na janela "72 h" mesmo minutos depois de abrir.
+// 72 h scenario from the specification (table 6): T0, T+36 h and T+72 h,
+// preceded by three days of history so the streak makes sense.
+// T0 sits at −70 h (not −72 h) so the 3 points fit in the "72 h" window even minutes after opening.
 const CHECKIN_OFFSETS_H = [-144, -120, -96, -70, -36, -2];
 const DAILY: Partial<Record<IndicatorCode, number[]>> = {
   sleep_duration: [7.4, 7.0, 7.8, 7.5, 6, 5],
@@ -47,7 +47,7 @@ const DAILY: Partial<Record<IndicatorCode, number[]>> = {
   stress_self_report: [3, 3, 2, 3, 5, 6],
   purpose_self_report: [8, 8, 9, 8, 7, 6],
 };
-// Totais de dias anteriores (o dia de hoje vem das missões registradas).
+// Totals for previous days (today comes from the logged missions).
 const PAST_DAYS_TOTALS: Partial<Record<IndicatorCode, number[]>> = {
   hydration: [2.1, 1.8, 2.3, 2.0, 1.6, 1.4],
   exercise: [125, 130, 110, 120, 90, 60],
@@ -62,11 +62,11 @@ export function generateSynthetic(anchor: number): Observation[] {
   let n = 0;
   const start = anchor - 7 * 24 * HOUR;
 
-  // Telemetria a cada 2 h nos últimos 7 dias.
+  // Telemetry every 2 h over the last 7 days.
   for (let t = start; t <= anchor; t += 2 * HOUR) {
     const hourOfDay = new Date(t).getHours();
-    const circadian = Math.sin(((hourOfDay - 15) / 24) * 2 * Math.PI); // pico à tarde
-    const lateFatigue = Math.max(0, (t - (anchor - 72 * HOUR)) / (72 * HOUR)); // 0→1 nas últimas 72 h
+    const circadian = Math.sin(((hourOfDay - 15) / 24) * 2 * Math.PI); // afternoon peak
+    const lateFatigue = Math.max(0, (t - (anchor - 72 * HOUR)) / (72 * HOUR)); // 0→1 over the last 72 h
 
     out.push(obs("heart_rate", t, 63 + circadian * 5 + lateFatigue * 6 + noise(3), n++));
     out.push(obs("hrv", t, 58 - circadian * 6 - lateFatigue * 12 + noise(4), n++));
@@ -80,7 +80,7 @@ export function generateSynthetic(anchor: number): Observation[] {
     out.push(obs("glucose", t, (meal ? 138 : 96) + noise(meal ? 18 : 8), n++));
   }
 
-  // Dose diária (soma do dia), com um pico simulado de anomalia do Atlântico Sul.
+  // Daily dose (sum of the day), with a simulated South Atlantic Anomaly peak.
   for (let d = 6; d >= 0; d--) {
     const t = anchor - d * 24 * HOUR;
     out.push(obs("radiation_dose", t, (d === 2 ? 0.78 : 0.52) + noise(0.06), n++));
@@ -103,7 +103,7 @@ export function generateSynthetic(anchor: number): Observation[] {
   return out;
 }
 
-// Nova leitura de um conector SIMULADO ("Sincronizar agora" / "Sinais do dia").
+// New reading from a SIMULATED connector ("Sync now" / "Today's vitals").
 const LIVE_BASE: Partial<Record<IndicatorCode, [number, number]>> = {
   heart_rate: [68, 3],
   hrv: [48, 4],
@@ -121,7 +121,7 @@ const LIVE_BASE: Partial<Record<IndicatorCode, [number, number]>> = {
 export function simulateConnectorReading(connectorId: string, now: number, seq: number): Observation[] {
   const rand = mulberry32((now % 100000) + seq);
   const c = connector(connectorId);
-  if (!c || c.status !== "simulado") return [];
+  if (!c || c.status !== "simulated") return [];
   return c.feeds
     .filter((code) => LIVE_BASE[code])
     .map((code, i) => {
@@ -130,9 +130,9 @@ export function simulateConnectorReading(connectorId: string, now: number, seq: 
     });
 }
 
-// Missão demo: "dia 46" é um rótulo fictício para a narrativa, não uma missão real.
+// Demo mission: "day 46" is a fictional label for the story, not a real mission.
 export const MISSION = {
-  name: "Missão demo ASTRA-1",
+  name: "ASTRA-1 demo mission",
   day: 46,
   crewId: PROFILE_ID,
   callSign: "Polaris",

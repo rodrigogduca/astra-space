@@ -1,0 +1,63 @@
+/* Breathing break: Catro guides from the center of the circle, over Earth seen from the Cupola; his line sits in the brand cream bubble. */
+.breathe__title { display: flex; align-items: flex-start; gap: 14px; }
+.breathe__title .icon-tile { margin-top: 4px; }
+
+.breathe__stage {
+  --scrim: color-mix(in srgb, var(--brand-night) 62%, transparent);
+  position: relative; overflow: hidden; border-radius: var(--radius); background: var(--brand-indigo);
+  min-height: clamp(540px, 72vh, 660px); display: grid; color: var(--brand-cream);
+}
+.breathe__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.breathe__stage::before { content: ""; position: absolute; inset: 0; z-index: 1; background: var(--scrim); }
+.breathe__stage .photo-band__credit { z-index: 3; }
+
+.breathe__body {
+  position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas: "done done" "orb panel"; align-items: center; align-content: center;
+  gap: 24px clamp(24px, 4vw, 56px); padding: clamp(28px, 4vw, 56px) clamp(20px, 4vw, 64px);
+}
+.breathe__done {
+  grid-area: done; justify-self: center; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: var(--step-small);
+  background: var(--scrim); border-radius: 999px; padding: 8px 16px;
+}
+.breathe__done svg { color: var(--brand-cream); flex-shrink: 0; }
+
+/* Catro's orbit */
+.breathe__orb { grid-area: orb; justify-self: end; position: relative; width: 400px; height: 400px; display: grid; place-items: center; }
+.breathe__circle {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: color-mix(in srgb, var(--brand-cream) 12%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--brand-cream) 55%, transparent); outline-offset: -2px;
+  transform: scale(.72); transition: transform 1s ease-in-out;
+}
+.breathe__circle::after { content: ""; position: absolute; inset: 16%; border-radius: 50%; background: color-mix(in srgb, var(--brand-cream) 10%, transparent); }
+.breathe__circle.is-in { transform: scale(1); transition: transform 4s ease-in-out; }
+.breathe__circle.is-out { transform: scale(.72); transition: transform 6s ease-in-out; }
+.breathe__catro { position: relative; }
+
+/* line + timer + actions */
+.breathe__panel { grid-area: panel; justify-self: start; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; max-width: 420px; }
+.breathe__timer { line-height: .9; }
+.breathe__bubble { margin: 0; display: flex; flex-direction: column; gap: 4px; padding: 18px 22px; min-width: min(100%, 300px); }
+.breathe__phase { font-size: var(--step-lead); font-weight: 700; line-height: 1.2; }
+.breathe__phase b { color: var(--brand-violet); font-family: var(--font-display); font-weight: 700; font-size: 1.15em; }
+.breathe__meta { font-size: var(--step-small); font-weight: 500; color: var(--brand-night); opacity: .78; }
+.breathe__timer { font-size: clamp(3rem, 2rem + 4vw, 5.25rem); color: var(--brand-cream); }
+.breathe__actions { gap: 10px; }
+.breathe__actions .btn--ghost { color: var(--brand-cream); }
+.breathe__actions .btn--ghost:hover { background: var(--scrim); }
+.breathe__actions .btn:disabled { background: var(--scrim); color: var(--brand-cream); opacity: .7; }
+
+@media (max-width: 900px) {
+  .breathe__body { grid-template-columns: 1fr; grid-template-areas: "done" "orb" "panel"; justify-items: center; text-align: center; gap: 14px; padding-block: 20px 28px; }
+  .breathe__orb { justify-self: center; width: 230px; height: 230px; }
+  .breathe__orb .catro { scale: .62; }
+  .breathe__panel { gap: 14px; }
+  .breathe__panel { justify-self: center; align-items: center; }
+  .breathe__bubble { border-radius: 22px; }
+  .breathe__actions { justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .breathe__circle, .breathe__circle.is-in, .breathe__circle.is-out { transition: none; transform: scale(.86); }
+}

@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 
-// Céu de fundo (RV-2, RV-11): três camadas de estrelas derivando em velocidades diferentes
-// (paralaxe), algumas cintilando, e estrelas cadentes de vez em quando.
-// Só transform/opacity; com prefers-reduced-motion o CSS para tudo e o céu fica parado.
+// Background sky (RV-2, RV-11): the brand's violet glows breathing slowly, three star layers drifting at different speeds
+// (parallax), some twinkling, and shooting stars now and then.
+// Only transform/opacity; with prefers-reduced-motion the CSS stops everything and the sky stays still.
 
 function rand(seed: number) {
   return () => {
@@ -19,8 +19,8 @@ const LAYERS: Layer[] = [
   { id: "near", count: 28, size: [1.4, 2.2], opacity: [0.7, 1], twinkleEvery: 3, seed: 46 },
 ];
 
-// Cada camada é uma faixa com o mesmo céu repetido duas vezes lado a lado; deslizar
-// metade da largura fecha o ciclo sem emenda.
+// Each layer is a strip with the same sky repeated twice side by side; sliding
+// half the width closes the loop seamlessly.
 function LayerSvg({ layer }: { layer: Layer }) {
   const stars = useMemo(() => {
     const r = rand(layer.seed);
@@ -57,6 +57,8 @@ function LayerSvg({ layer }: { layer: Layer }) {
 export function Starfield() {
   return (
     <div className="starfield" aria-hidden>
+      <span className="sky-glow sky-glow--a" />
+      <span className="sky-glow sky-glow--b" />
       {LAYERS.map((l) => (
         <LayerSvg key={l.id} layer={l} />
       ))}

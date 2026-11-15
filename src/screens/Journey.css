@@ -1,0 +1,333 @@
+/* My Journey (R2-B, R4, RV-13/RV-14): photo band, the day in three stages
+   (Aurora with the morning check-in; solar system of the 7 free missions; Serene with the evening check-in)
+   and the flight deck. Motion only with transform/opacity; everything stops with prefers-reduced-motion. */
+
+/* ---------- top band (always dark: fixed colors) ---------- */
+.journey__band { min-height: clamp(240px, 26vw, 300px); }
+.journey__band > img { object-position: center 62%; }
+.journey__band-body { display: flex; flex-direction: column; gap: 14px; }
+.journey .journey__band h1 {
+  font-family: var(--font-text); font-weight: 800; letter-spacing: -0.035em; line-height: 0.98;
+  font-size: clamp(2.5rem, 1.4rem + 4vw, 4.6rem); color: var(--band-ink);
+}
+.journey__status { display: flex; align-items: center; gap: 10px 16px; flex-wrap: wrap; font-weight: 700; }
+.journey__count { display: inline-flex; align-items: center; gap: 6px; color: #b9a9ff; font-weight: 800; }
+.journey__band-bar { flex: 0 1 200px; min-width: 110px; }
+.journey__band-bar .bar { background: rgba(255, 251, 237, 0.24); }
+.journey__chips { display: inline-flex; align-items: center; gap: 8px 10px; flex-wrap: wrap; }
+.journey__chip { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 3px 11px 3px 9px; font-weight: 800; font-size: var(--step-small); }
+.journey__chip--xp { color: #facc15; background: rgba(250, 204, 21, 0.16); }
+.journey__chip--streak { color: #fb923c; background: rgba(251, 146, 60, 0.18); }
+.journey__day { color: var(--band-ink); opacity: 0.85; font-size: var(--step-small); }
+
+/* ---------- the day ---------- */
+.day { display: flex; flex-direction: column; gap: 18px; }
+
+/* day route: morning → missions → evening */
+.daypath { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.daypath__step { display: inline-flex; align-items: center; gap: 8px; padding: 4px 14px 4px 4px; border-radius: 999px; background: var(--surface); color: var(--ink-2); font-weight: 700; font-size: var(--step-small); }
+.daypath__step + .daypath__step::before { content: ""; width: 18px; height: 2px; border-radius: 2px; background: var(--surface-3); margin-left: -22px; margin-right: 6px; order: -1; }
+.daypath__step + .daypath__step { margin-left: 18px; }
+.daypath__dot { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); color: var(--ink-2); }
+.daypath__dot svg { display: block; }
+.daypath__step.is-done { color: var(--ink); }
+.daypath__step.is-done .daypath__dot { background: var(--ok); color: var(--brand-night); }
+.daypath__step.is-on { background: var(--accent); color: var(--accent-ink); }
+.daypath__step.is-on .daypath__dot { background: var(--brand-cream); color: var(--brand-violet); animation: j-dot-pulse 2.4s ease-in-out infinite; }
+@keyframes j-dot-pulse { 50% { transform: scale(1.12); } }
+
+/* ---------- Catro's line: cream bubble right next to him, tail pointing at him ---------- */
+.jsay { align-items: flex-end; gap: 14px; }
+.jsay__catro { animation: float 5s ease-in-out infinite; }
+.jsay__bubble { flex: 1; min-width: 0; margin-bottom: 30px; }
+.jsay__bubble p { max-width: 46ch; }
+.jsay__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.jsay__bubble .btn--primary { background: var(--brand-violet); color: var(--brand-cream); }
+
+/* ---------- stages 1 and 3: the current planet highlighted ---------- */
+.hero {
+  position: relative; display: grid; align-items: center; gap: 12px clamp(24px, 4vw, 56px);
+  grid-template-columns: minmax(220px, 340px) minmax(0, 1fr); grid-template-areas: "planet main" "planet say";
+  border-radius: var(--radius); padding: clamp(20px, 3vw, 40px); overflow: hidden;
+}
+.hero--morning { background: color-mix(in srgb, #ff8a3d 20%, var(--surface-solid)); }
+.hero--evening { background: color-mix(in srgb, #6d28d9 22%, var(--surface-solid)); }
+.hero--closed { background: color-mix(in srgb, var(--ok) 10%, var(--surface-solid)); grid-template-columns: minmax(0, 1fr) minmax(280px, 440px); grid-template-areas: "main say"; }
+.hero__planet { grid-area: planet; position: relative; display: grid; place-items: center; }
+.hero__planet::before {
+  content: ""; position: absolute; width: 96%; aspect-ratio: 1; border-radius: 50%;
+  border: 2px dashed color-mix(in srgb, var(--ink) 22%, transparent); animation: j-spin 80s linear infinite;
+}
+.hero__planet .planet { position: relative; width: min(100%, 320px); height: auto; animation: float 6s ease-in-out infinite; }
+.hero__main { grid-area: main; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; min-width: 0; }
+.hero__say { grid-area: say; min-width: 0; }
+.hero__name { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: var(--step-small); color: var(--accent-text); }
+.hero--morning .hero__name { color: var(--streak); }
+.hero--closed .hero__name { color: var(--ok); }
+.hero h2 { font-weight: 800; font-size: clamp(1.9rem, 1.2rem + 2.2vw, 2.9rem); letter-spacing: -0.03em; line-height: 1.02; }
+.hero__sub { color: var(--ink-2); font-size: var(--step-lead); }
+.hero__btn { min-height: 56px; padding: 14px 30px; font-size: var(--step-lead); margin-top: 8px; }
+.hero__main > * { animation: rise .5s cubic-bezier(.2, .8, .2, 1) both; }
+.hero__main > :nth-child(2) { animation-delay: .08s; }
+.hero__main > :nth-child(3) { animation-delay: .14s; }
+.hero__main > :nth-child(4) { animation-delay: .2s; }
+.hero__main > :nth-child(5) { animation-delay: .26s; }
+
+.xp-chip { display: inline-flex; align-items: center; gap: 5px; width: fit-content; border-radius: 999px; padding: 3px 12px 3px 9px; font-weight: 800; font-size: var(--step-small); color: var(--xp); background: color-mix(in srgb, var(--xp) 16%, transparent); }
+
+/* day closed: route with little flags */
+.route { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 2px; }
+.route li { animation: j-pop .5s cubic-bezier(.2, .9, .3, 1.3) both; animation-delay: calc(.2s + var(--i) * .07s); }
+.route li.is-faded { opacity: .4; }
+.route .planet { display: block; }
+@keyframes j-pop { from { opacity: 0; transform: scale(.3); } }
+
+/* dimmed preview of the missions in stage 1 */
+.teaser { display: flex; align-items: center; gap: 12px 18px; flex-wrap: wrap; padding: 10px 20px 10px 12px; border-radius: var(--radius); background: var(--surface); color: var(--ink-2); }
+.teaser__planets { display: flex; }
+.teaser__planets .planet { opacity: .5; margin-right: -8px; }
+.teaser__text b { color: var(--ink); }
+
+/* ---------- stage 2: solar system + mission panel ---------- */
+.orbit { display: flex; flex-direction: column; gap: 12px; }
+.orbit__head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; }
+.orbit__head h2 { font-weight: 800; font-size: clamp(1.5rem, 1.15rem + 1.2vw, 2.1rem); letter-spacing: -0.025em; }
+.orbit__count { display: inline-flex; align-items: center; gap: 5px; align-self: center; background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 3px 12px 3px 9px; font-weight: 800; font-size: var(--step-small); }
+.orbit__grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 380px); grid-template-rows: auto 1fr;
+  grid-template-areas: "solar say" "solar panel"; gap: 16px clamp(20px, 3vw, 48px); align-items: start;
+}
+.orbit--late .orbit__grid { grid-template-areas: "solar panel" "solar panel"; align-items: center; }
+.orbit__say { grid-area: say; padding-top: clamp(0px, 4vw, 48px); }
+.orbit__grid > .solar { grid-area: solar; }
+.orbit__panel { grid-area: panel; min-width: 0; }
+.orbit__hint { display: flex; align-items: center; gap: 8px; padding: 16px 18px; border-radius: var(--radius); outline: 2px dashed var(--surface-3); outline-offset: -2px; color: var(--ink-2); font-weight: 600; }
+
+/* panel: slides open, tinted with the planet color */
+.mpanel {
+  display: flex; flex-direction: column; gap: 12px; padding: 18px 20px 20px; border-radius: var(--radius);
+  background: color-mix(in srgb, var(--planet) 16%, var(--surface-solid));
+  transform-origin: top center; animation: j-panel-in .45s cubic-bezier(.2, .9, .25, 1.12) both;
+}
+@keyframes j-panel-in { from { opacity: 0; transform: translateY(-16px) scale(.96); } }
+.mpanel > * { animation: rise .4s cubic-bezier(.2, .8, .2, 1) both; }
+.mpanel > :nth-child(2) { animation-delay: .06s; }
+.mpanel > :nth-child(3) { animation-delay: .1s; }
+.mpanel > :nth-child(n + 4) { animation-delay: .14s; }
+.mpanel__head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; }
+.mpanel__planet { display: block; margin: -6px -4px -6px -6px; }
+.mpanel__title { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.mpanel__name { font-weight: 700; font-size: var(--step-small); color: var(--ink-2); }
+.mpanel__title h3 { font-size: var(--step-lead); font-weight: 800; letter-spacing: -0.015em; line-height: 1.12; }
+.mpanel__close { width: 38px; height: 38px; align-self: start; }
+.mpanel__sub { color: var(--ink-2); }
+.mpanel__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.mpanel__pillar { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: var(--step-small); }
+.mpanel__progress { display: flex; flex-direction: column; gap: 6px; }
+.mpanel__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.mpanel__tip { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-2); font-weight: 600; }
+.mpanel__done { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; min-height: 46px; }
+.mpanel__done svg { color: var(--ok); }
+
+/* ---------- solar system ---------- */
+.solar {
+  --inner: 23; --outer: 39; /* orbit radii, in % of the side */
+  --p: 19cqi; /* box of each planet (the disc takes ~62% of it) */
+  position: relative; width: min(100%, 640px); aspect-ratio: 1; margin-inline: auto; container-type: inline-size;
+}
+.orbit--late .solar { width: min(100%, 540px); }
+.solar__rings { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; animation: j-rings-in .9s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes j-rings-in { from { opacity: 0; transform: scale(.7); } }
+.solar__rings circle { fill: none; stroke: var(--surface-3); stroke-width: 0.6; stroke-dasharray: 0.01 1.6; stroke-linecap: round; }
+
+/* the sun: progress of the free missions */
+.solar__sun { position: absolute; left: 50%; top: 50%; width: 25cqi; aspect-ratio: 1; transform: translate(-50%, -50%); display: grid; place-items: center; }
+.solar__sun-glow { position: absolute; inset: -34%; border-radius: 50%; background: color-mix(in srgb, var(--accent) 18%, transparent); animation: j-sun-pulse 6s ease-in-out infinite; }
+.solar__sun-glow--2 { inset: -14%; background: color-mix(in srgb, var(--accent) 26%, transparent); animation-delay: -3s; }
+@keyframes j-sun-pulse { 50% { transform: scale(1.08); opacity: .7; } }
+.solar__sun-ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; animation: j-ring-in 1s .2s cubic-bezier(.2, .8, .2, 1) both; }
+.solar__sun-ring circle { fill: none; stroke-width: 7; }
+.solar__sun-track { stroke: var(--track); }
+.solar__sun-arc { stroke: var(--xp); stroke-linecap: round; }
+@keyframes j-ring-in { from { opacity: 0; transform: rotate(-120deg) scale(.8); } }
+.solar__sun-num {
+  position: relative; display: flex; align-items: center; justify-content: center; gap: 1px;
+  width: 78%; aspect-ratio: 1; border-radius: 50%; background: var(--accent); color: var(--accent-ink);
+  font-family: var(--font-text); font-weight: 800; font-size: 9.5cqi; letter-spacing: -0.04em; line-height: 1; animation: j-pop .6s .1s cubic-bezier(.2, .9, .3, 1.3) both;
+}
+.solar__sun-num small { font-size: 4.6cqi; opacity: .75; letter-spacing: 0; align-self: center; transform: translateY(18%); }
+
+.solar__track {
+  position: absolute; left: 50%; top: 50%; border-radius: 50%; pointer-events: none;
+  animation: j-spin var(--dur) linear infinite;
+}
+.solar__track--inner { --dur: 240s; width: calc(var(--inner) * 2%); aspect-ratio: 1; margin: calc(var(--inner) * -1%) 0 0 calc(var(--inner) * -1%); }
+.solar__track--outer { --dur: 360s; width: calc(var(--outer) * 2%); aspect-ratio: 1; margin: calc(var(--outer) * -1%) 0 0 calc(var(--outer) * -1%); }
+.solar__slot { position: absolute; inset: 0; transform: rotate(var(--a)); }
+
+.solar__planet {
+  position: absolute; left: 50%; top: 0; width: var(--p); height: var(--p); padding: 0; border: 0; background: transparent;
+  border-radius: 50%; cursor: pointer; pointer-events: auto; transform: translate(-50%, -50%) rotate(calc(-1 * var(--a)));
+}
+.solar__planet.is-selected { z-index: 3; }
+.solar__planet:focus-visible { outline-offset: -2px; }
+.solar__spin { position: relative; display: block; width: 100%; height: 100%; animation: j-spin var(--dur) linear infinite reverse; }
+.solar__pop { position: relative; display: block; width: 100%; height: 100%; animation: j-planet-in .7s cubic-bezier(.2, .9, .3, 1.3) both; animation-delay: calc(.3s + var(--i) * .12s); }
+@keyframes j-planet-in { from { opacity: 0; transform: scale(.2) rotate(-40deg); } }
+.solar__pop > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.solar__pop .planet { transition: transform .25s cubic-bezier(.2, .9, .3, 1.3); }
+.solar__planet:hover .planet { transform: scale(1.07); }
+.solar__planet.is-selected .planet { transform: scale(1.12); }
+.solar__planet:active .planet { transform: scale(0.96); }
+
+/* pulsing atmosphere glow (orbit planets and the highlighted planet) */
+:is(.solar, .hero__planet) .planet__glow { transform-box: fill-box; transform-origin: center; animation: j-glow 3.6s ease-in-out infinite; }
+@keyframes j-glow { 0%, 100% { opacity: .24; } 50% { opacity: .1; transform: scale(1.12); } }
+
+.solar__marks circle { fill: none; }
+.solar__arc-track { stroke: var(--track); stroke-width: 5; }
+.solar__arc { stroke-width: 5; stroke-linecap: round; }
+.solar__halo { stroke: var(--accent-text); stroke-width: 3; stroke-dasharray: 3 7; stroke-linecap: round; transform-box: fill-box; transform-origin: center; animation: j-spin 18s linear infinite; }
+
+.solar__badge {
+  position: absolute; left: 73%; top: 76%; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+  transform: translate(-50%, -50%); outline: 3px solid var(--bg); background: var(--brand-cream); color: var(--brand-night);
+}
+.solar__badge svg { display: block; }
+.solar__badge.is-done { background: var(--ok); }
+.solar__tip {
+  position: absolute; left: 50%; top: 96%; white-space: nowrap; pointer-events: none;
+  background: var(--brand-cream); color: var(--brand-night); font-size: 0.8125rem; font-weight: 800; line-height: 1.3;
+  padding: 2px 10px; border-radius: 999px; transform: translateX(-50%); animation: j-tip 1.8s ease-in-out infinite;
+}
+@keyframes j-tip { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -4px); } }
+
+/* hover or focus on any planet freezes the whole orbit (planet and counter-rotation together) */
+.solar:is(:hover, :focus-within) :is(.solar__track, .solar__spin) { animation-play-state: paused; }
+@keyframes j-spin { to { transform: rotate(360deg); } }
+
+/* planets: states (also apply in Gratitude) */
+.planet__halo { stroke: var(--accent-text); stroke-width: 2.5; stroke-dasharray: 2 7; stroke-linecap: round; }
+
+/* accessible list, collapsed */
+.day__list { background: var(--surface); border-radius: var(--radius); padding: 4px 20px; }
+.day__list summary { cursor: pointer; font-weight: 600; color: var(--ink-2); padding: 12px 0; width: fit-content; }
+.day__list summary:hover { color: var(--ink); }
+.day__list ul { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.day__list li { background: var(--surface-2); border-radius: var(--radius-sm); padding: 4px 8px 4px 8px; display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: 10px; min-height: 52px; }
+.day__list li .planet { display: block; }
+.day__list-name { font-weight: 600; min-width: 0; }
+.day__list li.is-done .day__list-name { color: var(--ink-2); }
+.day__list-check { color: var(--ok); margin-right: 10px; }
+.tone--body { color: var(--body); }
+.tone--mind { color: var(--mind); }
+.tone--spirit { color: var(--spirit); }
+.xp-ink { color: var(--xp); }
+.streak-ink { color: var(--streak); }
+
+/* ---------- flight deck ---------- */
+.board { gap: 20px; }
+.board__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 44px); }
+.board__section { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.board__section h3 { font-size: var(--step-body); }
+.board__h { display: flex; align-items: center; gap: 8px; }
+.board__h svg { flex-shrink: 0; }
+
+.goals { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.goals__item { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; }
+/* custom ring: the icon sits in the exact center (absolute box the size of the ring, centered grid) */
+.pring { position: relative; display: block; width: 72px; height: 72px; margin-bottom: 6px; }
+.pring__svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: j-ring-in .9s .2s cubic-bezier(.2, .8, .2, 1) both; }
+.pring__svg circle { fill: none; stroke-width: 7; }
+.pring__track { stroke: var(--track); }
+.pring__arc { stroke: currentColor; stroke-linecap: round; }
+.pring__icon { position: absolute; inset: 0; display: grid; place-items: center; line-height: 0; }
+.pring__icon svg { display: block; }
+
+.streak__week { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.streak__day { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.streak__dot { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--surface-2); color: var(--brand-night); }
+.streak__dot svg { display: block; }
+.streak__day.is-lit .streak__dot { background: var(--streak); animation: j-pop .5s cubic-bezier(.2, .9, .3, 1.3) both; animation-delay: calc(.3s + var(--i) * .06s); }
+.streak__day.is-today:not(.is-lit) .streak__dot { outline: 2px dashed var(--streak); outline-offset: -2px; }
+.streak__label { font-size: var(--step-small); font-weight: 600; color: var(--ink-2); }
+.streak__day.is-today .streak__label { color: var(--ink); font-weight: 800; }
+
+.league__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.league__head .btn--quiet { min-height: 32px; }
+.league { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.league__row { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 6px 10px; border-radius: var(--radius-sm); }
+.league__row.is-me { background: color-mix(in srgb, var(--accent) 26%, transparent); }
+.league__pos { font-weight: 800; color: var(--ink-2); text-align: center; }
+.league__name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.league__xp { display: inline-flex; align-items: center; gap: 5px; font-size: var(--step-small); }
+.board__section > p { max-width: 60ch; }
+
+/* ---------- smaller screens ---------- */
+@media (max-width: 1020px) {
+  .board__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .board__grid > :last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 860px) {
+  .orbit__grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "say" "solar" "panel"; }
+  .orbit--late .orbit__grid { grid-template-areas: "solar" "panel"; }
+  .orbit__say { padding-top: 0; }
+  .solar { --p: 22cqi; --inner: 22; --outer: 39; }
+  .hero { grid-template-columns: minmax(0, 1fr); grid-template-areas: "planet" "main" "say"; justify-items: center; text-align: center; }
+  .hero--closed { grid-template-areas: "main" "say"; }
+  .hero__main { align-items: center; }
+  .hero__planet .planet { width: min(64vw, 220px); }
+  .hero__say { width: 100%; text-align: left; }
+  .route { justify-content: center; }
+}
+@media (max-width: 600px) {
+  .journey__band { min-height: 0; }
+  .journey__band .photo-band__body { padding-top: 64px; padding-bottom: 28px; }
+  .journey__band-bar { flex-basis: 100%; order: 3; }
+  .journey__chips { order: 4; }
+  .hero { padding: 18px 16px 6px; gap: 10px; }
+  .hero__planet .planet { width: min(52vw, 190px); }
+  .hero__btn { width: 100%; }
+  .hero__main { width: 100%; }
+  .teaser { justify-content: center; text-align: center; padding: 12px 16px; }
+  .jsay { gap: 10px; }
+  .jsay__catro { width: 62px !important; height: 89px !important; }
+  .jsay__bubble { padding: 14px 16px; margin-bottom: 26px; }
+  .solar__badge { width: 22px; height: 22px; outline-width: 2px; }
+  .solar__badge svg { width: 12px; height: 12px; }
+  .solar__tip { font-size: 0.75rem; padding: 1px 8px; }
+  .mpanel { padding: 16px; }
+  .mpanel__actions .btn { flex: 1 1 auto; }
+  .board__grid { grid-template-columns: 1fr; }
+  .day__list { padding: 4px 12px; }
+}
+@media (max-width: 420px) {
+  .daypath { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 6px; }
+  .daypath__step { padding-right: 10px; gap: 6px; font-size: 0.875rem; white-space: nowrap; }
+  .daypath__step + .daypath__step { margin-left: 0; }
+  .daypath__step + .daypath__step::before { display: none; }
+  .daypath__dot { width: 26px; height: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solar__track, .solar__spin, .solar__pop, .solar__rings, .solar__sun-ring, .solar__sun-num, .solar__sun-glow,
+  .solar__halo, .solar__tip, .planet__glow, .hero__planet::before, .hero__planet .planet, .hero__main > *,
+  .mpanel, .mpanel > *, .route li, .pring__svg, .streak__dot, .daypath__dot, .jsay__catro { animation: none; }
+  .solar__pop .planet { transition: none; }
+}
+
+
+/* ---------- small phone (round 5) ---------- */
+/* Catro's line: Catro above, full-width bubble with the tail pointing up at him. */
+@media (max-width: 480px) {
+  .jsay { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .jsay__catro { width: 78px !important; height: 111px !important; margin-left: 12px; }
+  .jsay__bubble { width: 100%; margin-bottom: 0; font-size: var(--step-body); }
+  .jsay__bubble::before { left: 34px; top: -10px; bottom: auto; transform: rotate(135deg); }
+}
+/* Day strip: only the current stage shows its name; the others become icons (the name stays for screen readers). */
+@media (max-width: 420px) {
+  .daypath { display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: 6px; }
+  .daypath__step:not(.is-on) { padding: 4px; }
+  .daypath__step:not(.is-on) .daypath__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}

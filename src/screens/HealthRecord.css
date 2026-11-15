@@ -1,0 +1,174 @@
+/* Health record (Front R-C, RV-7; round R4). The range position text stays neutral: no risk traffic light.
+   The vivid colors are the signal identity (INDICATOR_TINT), on the icon only.
+   Layout: [header with photo + legend | accumulated radiation (yellow badge)] → vital signs (telemetry)
+   → mosaic of 3 equal columns: [metabolism | radiation and environment ×2] and [routine | mind | spirit]. */
+
+/* ---------- shared screen motion (transform/opacity only; styles.css turns it off under prefers-reduced-motion) ---------- */
+
+/* ---------- top: crew member + radiation ---------- */
+.record-top { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 28px; align-items: stretch; }
+
+.record-hero { display: flex; flex-direction: column; background: var(--surface); border-radius: var(--radius); overflow: hidden; }
+.record-band { flex: 1; min-height: 260px; border-radius: 0; }
+.record-band > img { object-position: center 40%; }
+.record-band__body { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: end; gap: 18px; }
+.record-avatar {
+  display: grid; place-items: center; width: 68px; height: 68px; border-radius: 50%;
+  background: var(--accent); color: var(--accent-ink); font-weight: 800; font-size: 2rem; letter-spacing: -0.04em;
+}
+.record-band__id { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.record-band__id h1 { color: var(--band-ink); }
+.record-band__morse { color: var(--brand-cream); height: 8px; margin: 4px 0 6px; opacity: .85; align-self: flex-start; }
+.record-band__meta { font-size: var(--step-small); font-weight: 600; opacity: 0.85; }
+
+/* badge legend: a single plain line, no boxes */
+.record-legend { margin: 0; padding: 14px clamp(18px, 2vw, 26px); display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--ink-2); }
+.record-legend > span { display: inline-flex; align-items: center; gap: 8px; }
+
+/* ---------- cumulative radiation: yellow emblem on a dark background, same in both themes ---------- */
+.record-rad {
+  --rad: #facc15;
+  background: #0b0930; color: #fffbed; justify-content: space-between; gap: 20px;
+  outline: 2px solid color-mix(in srgb, var(--rad) 38%, transparent); outline-offset: -2px;
+}
+.record-rad__head { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 16px; }
+.record-rad__emblem {
+  display: grid; place-items: center; width: 72px; height: 72px; border-radius: 22px; flex-shrink: 0;
+  background: #050418; color: var(--rad); outline: 2px solid var(--rad); outline-offset: -2px;
+  animation: screen-pop .5s cubic-bezier(.2, 1.4, .4, 1) .08s both;
+}
+.record-rad__titles { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.record-rad__head h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.1rem, 0.95rem + 0.6vw, 1.4rem); color: #fffbed; }
+.record-rad__sub { color: #c9c4ee; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-top: 4px; }
+.record-rad .tag--simulated { background: rgba(251, 191, 36, 0.18); color: #fbbf24; }
+.record-rad .tag--missing { background: rgba(255, 255, 255, 0.12); color: #e6e2ff; }
+.record-rad__figure { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.record-rad__value { display: flex; align-items: baseline; gap: 10px; }
+.record-rad__value b { font-size: clamp(2.6rem, 1.6rem + 3.6vw, 4.6rem); color: #fffbed; }
+.record-rad__unit { font-size: var(--step-lead); font-weight: 700; color: var(--rad); }
+.record-rad__pct { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; color: #c9c4ee; }
+.record-rad__pct b { font-size: var(--step-lead); font-weight: 800; color: var(--rad); letter-spacing: -0.02em; }
+.record-rad__track { height: 14px; border-radius: 999px; background: rgba(250, 204, 21, 0.16); overflow: hidden; }
+.record-rad__fill { display: block; height: 100%; border-radius: 999px; background: var(--rad); transform-origin: left; animation: screen-grow-x .9s cubic-bezier(.2, .8, .2, 1) .2s both; }
+.record-rad__scale { display: flex; justify-content: space-between; gap: 10px; margin-top: 6px; color: #c9c4ee; }
+.record-rad__note { display: flex; align-items: center; gap: 8px; color: #e6e2ff; font-weight: 600; }
+.record-rad__note-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rad); flex-shrink: 0; }
+.record-rad .record-details summary { color: #c9c4ee; }
+.record-rad .record-details summary:hover { color: #fffbed; }
+.record-rad .record-details p { color: #c9c4ee; }
+.record-details summary { cursor: pointer; font-weight: 600; color: var(--ink-2); width: fit-content; }
+.record-details summary:hover { color: var(--ink); }
+.record-details p { margin-top: 8px; color: var(--ink-2); }
+.health-record p { max-width: 60ch; }
+
+/* ---------- signal tile: the signal's own icon in its identity color ---------- */
+.signal-tile {
+  display: inline-grid; place-items: center; width: 50px; height: 50px; border-radius: 16px; flex-shrink: 0;
+  background: var(--tint, var(--surface-3)); color: #070742;
+}
+.signal-tile--rad { background: #050418; color: #facc15; outline: 2px solid #facc15; outline-offset: -2px; }
+
+/* ---------- telemetry panels ---------- */
+.telemetry { gap: 14px; }
+.telemetry__title { display: flex; flex-direction: column; gap: 4px; min-width: 0; padding-bottom: 4px; }
+.telemetry__title h2 { font-size: var(--step-lead); display: flex; align-items: center; gap: 10px; }
+.telemetry__icon { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; flex-shrink: 0; background: var(--surface-2); color: var(--accent-text); }
+.telemetry__icon--vitals { color: #ff4d7e; }
+.telemetry__icon--metabolism { color: #f472b6; }
+.telemetry__icon--exposure { background: #050418; color: #facc15; }
+.telemetry__icon--routine { color: #818cf8; }
+.telemetry__icon--mind { color: #a78bfa; }
+.telemetry__icon--spirit { color: #c084fc; }
+:root:has(> head > meta[name="color-scheme"][content="light"]) .telemetry__icon:not(.telemetry__icon--exposure) { background: var(--brand-night); }
+.telemetry__list { list-style: none; margin: 0 -10px; padding: 0; }
+.telemetry__list > li { container-type: inline-size; }
+.telemetry__list > li + li { margin-top: 6px; }
+
+.telemetry-row {
+  display: grid; align-items: center; column-gap: 14px; row-gap: 6px; padding: 14px 10px;
+  border-radius: var(--radius-sm); color: inherit; text-decoration: none; transition: background-color .15s, transform .15s;
+  grid-template-columns: 50px minmax(0, 1fr) auto;
+  grid-template-areas: "icon name value" "icon meta spark";
+}
+.telemetry-row:hover { background: var(--surface-2); }
+.telemetry-row:active { transform: scale(.985); }
+.telemetry-row .signal-tile { transition: transform .2s cubic-bezier(.2, 1.4, .4, 1); }
+.telemetry-row:hover .signal-tile { transform: scale(1.08) rotate(-4deg); }
+.telemetry-row__icon { grid-area: icon; align-self: start; }
+.telemetry-row__name { grid-area: name; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.telemetry-row__title { font-weight: 600; line-height: 1.25; }
+.telemetry-row__hint { line-height: 1.3; }
+.telemetry-row__hint--pair { display: flex; flex-wrap: wrap; gap: 0 12px; }
+.telemetry-row__value { grid-area: value; justify-self: end; text-align: right; white-space: nowrap; }
+.telemetry-row__value b { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; }
+.telemetry-row__unit { margin-left: 5px; font-size: var(--step-small); font-weight: 600; color: var(--ink-2); }
+.telemetry-row__spark { grid-area: spark; justify-self: end; display: flex; }
+.telemetry-row__meta { grid-area: meta; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; min-width: 0; }
+.telemetry-row__when { font-size: var(--step-small); }
+.telemetry-row__src { display: none; }
+.telemetry-row__go { display: none; color: var(--ink-2); transition: transform .15s; }
+
+.telemetry-cols { display: none; }
+
+/* narrow row (mosaic column, phone): name on its own line, then value + sparkline, then source */
+@container (max-width: 480px) {
+  .telemetry-row { grid-template-columns: 50px minmax(0, 1fr) auto; grid-template-areas: "icon name name" "icon value spark" "icon meta meta"; row-gap: 8px; }
+  .telemetry-row__value { justify-self: start; text-align: left; }
+}
+@container (max-width: 330px) {
+  .telemetry-row { column-gap: 12px; grid-template-columns: 44px minmax(0, 1fr); grid-template-areas: "icon name" "icon value" "icon spark" "icon meta"; }
+  .telemetry-row .signal-tile { width: 44px; height: 44px; border-radius: 14px; }
+  .telemetry-row__spark { justify-self: start; }
+}
+
+/* full-panel row: one line per indicator, columns aligned like telemetry */
+@container (min-width: 820px) {
+  .telemetry-row {
+    grid-template-columns: 50px minmax(0, 1.5fr) minmax(0, 0.8fr) 112px minmax(0, 1.35fr) 18px;
+    grid-template-areas: "icon name value spark meta go";
+  }
+  .telemetry-row { padding-block: 12px; }
+  .telemetry-row__icon { align-self: center; }
+  .telemetry-row__spark { justify-self: center; }
+  .telemetry-row__go { display: block; grid-area: go; }
+  .telemetry-row__src { display: inline; }
+  .telemetry-row__meta { flex-wrap: nowrap; }
+  .telemetry-row__when { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .telemetry-row:hover .telemetry-row__go { color: var(--ink); transform: translateX(3px); }
+}
+/* column header of the wide panel (the panel is the query container here) */
+.telemetry--wide { container-type: inline-size; }
+@container (min-width: 820px) {
+  .telemetry-cols {
+    display: grid; column-gap: 14px; padding: 0 0 4px; font-weight: 600;
+    grid-template-columns: 50px minmax(0, 1.5fr) minmax(0, 0.8fr) 112px minmax(0, 1.35fr) 18px;
+  }
+  .telemetry-cols > span:nth-child(3) { text-align: right; }
+  .telemetry-cols > span:nth-child(4) { text-align: center; }
+}
+
+/* ---------- mosaic: 3 equal columns, no gaps ---------- */
+.record-mosaic { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; align-items: stretch; }
+/* radiation and environment spans 2 columns and puts its 2 signals side by side: same height as the metabolism panel */
+.record-mosaic > .telemetry--exposure { grid-column: span 2; }
+.record-mosaic > .telemetry--exposure .telemetry__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 14px; }
+.record-mosaic > .telemetry--exposure .telemetry__list > li + li { margin-top: 0; }
+
+@media (max-width: 1080px) {
+  .record-top { grid-template-columns: 1fr; }
+  /* below 1080 px the columns would be cramped: one panel per row, sized to its content */
+  .record-mosaic { grid-template-columns: 1fr; }
+  .record-mosaic > .telemetry--exposure { grid-column: auto; }
+  .record-mosaic > .telemetry--exposure .telemetry__list { display: block; }
+  .record-mosaic > .telemetry--exposure .telemetry__list > li + li { margin-top: 6px; }
+}
+@media (max-width: 640px) {
+  .record-band { min-height: 300px; }
+  .record-band__body { grid-template-columns: auto minmax(0, 1fr); }
+  .record-avatar { width: 56px; height: 56px; font-size: 1.6rem; }
+  .record-band__support { grid-column: 1 / -1; width: 100%; }
+  .record-legend { gap: 8px 14px; }
+  .record-mosaic { gap: 20px; }
+  .record-rad__emblem { width: 60px; height: 60px; border-radius: 18px; }
+  .record-rad__emblem svg { width: 34px; height: 34px; }
+}

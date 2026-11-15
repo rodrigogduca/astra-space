@@ -1,7 +1,37 @@
-import credits from "../assets-credits.json";
+import { Camera, ExternalLink, FlaskConical, HardDrive, ShieldCheck } from "lucide-react";
+import credits from "../assets/photo-credits.json";
+import { AstraSymbol, AstraWordmark } from "./Logo";
+import { NAV } from "./TopBar";
+import { Icon } from "./Icon";
+import { useLang } from "../i18n/lang";
 
-// Créditos das fotos reais (RV-5). Todas da NASA, domínio público, via Wikimedia Commons.
-// Nenhuma foto mostra dado do tripulante: são o mundo em volta da missão.
+const T = {
+  pt: {
+    tagline: "Prontuário gamificado para a saúde do tripulante. NASA Space Apps 2026.",
+    shortcuts: "Atalhos",
+    demo: "Modo demo.",
+    demoText: "Dados de saúde simulados.",
+    notDevice: "Não é dispositivo médico nem faz diagnóstico.",
+    local: "Tudo fica salvo neste aparelho primeiro.",
+    credits: "Créditos das fotos e da marca",
+    source: "fonte",
+    brand: "Identidade visual, logotipo e mascote Catro: IDVS por Carlos, equipe Astra.",
+  },
+  en: {
+    tagline: "A gamified health record for crew wellbeing. NASA Space Apps 2026.",
+    shortcuts: "Shortcuts",
+    demo: "Demo mode.",
+    demoText: "Health data is simulated.",
+    notDevice: "Not a medical device and makes no diagnosis.",
+    local: "Everything is saved on this device first.",
+    credits: "Photo and brand credits",
+    source: "source",
+    brand: "Visual identity, logo and Catro mascot: IDVS by Carlos, Astra team.",
+  },
+};
+
+// Brand footer: logo, icon shortcuts, the demo notices and the photo credits (RV-5).
+// All photos are from NASA, public domain, via Wikimedia Commons: the world around the mission.
 
 type Credit = { file: string; title: string; creator?: string; license?: string; page?: string; credit?: string };
 
@@ -16,10 +46,50 @@ export const PHOTO = {
 
 export function Credits() {
   const list = (Array.isArray(credits) ? credits : Object.values(credits)) as Credit[];
+  const { lang, pick } = useLang();
+  const t = pick(T);
   return (
-    <footer className="credits">
-      <details>
-        <summary>Créditos das fotos</summary>
+    <footer className="footer">
+      <div className="footer__inner">
+        <div className="footer__brand">
+          <div className="row">
+            <AstraSymbol size={34} />
+            <AstraWordmark height={40} />
+          </div>
+          <p className="muted">{t.tagline}</p>
+        </div>
+
+        <nav className="footer__nav" aria-label={t.shortcuts}>
+          {NAV.map((n) => (
+            <a key={n.key} href={n.to}>
+              <Icon name={n.icon} size={18} />
+              {n[lang].label}
+            </a>
+          ))}
+        </nav>
+
+        <ul className="footer__facts">
+          <li>
+            <FlaskConical size={18} aria-hidden />
+            <span>
+              <b>{t.demo}</b> {t.demoText}
+            </span>
+          </li>
+          <li>
+            <ShieldCheck size={18} aria-hidden />
+            <span>{t.notDevice}</span>
+          </li>
+          <li>
+            <HardDrive size={18} aria-hidden />
+            <span>{t.local}</span>
+          </li>
+        </ul>
+      </div>
+
+      <details className="footer__credits">
+        <summary>
+          <Camera size={16} aria-hidden /> {t.credits}
+        </summary>
         <ul>
           {list.map((c, i) => (
             <li key={i}>
@@ -28,15 +98,15 @@ export function Credits() {
                 <>
                   {" "}
                   <a href={c.page} target="_blank" rel="noopener noreferrer">
-                    fonte
+                    {t.source} <ExternalLink size={12} aria-hidden />
                   </a>
                 </>
               )}
             </li>
           ))}
+          <li>{t.brand}</li>
         </ul>
       </details>
-      <p style={{ marginTop: 8 }}><b>Modo demo.</b> Astra é uma demonstração para o NASA Space Apps 2026. Não é dispositivo médico; os dados de saúde são simulados.</p>
     </footer>
   );
 }

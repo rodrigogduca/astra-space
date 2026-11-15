@@ -1,7 +1,7 @@
 import type { Observation } from "./types";
 
-// Regra descritiva da especificação (seção 14). Determinística: diz a direção entre
-// o primeiro e o último ponto válido. Nunca rotula como normal, perigoso ou piora clínica.
+// Descriptive rule from the specification (section 14). Deterministic: it states the direction between
+// the first and the last valid point. It never labels anything as normal, dangerous or clinical decline.
 
 export type Trend =
   | { state: "insufficient_data" }
@@ -21,7 +21,7 @@ export type Trend =
 export const TREND_RULE_VERSION = "trend-v1";
 
 export function describeTrend(points: Observation[]): Trend {
-  // Duplicatas do mesmo observationId contam uma vez (base §34: duplicidade).
+  // Duplicates of the same observationId count once (base §34: duplication).
   const unique = new Map<string, Observation>();
   for (const p of points) if (p.qualityState === "valid" && typeof p.value === "number") unique.set(p.observationId, p);
   const valid = [...unique.values()].sort((a, b) => Date.parse(a.observedAt) - Date.parse(b.observedAt));
@@ -53,8 +53,8 @@ export function withinWindow(points: Observation[], hours: number, now: number):
   });
 }
 
-// Regra anti-mistura na prática: compara só pontos da mesma origem do registro mais recente
-// e informa quantos ficaram de fora, em vez de misturar real com simulado.
+// No-mixing rule in practice: compares only points from the same origin as the latest record
+// and reports how many were left out, instead of mixing real and simulated data.
 export function trendForLatestOrigin(points: Observation[]): { trend: Trend; excluded: number; synthetic: boolean | null } {
   const valid = points.filter((p) => p.qualityState === "valid" && typeof p.value === "number");
   if (valid.length === 0) return { trend: { state: "insufficient_data" }, excluded: 0, synthetic: null };

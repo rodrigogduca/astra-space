@@ -1,0 +1,42 @@
+/* Three gratitudes (Front R-B): choices in a panel, the Glow planet beside it. */
+.gratitude__title { display: flex; align-items: flex-start; gap: 14px; }
+.gratitude__title .icon-tile { margin-top: 4px; }
+
+.gratitude__grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr); gap: clamp(24px, 3vw, 40px); align-items: center; }
+
+.gratitude__panel { gap: 22px; }
+.gratitude__say { display: flex; flex-direction: column; gap: 4px; }
+
+.gratitude__options, .gratitude__chosen { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.gratitude__options .chip { min-height: 44px; padding: 10px 16px; font-size: var(--step-body); }
+.gratitude__options .chip:disabled { opacity: .45; cursor: not-allowed; }
+.gratitude__opt { transition: background-color .15s, transform .12s; }
+.gratitude__opt:not(:disabled):active { transform: scale(.95); }
+.gratitude__opt.chip--on svg { animation: screen-pop .3s cubic-bezier(.2, 1.4, .4, 1); }
+.gratitude__xp { display: inline-flex; align-items: center; gap: 5px; align-self: center; font-weight: 800; background: var(--xp); color: var(--bg); border-radius: 999px; padding: 2px 10px; }
+.gratitude__chosen .chip { cursor: default; font-size: var(--step-body); min-height: 44px; padding: 10px 16px; }
+
+.gratitude__footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  margin-top: 6px; padding-top: 18px;
+}
+.gratitude__count { display: flex; align-items: center; gap: 10px; }
+.gratitude__dots { display: inline-flex; gap: 6px; }
+.gratitude__dots span { width: 12px; height: 12px; border-radius: 50%; background: var(--surface-3); transition: background-color .2s; }
+.gratitude__dots span.is-on { background: var(--spirit); animation: screen-pop .3s cubic-bezier(.2, 1.4, .4, 1); }
+
+.gratitude__planet { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+.gratitude__scene { position: relative; width: min(340px, 100%); display: grid; place-items: center; padding: 0 0 24px 40px; }
+.gratitude__scene .planet { width: min(280px, 100%); height: auto; }
+.gratitude__catro { position: absolute; left: 0; bottom: 0; }
+.gratitude__planet figcaption { display: flex; flex-direction: column; gap: 2px; }
+.gratitude__planet b { font-family: var(--font-display); font-weight: 600; font-size: var(--step-lead); color: var(--spirit); }
+
+@media (max-width: 860px) {
+  .gratitude__grid { grid-template-columns: 1fr; }
+  .gratitude__planet { order: -1; flex-direction: row; justify-content: center; text-align: left; gap: 16px; }
+  .gratitude__scene { width: 170px; padding: 0 0 10px 34px; }
+  .gratitude__scene .planet { width: 130px; }
+  .gratitude__catro { scale: .6; transform-origin: left bottom; }
+  .gratitude__planet b { font-size: 1.05rem; white-space: nowrap; }
+}

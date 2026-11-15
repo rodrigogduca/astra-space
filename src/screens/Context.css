@@ -1,0 +1,68 @@
+/* NASA/CSA context (REQ-7): band with the Cupola + editorial list of sources. */
+.ctx-band { min-height: 340px; }
+.ctx-band > img { object-position: center 40%; }
+.ctx-band__body { display: flex; flex-direction: column; gap: 10px; }
+.ctx-band__lead { color: var(--band-ink); opacity: .9; max-width: 56ch; }
+.ctx-notice {
+  display: flex; align-items: flex-start; gap: 10px; margin-top: 6px; max-width: 70ch;
+  background: color-mix(in srgb, var(--brand-night) 62%, transparent); color: var(--band-ink); border-radius: var(--radius-sm); padding: 12px 14px; font-size: var(--step-small);
+}
+.ctx-notice svg { color: var(--brand-cream); flex-shrink: 0; margin-top: 1px; }
+
+.ctx-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+/* titles and hazards with a colored icon */
+.ctx-h2 { display: flex; align-items: center; gap: 10px; }
+.ctx-h2__icon { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; flex-shrink: 0; background: var(--info); color: var(--bg); }
+.ctx-hz { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0; background: var(--tint); color: #070742; }
+.ctx-hz .icon { color: inherit; }
+.ctx-chip { padding-left: 8px; transition: background-color .15s, transform .12s; }
+.ctx-chip:active { transform: scale(.96); }
+.ctx-open { transition: background-color .15s, transform .12s; }
+.ctx-open:active { transform: scale(.97); }
+
+/* editorial list: metadata column + body, rows separated by a hairline */
+.ctx-list { list-style: none; margin: 0; padding: 0; }
+.ctx-list > li + li { margin-top: 6px; }
+.ctx-item { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 28px; padding: 26px 0; }
+.ctx-list > li:first-child .ctx-item { padding-top: 8px; }
+.ctx-list > li:last-child .ctx-item { padding-bottom: 4px; }
+
+.ctx-item__meta { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; color: var(--ink-2); }
+.ctx-inst { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; line-height: 1; color: var(--ink); }
+.ctx-inst--nasa { color: var(--info); }
+.ctx-inst--csa { color: var(--spirit); }
+.ctx-meta-line { font-weight: 600; }
+
+.ctx-item__body { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; min-width: 0; }
+.ctx-item__title { font-size: var(--step-lead); letter-spacing: -0.025em; line-height: 1.15; }
+.ctx-claim { max-width: 60ch; }
+.ctx p { max-width: 60ch; }
+
+.ctx-hazards { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.ctx-hazards li { display: inline-flex; align-items: center; gap: 6px; font-size: var(--step-small); font-weight: 600; color: var(--ink-2); }
+.ctx-hazards li.is-on { color: var(--ink); }
+
+/* item footer: action + limitation (opened on demand) */
+.ctx-item__foot { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 10px 18px; margin-top: 6px; width: 100%; }
+.ctx-limit { flex: 1 1 260px; min-width: 0; padding-top: 9px; }
+.ctx-limit summary { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-weight: 600; color: var(--ink-2); }
+.ctx-limit summary:hover { color: var(--ink); }
+.ctx-limit summary svg { color: var(--warn); }
+.ctx-limit p { margin-top: 8px; color: var(--ink); }
+.ctx-limit p.muted { color: var(--ink-2); margin-top: 4px; }
+
+.ctx-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.ctx-footer .btn--ghost { padding-inline: 10px; }
+
+@media (max-width: 720px) {
+  .ctx-band { min-height: 300px; }
+  /* on mobile the title comes first; institution and date move down to the supporting line (nothing above the title) */
+  .ctx-item { display: flex; flex-direction: column; gap: 10px; }
+  .ctx-item__body { display: contents; }
+  .ctx-item__title { order: -2; }
+  .ctx-item__meta { order: -1; }
+  .ctx-item__meta { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
+  .ctx-inst { font-size: 0.95rem; }
+  /* filters wrap onto lines: nothing scrolls sideways */
+  .ctx-filters { gap: 6px; }
+}

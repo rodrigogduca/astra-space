@@ -25,7 +25,7 @@ function obs(code: IndicatorCode, value: number | null, extra: Partial<Observati
 const opts = { profileId: "DEMO-01", generatedAt: AT };
 
 describe("toFhirBundle", () => {
-  it("gera um Bundle FHIR R4 collection válido", () => {
+  it("builds a valid FHIR R4 collection Bundle", () => {
     const b = toFhirBundle([obs("heart_rate", 70), obs("glucose", 100, { sourceRef: "cgm" })], opts);
     expect(b.resourceType).toBe("Bundle");
     expect(b.type).toBe("collection");
@@ -41,10 +41,10 @@ describe("toFhirBundle", () => {
     expect(e.resource.category[0].coding[0].code).toBe("vital-signs");
     expect(e.resource.valueQuantity).toEqual({ value: 70, unit: "bpm", system: "http://unitsofmeasure.org", code: "/min" });
     expect(e.resource.device?.display).toMatch(/Bio-Monitor/);
-    expect(b.entry[1].resource.device?.display).toMatch(/glicose/i);
+    expect(b.entry[1].resource.device?.display).toMatch(/glucose/i);
   });
 
-  it("usa os LOINC confirmados", () => {
+  it("uses the confirmed LOINC codes", () => {
     const cases: [IndicatorCode, string][] = [
       ["heart_rate", "8867-4"],
       ["bp_systolic", "8480-6"],
@@ -59,17 +59,19 @@ describe("toFhirBundle", () => {
     });
   });
 
-  it("indicadores sem LOINC confirmado usam o sistema local e o nome em text", () => {
-    const b = toFhirBundle([obs("hrv", 40), obs("radiation_dose", 0.5, { sourceRef: "dosimetro" })], opts);
+  it("indicators without a confirmed LOINC use the local system and the name in text", () => {
+    const b = toFhirBundle([obs("hrv", 40), obs("radiation_dose", 0.5, { sourceRef: "dosimeter" })], opts);
     for (const e of b.entry) {
       expect(e.resource.code.coding[0].system).toBe(ASTRA_INDICATOR_SYSTEM);
       expect(e.resource.code.coding.some((c) => c.system === LOINC)).toBe(false);
       expect(e.resource.code.text).toBe(indicator(e.resource.code.coding[0].code as IndicatorCode).name);
     }
     expect(b.entry[1].resource.valueQuantity?.code).toBe("mSv");
+    expect(b.entry[1].resource.code.text).toBe("Daily radiation dose");
+    expect(b.entry[1].resource.device?.display).toBe("Active personal dosimeter");
   });
 
-  it("escala 0–10 vira valueInteger, sem UCUM, e categoria survey", () => {
+  it("a 0–10 scale becomes valueInteger, without UCUM, in the survey category", () => {
     const b = toFhirBundle([obs("energy_self_report", 7, { origin: "manual", isSynthetic: false, sourceRef: "astra-checkin" })], opts);
     const r = b.entry[0].resource;
     expect(r.valueInteger).toBe(7);
@@ -78,22 +80,23 @@ describe("toFhirBundle", () => {
     expect(r.meta.tag).toEqual([{ system: "urn:astra:provenance", code: "MANUAL", display: "MANUAL" }]);
   });
 
-  it("valor null vira dataAbsentReason, sem valor", () => {
+  it("a null value becomes dataAbsentReason, with no value", () => {
     const r = toFhirBundle([obs("spo2", null)], opts).entry[0].resource;
     expect(r.status).toBe("cancelled");
     expect(r.dataAbsentReason?.coding[0].code).toBe("unknown");
+    expect(r.dataAbsentReason?.text).toBe("No value recorded");
     expect(r.valueQuantity).toBeUndefined();
     expect(r.valueInteger).toBeUndefined();
   });
 
-  it("todo recurso sintético leva a etiqueta SIMULATED", () => {
+  it("every synthetic resource carries the SIMULATED tag", () => {
     const b = toFhirBundle([obs("heart_rate", 70), obs("cabin_co2", 3, { sourceRef: "eclss" })], opts);
     for (const e of b.entry) {
-      expect(e.resource.meta.tag).toContainEqual({ system: "urn:astra:provenance", code: "SIMULATED", display: "SIMULADO" });
+      expect(e.resource.meta.tag).toContainEqual({ system: "urn:astra:provenance", code: "SIMULATED", display: "SIMULATED" });
     }
   });
 
-  it("exclui observações inválidas", () => {
+  it("excludes invalid observations", () => {
     const b = toFhirBundle([obs("heart_rate", 70), obs("heart_rate", 999, { qualityState: "invalid" })], opts);
     expect(b.entry).toHaveLength(1);
     expect(b.entry[0].resource.id).toBe("t-heart-rate-70");

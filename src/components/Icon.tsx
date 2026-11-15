@@ -82,7 +82,7 @@ const ICONS: Record<IconName, LucideIcon> = {
   user: UserRound,
 };
 
-// Ícone decorativo por padrão (aria-hidden); passe `label` quando o ícone for o único conteúdo do controle.
+// Decorative icon by default (aria-hidden); pass `label` when the icon is the only content of the control.
 export function Icon({ name, size = 20, label, className = "", strokeWidth = 2 }: { name: IconName; size?: number; label?: string; className?: string; strokeWidth?: number }) {
   const C = ICONS[name];
   return <C size={size} strokeWidth={strokeWidth} className={`icon ${className}`} aria-hidden={label ? undefined : true} aria-label={label} role={label ? "img" : undefined} />;

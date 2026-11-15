@@ -1,62 +1,77 @@
-import { describe, expect, it } from "vitest";
-import { INDICATORS, formatValue, indicator, rangePosition } from "./indicators";
+import { afterEach, describe, expect, it } from "vitest";
+import { INDICATORS, formatValue, indicator, rangePosition, setNumberLocale } from "./indicators";
 
-describe("catálogo de indicadores", () => {
-  it("códigos únicos", () => {
+describe("indicator catalog", () => {
+  it("unique codes", () => {
     const codes = INDICATORS.map((i) => i.code);
     expect(new Set(codes).size).toBe(codes.length);
   });
 
-  it("todo indicador com faixa tem fonte e rótulo não vazios", () => {
+  it("every indicator with a range has a non-empty source and label", () => {
     const withRange = INDICATORS.filter((i) => i.range);
     expect(withRange.length).toBeGreaterThan(0);
     for (const i of withRange) {
-      expect(i.range!.source.trim(), `${i.code} sem fonte`).not.toBe("");
-      expect(i.range!.label.trim(), `${i.code} sem rótulo`).not.toBe("");
-      expect(i.range!.min !== undefined || i.range!.max !== undefined, `${i.code} faixa sem limites`).toBe(true);
+      expect(i.range!.source.trim(), `${i.code} has no source`).not.toBe("");
+      expect(i.range!.label.trim(), `${i.code} has no label`).not.toBe("");
+      expect(i.range!.min !== undefined || i.range!.max !== undefined, `${i.code} range has no bounds`).toBe(true);
     }
   });
 
-  it("todo indicador tem unidade definida", () => {
+  it("every indicator has a unit", () => {
     for (const i of INDICATORS) expect(typeof i.unit).toBe("string");
   });
 });
 
 describe("rangePosition", () => {
   // heart_rate: 60–100 bpm
-  it("abaixo / dentro / acima da faixa", () => {
+  it("below / within / above the range", () => {
     const r = indicator("heart_rate").range!;
-    expect(rangePosition(r.min! - 1, "heart_rate")).toBe("abaixo");
-    expect(rangePosition(r.min!, "heart_rate")).toBe("dentro");
-    expect(rangePosition(r.max!, "heart_rate")).toBe("dentro");
-    expect(rangePosition(r.max! + 1, "heart_rate")).toBe("acima");
+    expect(rangePosition(r.min! - 1, "heart_rate")).toBe("below");
+    expect(rangePosition(r.min!, "heart_rate")).toBe("within");
+    expect(rangePosition(r.max!, "heart_rate")).toBe("within");
+    expect(rangePosition(r.max! + 1, "heart_rate")).toBe("above");
   });
 
-  it("null → sem_faixa (nunca vira 0 / abaixo)", () => {
-    expect(rangePosition(null, "heart_rate")).toBe("sem_faixa");
+  it("null → no_range (never becomes 0 / below)", () => {
+    expect(rangePosition(null, "heart_rate")).toBe("no_range");
   });
 
-  it("indicador sem faixa → sem_faixa", () => {
-    const sem = INDICATORS.find((i) => !i.range)!;
-    expect(sem).toBeDefined();
-    expect(rangePosition(42, sem.code)).toBe("sem_faixa");
+  it("indicator without a range → no_range", () => {
+    const none = INDICATORS.find((i) => !i.range)!;
+    expect(none).toBeDefined();
+    expect(rangePosition(42, none.code)).toBe("no_range");
   });
 });
 
 describe("formatValue", () => {
-  it("null → travessão", () => {
+  afterEach(() => setNumberLocale("en-US"));
+
+  it("null → em dash", () => {
     expect(formatValue(null, "sleep_duration")).toBe("—");
     expect(formatValue(null, "heart_rate")).toBe("—");
   });
 
-  it("0 continua 0 (não é tratado como ausente)", () => {
+  it("0 stays 0 (not treated as missing)", () => {
     expect(formatValue(0, "heart_rate")).toBe("0");
   });
 
-  it("respeita as casas decimais do catálogo", () => {
+  it("follows the catalog decimals", () => {
     const d = indicator("sleep_duration").decimals;
     const s = formatValue(7.5, "sleep_duration");
-    const decimals = s.includes(",") ? s.split(",")[1].length : 0;
+    const decimals = s.includes(".") ? s.split(".")[1].length : 0;
     expect(decimals).toBe(d);
+  });
+
+  it("uses the English format by default", () => {
+    expect(formatValue(7.5, "sleep_duration")).toBe("7.5");
+    expect(formatValue(0.52, "radiation_dose")).toBe("0.52");
+    expect(formatValue(1234, "exercise")).toBe("1,234");
+  });
+
+  it("uses the Portuguese format after setNumberLocale('pt-BR')", () => {
+    setNumberLocale("pt-BR");
+    expect(formatValue(7.5, "sleep_duration")).toBe("7,5");
+    expect(formatValue(0.52, "radiation_dose")).toBe("0,52");
+    expect(formatValue(1234, "exercise")).toBe("1.234");
   });
 });

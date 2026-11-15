@@ -1,7 +1,7 @@
-// Biblioteca de evidências NASA/CSA (seções 7, 8 e 24 da especificação).
-// São contexto citável: nunca preenchem um campo de saúde nem viram limiar.
+// NASA/CSA evidence library (specification sections 7, 8 and 24).
+// It is citable context: it never fills a health field and never becomes a threshold.
 
-export type Hazard = "radiacao" | "isolamento" | "distancia" | "gravidade" | "ambiente";
+export type Hazard = "radiation" | "isolation" | "distance" | "gravity" | "environment";
 
 export interface Reference {
   id: string;
@@ -11,17 +11,17 @@ export interface Reference {
   claim: string;
   limitation: string;
   hazards: Hazard[];
-  kind: "risco descrito" | "pesquisa em andamento" | "tecnologia em desenvolvimento" | "contexto de missão";
+  kind: "described risk" | "ongoing research" | "technology in development" | "mission context";
   url: string;
   pageDate: string;
 }
 
 export const HAZARD_LABEL: Record<Hazard, string> = {
-  radiacao: "Radiação",
-  isolamento: "Isolamento e confinamento",
-  distancia: "Distância da Terra",
-  gravidade: "Campos gravitacionais",
-  ambiente: "Ambiente hostil/fechado",
+  radiation: "Radiation",
+  isolation: "Isolation and confinement",
+  distance: "Distance from Earth",
+  gravity: "Gravity fields",
+  environment: "Hostile/closed environment",
 };
 
 export const REFERENCES: Reference[] = [
@@ -31,49 +31,48 @@ export const REFERENCES: Reference[] = [
     title: "5 Hazards of Human Spaceflight",
     section: "Human Research Program",
     claim:
-      "A NASA organiza cinco hazards do voo espacial humano: radiação, isolamento e confinamento, distância da Terra, campos gravitacionais e ambientes hostis ou fechados (temperatura, pressão, iluminação, ruído, micróbios).",
-    limitation: "Descreve categorias. Não traz leituras individuais, limites ou limiares seguros.",
-    hazards: ["radiacao", "isolamento", "distancia", "gravidade", "ambiente"],
-    kind: "risco descrito",
+      "NASA groups the hazards of human spaceflight into five: radiation, isolation and confinement, distance from Earth, gravity fields, and hostile or closed environments (temperature, pressure, lighting, noise, microbes).",
+    limitation: "Describes categories. It gives no individual readings, limits or safe thresholds.",
+    hazards: ["radiation", "isolation", "distance", "gravity", "environment"],
+    kind: "described risk",
     url: "https://www.nasa.gov/hrp/hazards/",
-    pageDate: "atualizada em 2026-06-12",
+    pageDate: "updated 2026-06-12",
   },
   {
     id: "nasa-risks",
     institution: "NASA",
     title: "Risks of Human Spaceflight",
-    section: "Sono, cardiovascular, imunidade, vestibular, radiação, EVA",
+    section: "Sleep, cardiovascular, immunity, vestibular, radiation, EVA",
     claim:
-      "Sono inadequado e horários irregulares aparecem como fatores que podem afetar saúde e segurança. A página também descreve adaptações cardiovasculares, resposta imune alterada, efeitos sensório-motores e risco de câncer induzido por radiação.",
-    limitation: "“Risco descrito” não é resultado observado em você. Não há escala numérica nem diagnóstico.",
-    hazards: ["radiacao", "gravidade", "isolamento"],
-    kind: "risco descrito",
+      "Inadequate sleep and irregular schedules appear as factors that can affect health and safety. The page also describes cardiovascular adaptations, altered immune response, sensorimotor effects and radiation-induced cancer risk.",
+    limitation: "A “described risk” is not a result observed in you. There is no numeric scale and no diagnosis.",
+    hazards: ["radiation", "gravity", "isolation"],
+    kind: "described risk",
     url: "https://www.nasa.gov/hrp/risks/",
-    pageDate: "atualizada em 2026-07-21",
+    pageDate: "updated 2026-07-21",
   },
   {
     id: "nasa-ongoing",
     institution: "NASA",
     title: "Ongoing HRP Research in Space",
-    section: "ARCHeR (Artemis II), Immune Biomarkers e outros",
+    section: "ARCHeR (Artemis II), Immune Biomarkers and others",
     claim:
-      "O ARCHeR, na Artemis II, estuda bem-estar, atividade e padrões de sono. Outros projetos analisam sangue e saliva, alterações cérebro/olhos e transições de gravidade.",
-    limitation: "É agenda de pesquisa. O Astra não importa resultados desses estudos nem está ligado a eles.",
-    hazards: ["isolamento", "gravidade"],
-    kind: "pesquisa em andamento",
+      "ARCHeR, on Artemis II, studies well-being, activity and sleep patterns. Other projects analyze blood and saliva, brain/eye changes and gravity transitions.",
+    limitation: "It is a research agenda. Astra does not import results from these studies and is not connected to them.",
+    hazards: ["isolation", "gravity"],
+    kind: "ongoing research",
     url: "https://www.nasa.gov/hrp/ongoing-hrp-research/",
-    pageDate: "atualizada em 2026-08-18",
+    pageDate: "updated 2026-08-18",
   },
   {
     id: "csa-radiation",
     institution: "CSA",
     title: "Monitoring radiation for astronaut health",
     section: "Crew Active Neutron Spectrometer (CANS)",
-    claim:
-      "A Agência Espacial Canadense descreve o CANS, instrumento compacto em desenvolvimento para medir exposição a nêutrons no espaço.",
-    limitation: "O CANS não está conectado ao Astra. A dose exibida na demo é simulada.",
-    hazards: ["radiacao"],
-    kind: "tecnologia em desenvolvimento",
+    claim: "The Canadian Space Agency describes CANS, a compact instrument in development to measure neutron exposure in space.",
+    limitation: "CANS is not connected to Astra. The dose shown in the demo is simulated.",
+    hazards: ["radiation"],
+    kind: "technology in development",
     url: "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp",
     pageDate: "2026-02-26",
   },
@@ -81,14 +80,13 @@ export const REFERENCES: Reference[] = [
     id: "csa-science",
     institution: "CSA",
     title: "Why do we conduct science experiments in space?",
-    section: "Missões de longa duração",
-    claim:
-      "Missões mais longas envolvem gravidade alterada, radiação, isolamento, atraso de comunicação e mais autonomia em relação à Terra.",
-    limitation: "Contexto qualitativo. Não calcula dano nem prontidão.",
-    hazards: ["gravidade", "radiacao", "isolamento", "distancia"],
-    kind: "contexto de missão",
+    section: "Long-duration missions",
+    claim: "Longer missions involve altered gravity, radiation, isolation, communication delay and more autonomy from Earth.",
+    limitation: "Qualitative context. It does not compute harm or readiness.",
+    hazards: ["gravity", "radiation", "isolation", "distance"],
+    kind: "mission context",
     url: "https://www.asc-csa.gc.ca/eng/iss/science/why-do-we-conduct-science-experiments-in-space.asp",
-    pageDate: "modificada em 2025-10-28",
+    pageDate: "modified 2025-10-28",
   },
 ];
 

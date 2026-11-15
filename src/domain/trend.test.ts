@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { describeTrend, trendForLatestOrigin, withinWindow } from "./trend";
 import type { Observation } from "./types";
 
-// Testes da regra de tendência (base §14 e §34, REQ-2.2, 2.3, 10.5).
+// Tests for the trend rule (base §14 and §34, REQ-2.2, 2.3, 10.5).
 
 let seq = 0;
 function pt(value: number | null, observedAt: string, extra: Partial<Observation> = {}): Observation {
@@ -28,7 +28,7 @@ const T3 = "2026-11-12T08:00:00.000Z";
 const T4 = "2026-11-13T08:00:00.000Z";
 
 describe("describeTrend", () => {
-  it("subida: direction up e delta positivo", () => {
+  it("rise: direction up and positive delta", () => {
     const r = describeTrend([pt(5, T1), pt(6, T2), pt(7.5, T3)]);
     expect(r.state).toBe("descriptive_only");
     if (r.state !== "descriptive_only") return;
@@ -38,23 +38,23 @@ describe("describeTrend", () => {
     expect(r.points).toBe(3);
   });
 
-  it("descida: direction down e delta negativo", () => {
+  it("decline: direction down and negative delta", () => {
     const r = describeTrend([pt(7.5, T1), pt(6, T2), pt(5, T3)]);
     expect(r).toMatchObject({ state: "descriptive_only", direction: "down" });
     if (r.state === "descriptive_only") expect(r.delta).toBeCloseTo(-2.5);
   });
 
-  it("igualdade: direction unchanged e delta 0 (só primeiro x último)", () => {
+  it("equality: direction unchanged and delta 0 (first vs last only)", () => {
     const r = describeTrend([pt(7, T1), pt(3, T2), pt(7, T3)]);
     expect(r).toMatchObject({ state: "descriptive_only", direction: "unchanged", delta: 0 });
   });
 
-  it("menos de 2 pontos: insufficient_data", () => {
+  it("fewer than 2 points: insufficient_data", () => {
     expect(describeTrend([])).toEqual({ state: "insufficient_data" });
     expect(describeTrend([pt(7, T1)])).toEqual({ state: "insufficient_data" });
   });
 
-  it.each(["invalid", "missing", "unverified"] as const)("ignora pontos com qualityState %s", (q) => {
+  it.each(["invalid", "missing", "unverified"] as const)("ignores points with qualityState %s", (q) => {
     const a = pt(7, T1);
     const bad = pt(1, T2, { qualityState: q });
     const b = pt(8, T3);
@@ -64,23 +64,23 @@ describe("describeTrend", () => {
     expect(r.points).toBe(2);
     expect(r.delta).toBe(1);
     expect(r.inputIds).not.toContain(bad.observationId);
-    // só um válido + um ruim → insuficiente
+    // only one valid + one bad → insufficient
     expect(describeTrend([a, pt(1, T2, { qualityState: q })])).toEqual({ state: "insufficient_data" });
   });
 
-  it("valor null é ignorado e nunca vira 0", () => {
-    const nulo = pt(null, T1); // seria o primeiro ponto; se virasse 0, o delta seria 6
-    const r = describeTrend([nulo, pt(7, T2), pt(6, T3)]);
+  it("a null value is ignored and never becomes 0", () => {
+    const nullPoint = pt(null, T1); // would be the first point; if it became 0, the delta would be 6
+    const r = describeTrend([nullPoint, pt(7, T2), pt(6, T3)]);
     expect(r.state).toBe("descriptive_only");
     if (r.state !== "descriptive_only") return;
     expect(r.delta).toBe(-1);
     expect(r.direction).toBe("down");
     expect(r.points).toBe(2);
-    expect(r.inputIds).not.toContain(nulo.observationId);
+    expect(r.inputIds).not.toContain(nullPoint.observationId);
     expect(describeTrend([pt(null, T1), pt(5, T2)])).toEqual({ state: "insufficient_data" });
   });
 
-  it("ordena por timestamp quando a entrada vem fora de ordem", () => {
+  it("sorts by timestamp when the input is out of order", () => {
     const first = pt(7.5, T1);
     const mid = pt(6, T2);
     const last = pt(5, T3);
@@ -93,17 +93,17 @@ describe("describeTrend", () => {
     expect(r.inputIds).toEqual([first.observationId, last.observationId]);
   });
 
-  it("mistura sintético + manual: mixed_origins_blocked", () => {
+  it("synthetic + manual mix: mixed_origins_blocked", () => {
     const r = describeTrend([pt(7, T1), pt(6, T2, { isSynthetic: false, origin: "manual" })]);
     expect(r).toEqual({ state: "mixed_origins_blocked" });
   });
 
-  it("mistura com ponto não sintético inválido não bloqueia (inválido é ignorado antes)", () => {
+  it("a mix with an invalid non-synthetic point does not block (invalid is ignored first)", () => {
     const r = describeTrend([pt(7, T1), pt(6, T2), pt(1, T3, { isSynthetic: false, qualityState: "invalid" })]);
     expect(r.state).toBe("descriptive_only");
   });
 
-  it("inputIds são o primeiro e o último ponto válidos; isSynthetic reflete a origem", () => {
+  it("inputIds are the first and last valid points; isSynthetic reflects the origin", () => {
     const a = pt(7, T1);
     const b = pt(6, T2);
     const c = pt(5, T3);
@@ -113,19 +113,19 @@ describe("describeTrend", () => {
     expect(m).toMatchObject({ state: "descriptive_only", isSynthetic: false });
   });
 
-  // Base §34 cita "duplicidade". A regra atual não deduplica por observationId:
-  // o mesmo registro repetido conta como 2 pontos e gera tendência "unchanged"
-  // em vez de insufficient_data. Achado para o orquestrador (trend.ts:24-27).
-  it("duplicidade: o mesmo observationId repetido conta uma vez só", () => {
+  // Base §34 mentions "duplication". Without deduplication by observationId,
+  // the same record repeated would count as 2 points and produce an "unchanged" trend
+  // instead of insufficient_data. This test locks the deduplication in describeTrend.
+  it("duplication: the same observationId repeated counts only once", () => {
     const a = pt(7, T1);
     expect(describeTrend([a, { ...a }])).toEqual({ state: "insufficient_data" });
   });
 });
 
 describe("trendForLatestOrigin", () => {
-  it("filtra pela origem do último ponto e conta excluded", () => {
+  it("filters by the origin of the latest point and counts excluded", () => {
     const pts = [
-      pt(7, T1, { isSynthetic: false, origin: "manual" }), // excluído
+      pt(7, T1, { isSynthetic: false, origin: "manual" }), // excluded
       pt(7.5, T2),
       pt(6, T3),
       pt(5, T4),
@@ -136,7 +136,7 @@ describe("trendForLatestOrigin", () => {
     expect(r.trend).toMatchObject({ state: "descriptive_only", direction: "down", points: 3 });
   });
 
-  it("último ponto manual: compara só os manuais", () => {
+  it("latest point is manual: compares only the manual ones", () => {
     const pts = [
       pt(7, T1),
       pt(6, T2, { isSynthetic: false, origin: "manual" }),
@@ -149,7 +149,7 @@ describe("trendForLatestOrigin", () => {
     expect(r.trend).toMatchObject({ state: "descriptive_only", direction: "up", delta: 1, isSynthetic: false });
   });
 
-  it("acha o último ponto mesmo fora de ordem", () => {
+  it("finds the latest point even out of order", () => {
     const pts = [pt(5, T4, { isSynthetic: false, origin: "manual" }), pt(7, T1), pt(6, T2)];
     const r = trendForLatestOrigin(pts);
     expect(r.synthetic).toBe(false);
@@ -157,13 +157,13 @@ describe("trendForLatestOrigin", () => {
     expect(r.trend).toEqual({ state: "insufficient_data" });
   });
 
-  it("ignora inválidos e null; sem válidos → insufficient_data, excluded 0, synthetic null", () => {
+  it("ignores invalid and null; no valid points → insufficient_data, excluded 0, synthetic null", () => {
     expect(trendForLatestOrigin([])).toEqual({ trend: { state: "insufficient_data" }, excluded: 0, synthetic: null });
     const r = trendForLatestOrigin([pt(null, T1), pt(5, T2, { qualityState: "invalid" })]);
     expect(r).toEqual({ trend: { state: "insufficient_data" }, excluded: 0, synthetic: null });
   });
 
-  it("um ponto inválido de outra origem não conta como excluded", () => {
+  it("an invalid point from another origin does not count as excluded", () => {
     const r = trendForLatestOrigin([pt(7, T1), pt(6, T2), pt(1, T3, { isSynthetic: false, qualityState: "invalid" })]);
     expect(r.excluded).toBe(0);
     expect(r.synthetic).toBe(true);
@@ -172,17 +172,17 @@ describe("trendForLatestOrigin", () => {
 
 describe("withinWindow", () => {
   const now = Date.parse("2026-11-14T08:00:00.000Z");
-  it("mantém só pontos dentro de [now - horas, now]", () => {
-    const dentro = pt(7, "2026-11-13T09:00:00.000Z");
-    const borda = pt(7, "2026-11-13T08:00:00.000Z"); // exatamente 24 h antes
-    const agora = pt(7, "2026-11-14T08:00:00.000Z");
-    const fora = pt(7, "2026-11-13T07:59:59.000Z");
-    const futuro = pt(7, "2026-11-14T08:00:01.000Z");
-    const r = withinWindow([dentro, borda, agora, fora, futuro], 24, now);
-    expect(r.map((p) => p.observationId)).toEqual([dentro.observationId, borda.observationId, agora.observationId]);
+  it("keeps only points within [now - hours, now]", () => {
+    const inside = pt(7, "2026-11-13T09:00:00.000Z");
+    const edge = pt(7, "2026-11-13T08:00:00.000Z"); // exactly 24 h before
+    const atNow = pt(7, "2026-11-14T08:00:00.000Z");
+    const outside = pt(7, "2026-11-13T07:59:59.000Z");
+    const future = pt(7, "2026-11-14T08:00:01.000Z");
+    const r = withinWindow([inside, edge, atNow, outside, future], 24, now);
+    expect(r.map((p) => p.observationId)).toEqual([inside.observationId, edge.observationId, atNow.observationId]);
   });
 
-  it("lista vazia → vazia", () => {
+  it("empty list → empty", () => {
     expect(withinWindow([], 72, now)).toEqual([]);
   });
 });

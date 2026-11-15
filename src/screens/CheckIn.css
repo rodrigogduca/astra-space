@@ -1,38 +1,42 @@
-/* Check-in (REQ-5): um painel central, dois passos. */
+/* Check-in (REQ-5): one central panel, two steps. */
 .ci { max-width: 720px; margin: 0 auto; width: 100%; }
 .ci-panel { gap: 26px; }
 
-/* cabeçalho: indicador de passo + título */
+/* header: step indicator + title */
 .ci-head { display: flex; flex-direction: column; gap: 10px; }
 .ci-head__title { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .ci-reward {
   display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: var(--step-small);
-  background: var(--surface-2); color: var(--accent-text); padding: 6px 12px; border-radius: 999px;
+  background: var(--xp); color: var(--bg); padding: 6px 12px; border-radius: 999px;
 }
+/* field tile: the signal icon in its identity color */
+.ci-tile { background: var(--tint); color: #070742; width: 46px; height: 46px; border-radius: 15px; }
+/* fields come in one after another */
+.ci-field { animation: screen-rise .42s cubic-bezier(.2, .8, .2, 1) both; }
+.ci-field:nth-child(2) { animation-delay: .05s; }
+.ci-field:nth-child(3) { animation-delay: .1s; }
+.ci-field:nth-child(4) { animation-delay: .15s; }
+.ci-field:nth-child(n + 5) { animation-delay: .2s; }
 
-/* progresso: barra curta (não é fio decorativo: mede o passo) + texto */
+/* progress: short bar (not a decorative line: it measures the step) + text */
 .ci-progress { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; color: var(--ink-2); font-weight: 600; }
 .ci-progress__bar { display: inline-block; width: 72px; height: 6px; border-radius: 999px; background: var(--track); overflow: hidden; }
 .ci-progress__bar > span { display: block; height: 100%; border-radius: 999px; background: var(--accent); }
 .ci p { max-width: 60ch; }
 
-/* Astrido falando */
-.ci-speech { display: flex; align-items: center; gap: 14px; }
-.ci-speech__bubble {
-  position: relative; background: var(--surface-2); border-radius: 18px; padding: 14px 18px; font-weight: 600; flex: 1;
-}
-.ci-speech__bubble::before {
-  content: ""; position: absolute; left: -7px; top: 50%; width: 16px; height: 16px; background: var(--surface-2);
-  transform: translateY(-50%) rotate(45deg); border-radius: 3px;
-}
+/* Catro speaking: brand cream bubble (global .speech class) */
+.ci-speech { align-items: flex-end; gap: 12px; margin-block: -4px; }
+.ci-speech .catro { margin-bottom: -6px; }
+.ci-speech__bubble { flex: 1; margin-bottom: 30px; font-weight: 500; }
+.ci-speech__bubble b { color: var(--brand-violet); font-weight: 700; }
 
 .ci-already {
   display: flex; align-items: flex-start; gap: 10px; background: var(--surface-2); border-radius: var(--radius-sm);
   padding: 12px 14px; font-weight: 600;
 }
-.ci-already svg { color: var(--corpo); flex-shrink: 0; margin-top: 1px; }
+.ci-already svg { color: var(--ok); flex-shrink: 0; margin-top: 1px; }
 
-/* campos: separados por linha fina, sem caixa em volta */
+/* fields: separated by a thin line, no box around them */
 .ci-fields { display: flex; flex-direction: column; }
 .ci-field { margin: 0; padding: 22px 0; border: 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
 .ci-field + .ci-field { margin-top: 6px; }
@@ -50,7 +54,7 @@
 }
 .ci-scale__btn:hover { background: var(--surface-3); }
 .ci-scale__btn:active { transform: scale(0.94); }
-.ci-scale__btn.is-on { background: var(--accent); color: var(--accent-ink); }
+.ci-scale__btn.is-on { background: var(--accent); color: var(--accent-ink); animation: screen-pop .3s cubic-bezier(.2, 1.4, .4, 1); }
 .ci-field.is-skipped .ci-scale__btn { opacity: .45; }
 .ci-scale__ends { display: flex; justify-content: space-between; gap: 12px; color: var(--ink-2); font-weight: 600; }
 .ci-scale__ends span { display: inline-flex; align-items: center; gap: 6px; }
@@ -59,7 +63,7 @@
 .ci-skip .btn--ghost { color: var(--ink-2); }
 .ci-skip .btn--ghost:hover { color: var(--ink); }
 
-/* sono: − e + ladeando a barra de 0 a 14 h; o valor fica na linha do título */
+/* sleep: − and + flanking the 0 to 14 h bar; the value sits on the title line */
 .ci-stepper { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 16px; }
 .ci-stepper__btn {
   display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; border: 0;
@@ -71,14 +75,15 @@
 .ci-stepper__track { display: block; height: 12px; border-radius: 999px; background: var(--track); overflow: hidden; }
 .ci-stepper__track > span { display: block; height: 100%; border-radius: 999px; background: var(--accent); transition: width .2s ease; }
 
-/* diferente do habitual: lista de opções, ícone à esquerda, apoio alinhado à direita */
+/* different from usual: list of options, icon on the left, help text aligned right */
 .ci-options { display: flex; flex-direction: column; gap: 6px; }
 .ci-option {
   display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; align-items: center; gap: 14px; text-align: left; border: 0;
   background: var(--surface-2); color: var(--ink); border-radius: var(--radius-sm); padding: 12px 16px; min-height: 52px;
-  cursor: pointer; transition: background-color .15s;
+  cursor: pointer; transition: background-color .15s, transform .12s;
 }
 .ci-option:hover { background: var(--surface-3); }
+.ci-option:active { transform: scale(.985); }
 .ci-option svg { color: var(--ink-2); }
 .ci-option b { font-weight: 800; line-height: 1.25; }
 .ci-option__help { color: var(--ink-2); text-align: right; }
@@ -92,10 +97,10 @@
 .ci-footer p { flex: 1 1 220px; }
 .ci-footer .btn { min-width: 180px; }
 
-/* revisão: tabela limpa */
+/* review: clean table */
 .ci-table-wrap { overflow-x: auto; margin: 0 -4px; }
 .ci-table { width: 100%; border-collapse: collapse; font-size: var(--step-small); }
-.ci-table th, .ci-table td { text-align: left; padding: 12px 8px; border-bottom: 1px solid var(--surface-3); white-space: nowrap; vertical-align: middle; } /* taste-skill-ignore: linhas de tabela real */
+.ci-table th, .ci-table td { text-align: left; padding: 12px 8px; border-bottom: 1px solid var(--surface-3); white-space: nowrap; vertical-align: middle; } /* taste-skill-ignore: real table rows */
 .ci-table thead th { color: var(--ink-2); font-weight: 600; padding-top: 0; }
 .ci-table tbody tr:last-child th, .ci-table tbody tr:last-child td { border-bottom: 0; }
 .ci-table tbody th { font-weight: 600; }
@@ -111,18 +116,20 @@
 .ci-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
 .ci-actions .btn { flex: 0 1 200px; }
 
-/* sucesso */
-.ci-done { align-items: center; text-align: center; gap: 16px; padding-block: 36px; }
+/* success */
+.ci-done { align-items: center; text-align: center; gap: 16px; padding-block: 40px; }
+.ci-done .catro { margin-bottom: 4px; }
+.ci-xp .display { font-size: 1.15em; }
 .ci-done__text { max-width: 46ch; }
 .ci-done .ci-actions { justify-content: center; width: 100%; }
 .ci-xp {
-  display: inline-flex; align-items: center; gap: 8px; font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em;
-  background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 8px 22px;
+  display: inline-flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 700;
+  background: var(--xp); color: var(--bg); border-radius: 999px; padding: 8px 22px;
   animation: ci-pop .5s cubic-bezier(.2, 1.6, .4, 1);
 }
 @keyframes ci-pop { from { transform: scale(.4); opacity: 0; } }
 
-/* celular: escala em 2 linhas com alvos ≥ 44 px */
+/* phone: scale in 2 rows with targets ≥ 44 px */
 @media (max-width: 560px) {
   .ci-scale { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
   .ci-scale__btn { min-height: 46px; }
@@ -132,4 +139,9 @@
   .ci-table th, .ci-table td { white-space: normal; padding-inline: 6px; }
   .ci-actions .btn, .ci-footer .btn { flex: 1 1 100%; }
   .ci-skip { justify-content: flex-start; }
+  /* long title + action: the action wraps to the next line instead of squeezing the text */
+  .ci-field__head { flex-wrap: wrap; row-gap: 8px; }
+  .ci-field__legend { flex: 1 1 140px; }
+  .ci-field__head > .ci-field__value { margin-left: auto; }
+  .ci-field__head > .btn { margin-left: 58px; }
 }

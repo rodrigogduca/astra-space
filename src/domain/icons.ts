@@ -1,5 +1,5 @@
-// Nomes de ícone usados pelo domínio (RV-4: nenhum emoji na interface).
-// O componente `components/Icon.tsx` liga cada nome a um ícone da biblioteca lucide.
+// Icon names used by the domain (RV-4: no emoji in the UI).
+// The `components/Icon.tsx` component maps each name to an icon from the lucide library.
 export type IconName =
   | "heart-pulse"
   | "activity"

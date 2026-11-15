@@ -1,18 +1,22 @@
 import type { ReactNode } from "react";
+import { currentLang, locale } from "../i18n/lang";
 import type { Observation } from "../domain/types";
 import { indicator, rangePosition, type IndicatorDef } from "../domain/indicators";
 
-// Selos permanentes da especificação (seção 7): origem sempre visível.
+// Permanent badges from the specification (section 7): origin always visible.
 export function OriginTag({ o }: { o?: Observation }) {
-  if (!o) return <span className="tag tag--missing">Não coletado</span>;
-  if (o.value === null) return <span className="tag tag--missing">Ausente</span>;
-  if (o.isSynthetic) return <span className="tag tag--sim">Simulado</span>;
-  if (o.origin === "authorized_external") return <span className="tag tag--ext">Externo</span>;
-  return <span className="tag tag--manual">Manual</span>;
+  const en = currentLang() === "en";
+  if (!o) return <span className="tag tag--missing">{en ? "Not collected" : "Não coletado"}</span>;
+  if (o.value === null) return <span className="tag tag--missing">{en ? "Missing" : "Ausente"}</span>;
+  if (o.isSynthetic) return <span className="tag tag--simulated">{en ? "Simulated" : "Simulado"}</span>;
+  if (o.origin === "authorized_external") return <span className="tag tag--ext">{en ? "External" : "Externo"}</span>;
+  return <span className="tag tag--manual">Manual</span>; /* same in both languages */
 }
 
-export function KindTag({ kind }: { kind: "fato" | "hipotese" | "simulado" | "interpretacao" }) {
-  const label = { fato: "Fato da fonte", hipotese: "Hipótese Astra", simulado: "Dado simulado", interpretacao: "Interpretação do sistema" }[kind];
+export function KindTag({ kind }: { kind: "fact" | "hypothesis" | "simulated" | "interpretation" }) {
+  const label = (currentLang() === "en"
+    ? { fact: "Source fact", hypothesis: "Astra hypothesis", simulated: "Simulated data", interpretation: "System interpretation" }
+    : { fact: "Fato da fonte", hypothesis: "Hipótese Astra", simulated: "Dado simulado", interpretation: "Interpretação do sistema" })[kind];
   return <span className={`tag tag--${kind}`}>{label}</span>;
 }
 
@@ -67,26 +71,31 @@ export function Sparkline({ points, width = 120, height = 36, color = "var(--acc
   );
 }
 
-// Posição do valor na faixa de referência geral. Cores neutras: não é semáforo de risco.
+// Where the value sits in the general reference range. Neutral colors: this is not a risk traffic light.
 export function RangeHint({ value, def }: { value: number | null; def: IndicatorDef }) {
   const pos = rangePosition(value, def.code);
-  if (pos === "sem_faixa") return def.range ? null : <span className="hint">sem faixa geral</span>;
-  const text = { dentro: "na faixa de referência", abaixo: "abaixo da faixa de referência", acima: "acima da faixa de referência" }[pos];
-  return <span className={`hint hint--${pos}`}>{def.range!.kind === "referencia_geral" ? text : text.replace("faixa de referência", "meta")}</span>;
+  if (pos === "no_range") return def.range ? null : <span className="hint">{currentLang() === "en" ? "no general range" : "sem faixa geral"}</span>;
+  const en = currentLang() === "en";
+  const goal = def.range!.kind !== "general_reference";
+  const text = en
+    ? { within: goal ? "goal reached" : "within reference range", below: goal ? "below goal" : "below reference range", above: goal ? "above goal" : "above reference range" }[pos]
+    : { within: goal ? "na meta" : "na faixa de referência", below: goal ? "abaixo da meta" : "abaixo da faixa de referência", above: goal ? "acima da meta" : "acima da faixa de referência" }[pos];
+  return <span className={`hint hint--${pos}`}>{text}</span>;
 }
 
 export function relTime(iso: string) {
+  const en = currentLang() === "en";
   const diff = Date.now() - Date.parse(iso);
   const m = Math.round(diff / 60_000);
-  if (m < 1) return "agora";
-  if (m < 60) return `há ${m} min`;
+  if (m < 1) return en ? "now" : "agora";
+  if (m < 60) return en ? `${m} min ago` : `há ${m} min`;
   const h = Math.round(m / 60);
-  if (h < 24) return `há ${h} h`;
-  return `há ${Math.round(h / 24)} d`;
+  if (h < 24) return en ? `${h} h ago` : `há ${h} h`;
+  return en ? `${Math.round(h / 24)} d ago` : `há ${Math.round(h / 24)} d`;
 }
 
 export function fmtDateTime(iso: string) {
-  return new Date(iso).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+  return new Date(iso).toLocaleString(locale(), { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
 }
 
 export function unitLabel(code: Observation["indicatorCode"]) {

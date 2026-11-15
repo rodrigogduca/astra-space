@@ -1,10 +1,10 @@
-// Contrato de dados da especificação (seção 13), estendido para os sinais do prontuário.
+// Data contract from the specification (section 13), extended for the health record signals.
 
 export type DataOrigin = "manual" | "synthetic" | "authorized_external";
 export type QualityState = "valid" | "missing" | "invalid" | "unverified";
 export type SyncState = "local_only" | "pending" | "ready" | "synced" | "failed";
 
-export type Pillar = "corpo" | "mente" | "espirito";
+export type Pillar = "body" | "mind" | "spirit";
 
 export type IndicatorCode =
   | "heart_rate"
@@ -29,9 +29,9 @@ export type IndicatorCode =
 
 export interface Observation {
   observationId: string;
-  profileId: string; // id de demo; não é identidade real
+  profileId: string; // demo id; not a real identity
   indicatorCode: IndicatorCode;
-  value: number | null; // null = ausente; nunca vira 0
+  value: number | null; // null = missing; never becomes 0
   unit: string | null;
   observedAt: string; // ISO-8601
   origin: DataOrigin;
@@ -47,7 +47,8 @@ export interface SyncEvent {
   eventId: string;
   idempotencyKey: string;
   type: SyncEventType;
-  label: string;
+  label: string; // stored label (history); the UI builds the label in the current language from type + missionId
+  missionId?: string;
   createdAt: string;
   state: SyncState;
   attempts: number;

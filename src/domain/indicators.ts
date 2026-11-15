@@ -1,17 +1,17 @@
 import type { IndicatorCode, Pillar } from "./types";
 import type { IconName } from "./icons";
 
-// Faixas de referência gerais para adultos na Terra. Servem para localizar o valor,
-// não para diagnosticar: a interpretação é da equipe médica da missão.
+// General reference ranges for adults on Earth. They locate the value,
+// they do not diagnose: interpretation belongs to the mission medical team.
 export interface ReferenceRange {
   min?: number;
   max?: number;
   label: string;
   source: string;
-  kind: "referencia_geral" | "meta_demo" | "limite_carreira";
+  kind: "general_reference" | "demo_goal" | "career_limit";
 }
 
-export type Group = "vitais" | "metabolismo" | "exposicao" | "rotina" | "mente" | "espirito";
+export type Group = "vitals" | "metabolism" | "exposure" | "routine" | "mind" | "spirit";
 
 export interface IndicatorDef {
   code: IndicatorCode;
@@ -22,7 +22,7 @@ export interface IndicatorDef {
   pillar: Pillar;
   group: Group;
   icon: IconName;
-  inputMode: "telemetria" | "autorrelato" | "registro";
+  inputMode: "telemetry" | "self_report" | "log";
   sensor?: string;
   range?: ReferenceRange;
   scaleNote?: string;
@@ -30,301 +30,307 @@ export interface IndicatorDef {
 }
 
 export const GROUP_LABEL: Record<Group, string> = {
-  vitais: "Sinais vitais",
-  metabolismo: "Metabolismo",
-  exposicao: "Radiação e ambiente",
-  rotina: "Sono, água e treino",
-  mente: "Mente",
-  espirito: "Espírito",
+  vitals: "Vital signs",
+  metabolism: "Metabolism",
+  exposure: "Radiation and environment",
+  routine: "Sleep, water and workout",
+  mind: "Mind",
+  spirit: "Spirit",
 };
 
 export const PILLAR_LABEL: Record<Pillar, string> = {
-  corpo: "Corpo",
-  mente: "Mente",
-  espirito: "Espírito",
+  body: "Body",
+  mind: "Mind",
+  spirit: "Spirit",
 };
 
-const SELF_SCALE = "Avaliação pessoal de 0 a 10. Escala de produto, ainda não validada.";
+const SELF_SCALE = "Personal rating from 0 to 10. A product scale, not yet validated.";
 
 export const INDICATORS: IndicatorDef[] = [
   {
     code: "heart_rate",
-    name: "Frequência cardíaca em repouso",
-    short: "FC",
+    name: "Resting heart rate",
+    short: "HR",
     unit: "bpm",
     decimals: 0,
-    pillar: "corpo",
-    group: "vitais",
+    pillar: "body",
+    group: "vitals",
     icon: "heart-pulse",
-    inputMode: "telemetria",
-    sensor: "Cinta de peito (simulada)",
-    range: { min: 60, max: 100, label: "60–100 bpm", source: "Faixa geral de repouso para adultos (AHA)", kind: "referencia_geral" },
+    inputMode: "telemetry",
+    sensor: "Chest strap (simulated)",
+    range: { min: 60, max: 100, label: "60–100 bpm", source: "General resting range for adults (AHA)", kind: "general_reference" },
     referenceIds: ["nasa-risks"],
   },
   {
     code: "hrv",
-    name: "Variabilidade da FC (RMSSD)",
-    short: "VFC",
+    name: "Heart rate variability (RMSSD)",
+    short: "HRV",
     unit: "ms",
     decimals: 0,
-    pillar: "mente",
-    group: "vitais",
+    pillar: "mind",
+    group: "vitals",
     icon: "activity",
-    inputMode: "telemetria",
-    sensor: "Cinta de peito (simulada)",
-    scaleNote: "Sem faixa universal: compare só com você mesmo.",
+    inputMode: "telemetry",
+    sensor: "Chest strap (simulated)",
+    scaleNote: "No universal range: compare only with yourself.",
     referenceIds: ["nasa-ongoing"],
   },
   {
     code: "bp_systolic",
-    name: "Pressão arterial sistólica",
-    short: "PAS",
+    name: "Systolic blood pressure",
+    short: "SBP",
     unit: "mmHg",
     decimals: 0,
-    pillar: "corpo",
-    group: "vitais",
+    pillar: "body",
+    group: "vitals",
     icon: "gauge",
-    inputMode: "telemetria",
-    sensor: "Manguito automático (simulado)",
-    range: { max: 120, label: "< 120 mmHg", source: "Classificação AHA/ACC 2017 para adultos", kind: "referencia_geral" },
+    inputMode: "telemetry",
+    sensor: "Automatic cuff (simulated)",
+    range: { max: 120, label: "< 120 mmHg", source: "AHA/ACC 2017 classification for adults", kind: "general_reference" },
     referenceIds: ["nasa-risks"],
   },
   {
     code: "bp_diastolic",
-    name: "Pressão arterial diastólica",
-    short: "PAD",
+    name: "Diastolic blood pressure",
+    short: "DBP",
     unit: "mmHg",
     decimals: 0,
-    pillar: "corpo",
-    group: "vitais",
+    pillar: "body",
+    group: "vitals",
     icon: "gauge",
-    inputMode: "telemetria",
-    sensor: "Manguito automático (simulado)",
-    range: { max: 80, label: "< 80 mmHg", source: "Classificação AHA/ACC 2017 para adultos", kind: "referencia_geral" },
+    inputMode: "telemetry",
+    sensor: "Automatic cuff (simulated)",
+    range: { max: 80, label: "< 80 mmHg", source: "AHA/ACC 2017 classification for adults", kind: "general_reference" },
     referenceIds: ["nasa-risks"],
   },
   {
     code: "spo2",
-    name: "Oxigênio no sangue (SpO₂)",
+    name: "Blood oxygen (SpO₂)",
     short: "SpO₂",
     unit: "%",
     decimals: 0,
-    pillar: "corpo",
-    group: "vitais",
+    pillar: "body",
+    group: "vitals",
     icon: "droplets",
-    inputMode: "telemetria",
-    sensor: "Oxímetro de dedo (simulado)",
-    range: { min: 95, max: 100, label: "95–100 %", source: "Faixa geral em ar ambiente para adultos", kind: "referencia_geral" },
+    inputMode: "telemetry",
+    sensor: "Finger oximeter (simulated)",
+    range: { min: 95, max: 100, label: "95–100 %", source: "General range on room air for adults", kind: "general_reference" },
     referenceIds: ["nasa-risks", "nasa-hazards"],
   },
   {
     code: "resp_rate",
-    name: "Frequência respiratória",
-    short: "FR",
+    name: "Respiratory rate",
+    short: "RR",
     unit: "rpm",
     decimals: 0,
-    pillar: "corpo",
-    group: "vitais",
+    pillar: "body",
+    group: "vitals",
     icon: "wind",
-    inputMode: "telemetria",
-    sensor: "Camiseta biométrica (simulada)",
-    range: { min: 12, max: 20, label: "12–20 rpm", source: "Faixa geral de repouso para adultos", kind: "referencia_geral" },
+    inputMode: "telemetry",
+    sensor: "Biometric shirt (simulated)",
+    range: { min: 12, max: 20, label: "12–20 rpm", source: "General resting range for adults", kind: "general_reference" },
     referenceIds: ["nasa-hazards"],
   },
   {
     code: "body_temp",
-    name: "Temperatura corporal",
+    name: "Body temperature",
     short: "Temp.",
     unit: "°C",
     decimals: 1,
-    pillar: "corpo",
-    group: "vitais",
+    pillar: "body",
+    group: "vitals",
     icon: "thermometer",
-    inputMode: "telemetria",
-    sensor: "Sensor de testa (simulado)",
-    range: { min: 36.1, max: 37.2, label: "36,1–37,2 °C", source: "Faixa geral para adultos", kind: "referencia_geral" },
+    inputMode: "telemetry",
+    sensor: "Forehead sensor (simulated)",
+    range: { min: 36.1, max: 37.2, label: "36.1–37.2 °C", source: "General range for adults", kind: "general_reference" },
     referenceIds: ["nasa-risks"],
   },
   {
     code: "glucose",
-    name: "Glicose intersticial",
-    short: "Glicose",
+    name: "Interstitial glucose",
+    short: "Glucose",
     unit: "mg/dL",
     decimals: 0,
-    pillar: "corpo",
-    group: "metabolismo",
+    pillar: "body",
+    group: "metabolism",
     icon: "droplet",
-    inputMode: "telemetria",
-    sensor: "Monitor contínuo de glicose (simulado)",
-    range: { min: 70, max: 180, label: "70–180 mg/dL", source: "Alvo de “tempo no alvo” de CGM (consenso internacional 2019)", kind: "referencia_geral" },
+    inputMode: "telemetry",
+    sensor: "Continuous glucose monitor (simulated)",
+    range: { min: 70, max: 180, label: "70–180 mg/dL", source: "CGM “time in range” target (international consensus, 2019)", kind: "general_reference" },
     referenceIds: ["nasa-risks"],
   },
   {
     code: "radiation_dose",
-    name: "Dose de radiação diária",
-    short: "Radiação",
+    name: "Daily radiation dose",
+    short: "Radiation",
     unit: "mSv",
     decimals: 2,
-    pillar: "corpo",
-    group: "exposicao",
+    pillar: "body",
+    group: "exposure",
     icon: "radiation",
-    inputMode: "telemetria",
-    sensor: "Dosímetro pessoal (simulado; inspirado no CANS, não conectado)",
-    scaleNote: "A soma da missão é comparada ao limite de carreira da NASA (600 mSv).",
+    inputMode: "telemetry",
+    sensor: "Personal dosimeter (simulated; inspired by CANS, not connected)",
+    scaleNote: "The mission total is compared with NASA's career limit (600 mSv).",
     referenceIds: ["csa-radiation", "nasa-hazards", "nasa-risks"],
   },
   {
     code: "cabin_co2",
-    name: "CO₂ na cabine",
+    name: "Cabin CO₂",
     short: "CO₂",
     unit: "mmHg",
     decimals: 1,
-    pillar: "corpo",
-    group: "exposicao",
+    pillar: "body",
+    group: "exposure",
     icon: "air-vent",
-    inputMode: "telemetria",
-    sensor: "Sensor ambiental do módulo (simulado)",
-    scaleNote: "Leitura do ambiente, não do seu corpo. Limites operacionais vêm da missão.",
+    inputMode: "telemetry",
+    sensor: "Module environment sensor (simulated)",
+    scaleNote: "An environment reading, not your body. Operational limits come from the mission.",
     referenceIds: ["nasa-hazards"],
   },
   {
     code: "sleep_duration",
-    name: "Duração do sono",
-    short: "Sono",
+    name: "Sleep duration",
+    short: "Sleep",
     unit: "h",
     decimals: 1,
-    pillar: "corpo",
-    group: "rotina",
+    pillar: "body",
+    group: "routine",
     icon: "moon",
-    inputMode: "autorrelato",
-    range: { min: 7, label: "≥ 7 h", source: "Recomendação geral para adultos (AASM/SRS 2015)", kind: "referencia_geral" },
-    scaleNote: "Horas autorrelatadas. Não mede qualidade nem fase circadiana.",
+    inputMode: "self_report",
+    range: { min: 7, label: "≥ 7 h", source: "General recommendation for adults (AASM/SRS 2015)", kind: "general_reference" },
+    scaleNote: "Self-reported hours. Does not measure quality or circadian phase.",
     referenceIds: ["nasa-risks", "nasa-ongoing"],
   },
   {
     code: "hydration",
-    name: "Hidratação",
-    short: "Água",
+    name: "Hydration",
+    short: "Water",
     unit: "L",
     decimals: 1,
-    pillar: "corpo",
-    group: "rotina",
+    pillar: "body",
+    group: "routine",
     icon: "glass-water",
-    inputMode: "registro",
-    range: { min: 2, label: "meta 2 L", source: "Meta da demo (HIPÓTESE ASTRA), definida pela equipe médica na versão real", kind: "meta_demo" },
+    inputMode: "log",
+    range: { min: 2, label: "goal 2 L", source: "Demo goal (ASTRA HYPOTHESIS), set by the medical team in the real version", kind: "demo_goal" },
     referenceIds: ["nasa-hazards"],
   },
   {
     code: "exercise",
-    name: "Exercício",
-    short: "Treino",
+    name: "Exercise",
+    short: "Workout",
     unit: "min",
     decimals: 0,
-    pillar: "corpo",
-    group: "rotina",
+    pillar: "body",
+    group: "routine",
     icon: "dumbbell",
-    inputMode: "registro",
-    range: { min: 120, label: "meta 2 h", source: "Na ISS, tripulantes se exercitam cerca de 2 h por dia (NASA)", kind: "meta_demo" },
+    inputMode: "log",
+    range: { min: 120, label: "goal 2 h", source: "On the ISS, crew members exercise about 2 h a day (NASA)", kind: "demo_goal" },
     referenceIds: ["nasa-risks", "nasa-hazards"],
   },
   {
     code: "energy_self_report",
-    name: "Energia percebida",
-    short: "Energia",
+    name: "Perceived energy",
+    short: "Energy",
     unit: "0–10",
     decimals: 0,
-    pillar: "mente",
-    group: "mente",
+    pillar: "mind",
+    group: "mind",
     icon: "zap",
-    inputMode: "autorrelato",
+    inputMode: "self_report",
     scaleNote: SELF_SCALE,
     referenceIds: ["nasa-risks"],
   },
   {
     code: "mood_self_report",
-    name: "Humor percebido",
-    short: "Humor",
+    name: "Perceived mood",
+    short: "Mood",
     unit: "0–10",
     decimals: 0,
-    pillar: "mente",
-    group: "mente",
+    pillar: "mind",
+    group: "mind",
     icon: "smile",
-    inputMode: "autorrelato",
-    scaleNote: SELF_SCALE + " Opcional e privado.",
+    inputMode: "self_report",
+    scaleNote: SELF_SCALE + " Optional and private.",
     referenceIds: ["nasa-hazards", "nasa-ongoing"],
   },
   {
     code: "stress_self_report",
-    name: "Estresse percebido",
-    short: "Estresse",
+    name: "Perceived stress",
+    short: "Stress",
     unit: "0–10",
     decimals: 0,
-    pillar: "mente",
-    group: "mente",
+    pillar: "mind",
+    group: "mind",
     icon: "brain",
-    inputMode: "autorrelato",
-    scaleNote: SELF_SCALE + " Opcional e privado.",
+    inputMode: "self_report",
+    scaleNote: SELF_SCALE + " Optional and private.",
     referenceIds: ["nasa-hazards"],
   },
   {
     code: "purpose_self_report",
-    name: "Sentido e propósito",
-    short: "Propósito",
+    name: "Meaning and purpose",
+    short: "Purpose",
     unit: "0–10",
     decimals: 0,
-    pillar: "espirito",
-    group: "espirito",
+    pillar: "spirit",
+    group: "spirit",
     icon: "sparkles",
-    inputMode: "autorrelato",
-    scaleNote: SELF_SCALE + " Opcional e privado.",
+    inputMode: "self_report",
+    scaleNote: SELF_SCALE + " Optional and private.",
     referenceIds: ["csa-science"],
   },
   {
     code: "earth_contact",
-    name: "Conexão com a Terra",
-    short: "Conexão",
+    name: "Connection with Earth",
+    short: "Connection",
     unit: "min",
     decimals: 0,
-    pillar: "espirito",
-    group: "espirito",
+    pillar: "spirit",
+    group: "spirit",
     icon: "earth",
-    inputMode: "registro",
-    scaleNote: "Minutos de conversa com família e amigos.",
+    inputMode: "log",
+    scaleNote: "Minutes talking with family and friends.",
     referenceIds: ["nasa-hazards", "csa-science"],
   },
   {
     code: "contemplation",
-    name: "Contemplação e respiração",
-    short: "Pausa",
+    name: "Contemplation and breathing",
+    short: "Pause",
     unit: "min",
     decimals: 0,
-    pillar: "espirito",
-    group: "espirito",
+    pillar: "spirit",
+    group: "spirit",
     icon: "flower",
-    inputMode: "registro",
-    scaleNote: "Meditação, oração ou observação da Terra pela janela, como você preferir.",
+    inputMode: "log",
+    scaleNote: "Meditation, prayer or watching Earth from the window, as you prefer.",
     referenceIds: ["nasa-hazards"],
   },
 ];
 
-export const CAREER_LIMIT_MSV = 600; // NASA-STD-3001, limite de carreira de exposição
+export const CAREER_LIMIT_MSV = 600; // NASA-STD-3001, career exposure limit
 
 export const indicator = (code: IndicatorCode) => INDICATORS.find((i) => i.code === code)!;
 
+let numberLocale = "en-US";
+/** The UI calls this when the language changes (pt-BR uses a decimal comma). */
+export function setNumberLocale(l: string) {
+  numberLocale = l;
+}
+
 export function formatValue(value: number | null, code: IndicatorCode): string {
   if (value === null) return "—";
-  return value.toLocaleString("pt-BR", {
+  return value.toLocaleString(numberLocale, {
     minimumFractionDigits: indicator(code).decimals,
     maximumFractionDigits: indicator(code).decimals,
   });
 }
 
-export type RangePosition = "abaixo" | "dentro" | "acima" | "sem_faixa";
+export type RangePosition = "below" | "within" | "above" | "no_range";
 
 export function rangePosition(value: number | null, code: IndicatorCode): RangePosition {
   const r = indicator(code).range;
-  if (!r || value === null) return "sem_faixa";
-  if (r.min !== undefined && value < r.min) return "abaixo";
-  if (r.max !== undefined && value > r.max) return "acima";
-  return "dentro";
+  if (!r || value === null) return "no_range";
+  if (r.min !== undefined && value < r.min) return "below";
+  if (r.max !== undefined && value > r.max) return "above";
+  return "within";
 }

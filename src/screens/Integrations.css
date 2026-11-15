@@ -1,0 +1,146 @@
+/* Integrations screen (track R-H; cleanup RV-14; round R4: 4-node flow, vivid statuses with icons). Only tokens from styles.css; surfaces separated by tone (RV-8).
+   Layout: ISS band → single-row flow → connectors as a list of rows (not cards) → FHIR export. */
+
+.integ p { max-width: 60ch; }
+
+/* ---------- ISS band ---------- */
+.integ-band { min-height: 300px; }
+.integ-band > img { object-position: center 40%; }
+.integ-band__body { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; }
+.integ-band__text { max-width: 46ch; }
+.integ-band__morse { color: var(--brand-cream); height: 8px; margin-top: 14px; opacity: .85; }
+.integ-band__text p { margin-top: 12px; font-size: var(--step-body); opacity: .92; }
+.integ-band__sum { display: flex; gap: clamp(20px, 3vw, 44px); margin: 0; }
+.integ-band__sum div { display: flex; flex-direction: column-reverse; }
+.integ-band__sum dd { margin: 0; font-size: var(--step-head); color: var(--brand-cream); }
+.integ-band__sum dt { margin-top: 6px; font-size: var(--step-small); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+.integ-sum--self_report dt svg { color: #34d399; }
+.integ-sum--simulated dt svg { color: #fbbf24; }
+.integ-sum--roadmap dt svg { color: #38bdf8; }
+
+/* ---------- section titles with an icon ---------- */
+.integ-h2 { display: flex; align-items: center; gap: 10px; }
+.integ-h2__icon { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; flex-shrink: 0; background: var(--info); color: var(--bg); }
+.integ-h2__icon--fhir { background: var(--streak); }
+.integ-h2__icon--con { background: var(--ok); }
+
+/* ---------- flow: 4 nodes with large icons, straight wires through the center of the icons ---------- */
+.integ-flow-panel { gap: 24px; }
+.integ-flow { list-style: none; margin: 0; padding: 4px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.integ-flow__step {
+  --node: 64px;
+  position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 0 12px; min-width: 0;
+  animation: screen-rise .45s cubic-bezier(.2, .8, .2, 1) backwards; animation-delay: calc(var(--i, 0) * 90ms + .1s);
+}
+.integ-flow__node {
+  position: relative; z-index: 1; display: grid; place-items: center; width: var(--node); height: var(--node); border-radius: 22px; flex-shrink: 0;
+  background: var(--tint); color: #070742; transition: transform .2s cubic-bezier(.2, 1.4, .4, 1);
+}
+.integ-flow__step:hover .integ-flow__node { transform: scale(1.06); }
+/* wire: from the right side of this node to the left side of the next one, at center height */
+.integ-flow__wire {
+  position: absolute; top: calc(var(--node) / 2 - 1.5px); left: calc(50% + var(--node) / 2 + 10px); width: calc(100% - var(--node) - 20px);
+  height: 0; border-top: 3px solid color-mix(in srgb, var(--ink-2) 75%, transparent); color: var(--ink-2);
+  transform-origin: left center; animation: screen-grow-x .5s cubic-bezier(.2, .8, .2, 1) backwards; animation-delay: calc(var(--i, 0) * 90ms + .35s);
+}
+.integ-flow__wire svg { position: absolute; right: -8px; top: -10.5px; }
+.integ-flow__text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.integ-flow__text b { font-weight: 800; font-size: var(--step-body); letter-spacing: -0.015em; }
+.integ-flow__text .small { line-height: 1.4; }
+.integ-flow__more summary, .integ-con__more summary, .integ-fhir__more summary { cursor: pointer; font-weight: 600; color: var(--ink-2); width: fit-content; }
+:is(.integ-con__more, .integ-fhir__more) summary:hover { color: var(--ink); }
+
+/* ---------- notice (required: simulated connectors) ---------- */
+.integ-note { display: flex; gap: 12px; align-items: flex-start; background: var(--surface-2); border-radius: var(--radius-sm); padding: 14px 16px; max-width: none; }
+.integ-note__icon { flex-shrink: 0; color: var(--info); margin-top: 2px; }
+
+/* ---------- connectors: rows of a list, separated by space ---------- */
+.integ-count { font-size: var(--step-small); font-weight: 600; color: var(--ink-2); }
+.integ-group { display: flex; flex-direction: column; gap: 20px; }
+.integ-group + .integ-group { margin-top: 22px; }
+.integ-group__head { display: flex; flex-direction: column; gap: 4px; }
+.integ-group__head h3 { font-size: var(--step-body); letter-spacing: -0.015em; }
+.integ-group__head .integ-count { font-size: inherit; font-weight: 600; }
+.integ-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 26px; }
+.integ-con { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; gap: 8px 24px; align-items: start; }
+.integ-con__icon {
+  display: grid; place-items: center; width: 46px; height: 46px; border-radius: 15px; background: var(--tint, var(--surface-2)); color: #070742;
+}
+.integ-con--roadmap .integ-con__icon, .integ-con--needs_authorization .integ-con__icon { background: var(--surface-2); color: var(--tint); outline: 2px dashed color-mix(in srgb, var(--tint) 60%, transparent); outline-offset: -2px; }
+:root:has(> head > meta[name="color-scheme"][content="light"]) :is(.integ-con--roadmap, .integ-con--needs_authorization) .integ-con__icon { background: var(--brand-night); }
+
+/* connector status: icon + its own vivid color (text with contrast in both themes) */
+.integ-status {
+  display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; font-size: 0.8125rem; font-weight: 700;
+  padding: 3px 10px 3px 8px; border-radius: 999px;
+  background: color-mix(in srgb, var(--st) 18%, transparent); color: var(--st);
+}
+.integ-status--self_report { --st: var(--ok); }
+.integ-status--simulated { --st: var(--warn); }
+.integ-status--roadmap { --st: var(--info); }
+.integ-status--needs_authorization { --st: var(--alert); }
+.integ-con--roadmap h4, .integ-con--needs_authorization h4 { color: var(--ink-2); }
+
+.integ-con__main { display: flex; flex-direction: column; gap: 4px; min-width: 0; padding-top: 2px; }
+.integ-con__title { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.integ-con__title h4 { overflow-wrap: anywhere; font-size: var(--step-body); letter-spacing: -0.015em; line-height: 1.25; }
+.integ-con__measures { color: var(--ink-2); }
+.integ-con__more { margin-top: 4px; }
+.integ-con__more > summary + * { margin-top: 8px; }
+.integ-con__more > * + * { margin-top: 8px; }
+.integ-con__feeds { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.integ-chip { min-height: 32px; padding: 4px 12px; }
+.integ-chip:hover { background: var(--accent); color: var(--accent-ink); }
+
+.integ-con__side { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; padding-top: 2px; }
+/* metrics on one line: "Last reading 5 min ago · Records 120" */
+.integ-con__stats { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 18px; margin: 0; white-space: nowrap; }
+.integ-con__stats div { display: flex; align-items: baseline; gap: 6px; }
+.integ-con__stats dt { color: var(--ink-2); font-weight: 600; }
+.integ-con__stats dd { margin: 0; font-weight: 800; }
+.integ-con__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; justify-content: flex-end; }
+.integ-con__actions .btn { white-space: nowrap; }
+.integ-con__ok { display: flex; align-items: center; justify-content: flex-end; gap: 6px; min-height: 1.4em; margin-top: -4px; color: var(--ok); font-weight: 600; }
+.integ-spin { animation: integ-spin .6s linear infinite; }
+/* empty: reserves no space, but the live region stays in the DOM */
+.integ-con__ok:empty { min-height: 0; margin-top: -10px; }
+@keyframes integ-spin { to { transform: rotate(360deg); } }
+
+/* ---------- FHIR export ---------- */
+.integ-fhir__tag { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.integ-fhir__more > p { margin-top: 10px; }
+.integ-fhir__pre {
+  margin: 12px 0 0; max-height: 380px; overflow: auto; background: var(--bg); color: var(--ink-2);
+  border-radius: var(--radius-sm); padding: 16px 18px; font-size: 0.8125rem; line-height: 1.55; white-space: pre;
+}
+/* real code: the only monospace allowed on the screen */
+.integ-fhir__pre code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 860px) {
+  .integ-con { grid-template-columns: 46px minmax(0, 1fr); }
+  .integ-con__side { grid-column: 2; align-items: flex-start; }
+  .integ-con__stats, .integ-con__actions, .integ-con__ok { justify-content: flex-start; }
+}
+/* mobile: vertical flow, wire running down through the center of the icons */
+@media (max-width: 720px) {
+  .integ-flow { grid-template-columns: 1fr; }
+  .integ-flow__step { --node: 56px; display: grid; grid-template-columns: var(--node) minmax(0, 1fr); align-items: start; text-align: left; gap: 16px; padding: 0 0 26px; }
+  .integ-flow__step:last-child { padding-bottom: 0; }
+  .integ-flow__node { border-radius: 18px; }
+  .integ-flow__node svg { width: 26px; height: 26px; }
+  .integ-flow__text { padding-top: 4px; }
+  .integ-flow__wire {
+    top: calc(var(--node) + 8px); bottom: 8px; left: calc(var(--node) / 2 - 1.5px); width: 0; height: auto;
+    border-top: 0; border-left: 3px solid color-mix(in srgb, var(--ink-2) 75%, transparent);
+    transform-origin: center top; animation-name: screen-grow-y;
+  }
+  .integ-flow__wire svg { right: auto; top: auto; left: -10.5px; bottom: -8px; transform: rotate(90deg); }
+}
+@media (max-width: 560px) {
+  .integ-band { min-height: 260px; }
+  .integ-band__sum { width: 100%; justify-content: space-between; gap: 10px; }
+  .integ-band__sum dt { font-size: 0.8125rem; gap: 4px; }
+  .integ-band__sum dt svg { width: 13px; height: 13px; }
+  .integ-con__actions .btn { flex: 1 1 auto; }
+}

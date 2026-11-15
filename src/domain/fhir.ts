@@ -2,9 +2,9 @@ import type { IndicatorCode, Observation } from "./types";
 import { indicator, type Group } from "./indicators";
 import { connector } from "./integrations";
 
-// Exportação do prontuário em HL7 FHIR R4 (REQ-11.5): Bundle "collection" de Observation.
-// Função pura. LOINC só nos códigos confirmados; o resto usa o sistema local urn:astra:indicator.
-// Todo recurso sintético leva a etiqueta SIMULADO em meta.tag.
+// Health record export in HL7 FHIR R4 (REQ-11.5): a "collection" Bundle of Observations.
+// Pure function. LOINC only for confirmed codes; the rest use the local system urn:astra:indicator.
+// Every synthetic resource carries the SIMULATED tag in meta.tag (technical format: always in English).
 
 export const LOINC = "http://loinc.org";
 export const ASTRA_INDICATOR_SYSTEM = "urn:astra:indicator";
@@ -13,7 +13,7 @@ const UCUM = "http://unitsofmeasure.org";
 const CATEGORY_SYSTEM = "http://terminology.hl7.org/CodeSystem/observation-category";
 const ABSENT_SYSTEM = "http://terminology.hl7.org/CodeSystem/data-absent-reason";
 
-// Códigos LOINC confirmados. Os demais indicadores NÃO têm LOINC aqui de propósito.
+// Confirmed LOINC codes. The other indicators deliberately have NO LOINC here.
 export const LOINC_CODES: Partial<Record<IndicatorCode, { code: string; display: string }>> = {
   heart_rate: { code: "8867-4", display: "Heart rate" },
   bp_systolic: { code: "8480-6", display: "Systolic blood pressure" },
@@ -23,7 +23,7 @@ export const LOINC_CODES: Partial<Record<IndicatorCode, { code: string; display:
   spo2: { code: "59408-5", display: "Oxygen saturation in Arterial blood by Pulse oximetry" },
 };
 
-// Unidade do app → UCUM. Escalas 0–10 ficam de fora (viram valueInteger).
+// App unit → UCUM. 0–10 scales are left out (they become valueInteger).
 export const UCUM_UNITS: Record<string, string> = {
   bpm: "/min",
   rpm: "/min",
@@ -41,12 +41,12 @@ export const UCUM_UNITS: Record<string, string> = {
 type Category = "vital-signs" | "survey" | "social-history" | "laboratory";
 
 const CATEGORY_BY_GROUP: Record<Group, Category> = {
-  vitais: "vital-signs",
-  metabolismo: "laboratory",
-  exposicao: "social-history",
-  rotina: "social-history",
-  mente: "survey",
-  espirito: "survey",
+  vitals: "vital-signs",
+  metabolism: "laboratory",
+  exposure: "social-history",
+  routine: "social-history",
+  mind: "survey",
+  spirit: "survey",
 };
 
 const CATEGORY_DISPLAY: Record<Category, string> = {
@@ -85,7 +85,7 @@ export interface FhirBundle {
   entry: { fullUrl: string; resource: FhirObservation }[];
 }
 
-const SIMULATED_TAG: FhirCoding = { system: ASTRA_PROVENANCE_SYSTEM, code: "SIMULATED", display: "SIMULADO" };
+const SIMULATED_TAG: FhirCoding = { system: ASTRA_PROVENANCE_SYSTEM, code: "SIMULATED", display: "SIMULATED" };
 const MANUAL_TAG: FhirCoding = { system: ASTRA_PROVENANCE_SYSTEM, code: "MANUAL", display: "MANUAL" };
 
 export function categoryFor(code: IndicatorCode): Category {
@@ -120,7 +120,7 @@ export function toFhirObservation(o: Observation, profileId: string): FhirObserv
   if (dev || o.sourceRef) res.device = { display: dev?.name ?? o.sourceRef! };
 
   if (o.value === null) {
-    res.dataAbsentReason = { coding: [{ system: ABSENT_SYSTEM, code: "unknown", display: "Unknown" }], text: "Sem valor registrado" };
+    res.dataAbsentReason = { coding: [{ system: ABSENT_SYSTEM, code: "unknown", display: "Unknown" }], text: "No value recorded" };
   } else {
     const unit = o.unit ?? def.unit;
     const ucum = UCUM_UNITS[unit];
@@ -143,12 +143,12 @@ export function toFhirBundle(observations: Observation[], opts: { profileId: str
   };
 }
 
-// Tipo `id` do FHIR aceita só [A-Za-z0-9-.], até 64 caracteres.
+// The FHIR `id` type only accepts [A-Za-z0-9-.], up to 64 characters.
 export function fhirId(raw: string): string {
   return raw.replace(/[^A-Za-z0-9\-.]/g, "-").slice(0, 64);
 }
 
-// UUID determinístico (formato v4) a partir do id do registro, para o fullUrl `urn:uuid:` ser válido e estável.
+// Deterministic UUID (v4 format) from the record id, so the `urn:uuid:` fullUrl is valid and stable.
 export function uuidFrom(raw: string): string {
   let h1 = 0x811c9dc5;
   let h2 = 0x01000193;
